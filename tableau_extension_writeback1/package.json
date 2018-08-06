@@ -1,0 +1,26 @@
+{
+  "name": "post_demo",
+  "version": "1.0.0",
+  "description": "Tableau Extension API: Write Back to Local File\r =====================================\r Created by [Andre de Vries](https://www.twitter.com/andre347_) (22nd Jan 2018)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.3",
+    "pg": "^6.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andre347/tableau_extension_writeback.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andre347/tableau_extension_writeback/issues"
+  },
+  "homepage": "https://github.com/andre347/tableau_extension_writeback#readme"
+}
