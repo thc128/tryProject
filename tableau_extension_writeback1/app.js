@@ -35,7 +35,7 @@ app.post('/addData', function(req, res){
 });
 
 app.get('/addData', function(req, res){
-   res.render('data.html', {products: products});
+   res.render('data1.html', {products: products});
  });
 
 
