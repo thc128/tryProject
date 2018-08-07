@@ -1,0 +1,10 @@
+CREATE TABLE roleDef (
+	trait char(100),
+    stage1 int,
+    stage2 int,
+    stage3 int,
+	stage4 int,
+	stage5 int
+);
+INSERT INTO roleDef (trait,stage1,stage2,stage3,stage4,stage5)
+VALUES ("gavoah",5,8,7,6,4);

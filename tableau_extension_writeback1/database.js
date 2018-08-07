@@ -10,30 +10,49 @@ function initClient(postgresModule){
 	return myClient
 }
 
-function askTable(pgclient,tableName)
+function runQuery(pgclient,queryString)
 {
-	myQuery="SELECT * from "+tableName
-	pgclient.query(myQuery, (err, res) => {
+	//pgclient.connect();
+	pgclient.query(queryString, (err, res) => {
 	console.log("Errors: ",err)
 	console.log("Command: ", res.command)
 	console.log("Rows: ", res.rows)
-	client.end()
+	//pgclient.end()
 	})
+}
+function askTable(pgclient,tableName)
+{
+	myQuery="SELECT * from "+tableName
+	runQuery(pgclient,myQuery)
 }
 
 function updateTable(pgclient,tableName)
 {
 	myQuery="UPDATE " + tableName + " SET column2=4846 WHERE column1='asaf'"
-	pgclient.query(myQuery, (err, res) => {
-	console.log("Errors: ",err)
-	console.log("Command: ", res.command)
-	console.log("Rows: ", res.rows)
-	client.end()
-	})
+	runQuery(pgclient,myQuery)
 }
+
+function createNewRole(pgclient,roleName)
+{
+	myQuery="CREATE TABLE " + roleName + " (	trait char(100),    stage1 int,	stage2 int,    stage3 int,	stage4 int,	stage5 int);";
+	runQuery(pgclient,myQuery)
+}
+
+function insertOneTrait(pgclient,roleName,traitName,s1val,s2val,s3val,s4val,s5val)
+{
+//	myQuery="INSERT INTO "+roleName+" (trait,stage1,stage2,stage3,stage4,stage5) VALUES ("+traitName+","+s1val+","+s2val+","+s3val+","+s4val+","+s5val+");";
+	myQuery="INSERT INTO "+roleName+" VALUES ("+traitName+","+s1val+","+s2val+","+s3val+","+s4val+","+s5val+");";
+    runQuery(pgclient,myQuery)
+}
+
+
 
 var pg = require('pg');
 var client = initClient(pg)
 client.connect();
-askTable(client,"asaf2")
-updateTable(client,"asaf2")
+askTable(client,"asaf2");
+updateTable(client,"asaf2");
+//createNewRole(client,"asaf8");
+insertOneTrait(client,"asaf8","'ayef'","1","4","8","3","9");
+askTable(client,"asaf8");
+//client.end()
