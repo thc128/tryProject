@@ -12,6 +12,7 @@ function initClient(postgresModule){
 
 function runQuery(pgclient,queryString)
 {
+	pgclient.connect();
 	pgclient.query(queryString, (err, res) => {
 	console.log("Errors: ",err)
 	console.log("Command: ", res.command)
@@ -47,11 +48,8 @@ function insertOneTrait(pgclient,roleName,traitName,s1val,s2val,s3val,s4val,s5va
 
 var pg = require('pg');
 var client = initClient(pg)
-client.connect();
 askTable(client,"asaf2");
 updateTable(client,"asaf2");
-console.log("OK 1");
 createNewRole(client,"asaf8");
 insertOneTrait(client,"asaf8",3,6,7,8,2);
 askTable(client,"asaf8");
-console.log("OK 2");
