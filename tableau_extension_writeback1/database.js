@@ -66,12 +66,12 @@ function insertOneTrait(pgclient,roleName,myTrait)
 var pg = require('pg');
 var client = initClient(pg)
 client.connect();
-askTable(client,"asaf2");
-updateTable(client,"asaf2");
-var myTrait1= ["'boie'",1,5,3,4,9];
-var myTrait2= ["'shamen'",5,8,4,1,9];
-var traits=[myTrait1,myTrait2];
-createNewRole(client,"asaf9",traits);
+var traits=[["'boie'",1,5,3,4,9],["'shamen'",5,8,4,1,9],["'gavoah'",7,9,4,2,6],["'ayef'",8,9,6,1,6]];
+var tableName="asaf11";
+createNewRole(client,tableName,traits);
+askTable(client,tableName);
+
+
+
 //insertOneTrait(client,"asaf9",myTrait);
-askTable(client,"asaf9");
 //client.end()
