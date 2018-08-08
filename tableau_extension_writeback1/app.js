@@ -19,19 +19,30 @@ app.post('/addData', function(req, res){
   console.log(req.body);
 
 
-  var newProduct = req.body.newProduct;
-  var newSales = req.body.newSales;
-  var newProfit = req.body.newProfit
-
-  var dataToWrite = newProduct+','+newSales+','+newProfit+'\n';
-
-  products.push(newProduct);
+  var selected = req.body.rad;
   res.redirect('/addData');
-  fs.appendFile('product_file.txt', dataToWrite, finished);
-    function finished(){
-      console.log('added product data');
-    };
-
+  var pg = require('pg');
+  var client =new pg.Client({
+		user: 'postgres',
+		host: 'localhost',
+		database: 'postgres',
+		password: 'Elichoref13',
+		port: 5432
+	})
+  client.connect();
+  myQuery="INSERT INTO asaf11 VALUES (\
+	openness\
+	,"+String(selected)+"\
+	,"+String(selected)+"\
+	,"+String(selected)+"\
+	,"+String(selected)+"\
+	,"+String(selected)+");";
+    client.query(myQuery, (err, res) => {
+	console.log("Errors: ",err)
+	console.log("Command: ", res.command)
+	console.log("Rows: ", res.rows)
+	client.end()
+	})
 });
 
 app.get('/addData', function(req, res){

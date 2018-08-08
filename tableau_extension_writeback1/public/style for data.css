@@ -1,0 +1,38 @@
+@import "bourbon";
+.rating_scale {
+  display: block;
+  text-align: center;
+  font-size: 0;
+}
+.rating_scale span {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.3em 0.8em;
+  font-size: 26px;
+  font-weight: 100;
+  width: 4em;
+  background: #0f99d6;
+  color: #eee;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  border-right: solid 1px #fff;
+}
+.rating_scale label:first-child span {
+  border-left: solid 1px #fff;
+  border-top-left-radius: 0.25em;
+  border-bottom-left-radius: 0.25em;
+}
+.rating_scale label:last-child span {
+  border-top-right-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
+.rating_scale input[type="radio"] {
+  display: none;
+}
+.rating_scale input[type="radio"]:checked ~ span {
+  background: #eb7823;
+  color: #fff;
+}
+html, body {
+  background: #eee;
+}
