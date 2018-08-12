@@ -31,7 +31,7 @@ app.post('/addData', function(req, res){
 	})
   client.connect();
   myQuery="INSERT INTO asaf11 VALUES (\
-	openness\
+	'openness'\
 	,"+String(selected)+"\
 	,"+String(selected)+"\
 	,"+String(selected)+"\
