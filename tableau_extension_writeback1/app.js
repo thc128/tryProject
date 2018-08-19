@@ -16,8 +16,8 @@ app.get('/', function(req, res) {
 });
 
 app.post('/addData', function(req, res){
+  console.log('POST request made');
   console.log(req.body);
-
 
   var selected = req.body.rad;
   res.redirect('/addData');
@@ -47,9 +47,9 @@ app.post('/addData', function(req, res){
 
 app.get('/addData', function(req, res){
    res.render('data1.html', {products: products});
+   console.log('GET request made');
  });
-
-
+ 
 app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
 });

@@ -14,28 +14,7 @@
   text-align: center;
   font-size: 0;
 }
-.rating_scale span {
-  display: block;
-  box-sizing: border-box;
-  padding: 0.3em 0.8em;
-  font-size: 26px;
-  font-weight: 100;
-  width: 4em;
-  background: #0f99d6;
-  color: #eee;
-  border-top: solid 1px #fff;
-  border-bottom: solid 1px #fff;
-  border-right: solid 1px #fff;
-}
-.rating_scale label:first-child span {
-  border-left: solid 1px #fff;
-  border-top-left-radius: 0.25em;
-  border-bottom-left-radius: 0.25em;
-}
-.rating_scale label:last-child span {
-  border-top-right-radius: 0.25em;
-  border-bottom-right-radius: 0.25em;
-}
+
 .rating_scale input[type="radio"] {
   display: none;
 }
@@ -49,27 +28,33 @@ html, body {
 </style>
   </head>
  <body>
-
+<form action="#" method="POST" >
        <div class="rating_scale">
   <label id="first-child">
     <input type="radio" name="rad" value="1" /><span>1</span>
+    <img src="1.jpg"/>
   </label>
   <label>
     <input type="radio" name="rad" value="2"/><span>2</span>
+    <img src="2.jpg"/> 
   </label>
   <label>
     <input type="radio" name="rad" value="3"/><span>3</span>
+	<img src="3.jpg"/>
   </label>
   <label>
     <input type="radio" name="rad" value="4"/><span>4</span>
+    <img src="4.jpg"/>
   </label>
   <label>
     <input type="radio" name="rad" value="5"/><span>5</span>
+    <img src="5.jpg"/>
   </label>
 </div>
  
-    <button onclick="myFunction()">Submit</button>
-<script>
+    <input type="submit" value="Submit">
+</form>
+	<script>
   function myFunction()
   {
     x=document.querySelector("input[name=\"rad\"]:checked").value
