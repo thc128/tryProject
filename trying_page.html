@@ -43,12 +43,25 @@ body {font-size:16px;}
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
-<svg width="400" height="110" >
-  <rect class="my_bar"  width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+<svg width="100" height="110" >
+  <rect class="my_bar"  id="rect_1" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>
+<svg width="100" height="110" >
+  <rect class="my_bar"  id="rect_2" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="100" height="110" >            
+  <rect class="my_bar"  id="rect_3" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="100" height="110" >            
+  <rect class="my_bar"  id="rect_4" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="100" height="110" >            
+  <rect class="my_bar"  id="rect_5" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
 </div>
 
 <script>
+var traits={Openness:[2,3,4,5,6]}
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
@@ -68,16 +81,24 @@ function onClick(element) {
   captionText.innerHTML = element.alt;
 }
 
-function configure_trait(string) {
-alert(string);
+function choose_icon() {
+	alert("done");
+}
+function configure_trait(trait_name) {
+//alert(trait_name);
 var content = document.getElementsByClassName("my_bar");
 var status = content[0].style.display;
-alert(status=="none");
+//alert(status=="none");
+//alert(traits[trait_name][0]);
 //if the bar is not showed, popup the bar, else- hide it.
 var new_status = (status=="none") ? "block":"none";
 var i;
 for (i = 0; i < content.length; i++) {
-    content[i].style.display = new_status;
+	content[i].onclick=choose_icon;
+	var new_color=255-traits[trait_name][i]*40;
+	var new_rgb="rgb(0,0,"+new_color+")";
+	content[i].style.fill=new_rgb;
+	content[i].style.display = new_status;
 }
 
 }
