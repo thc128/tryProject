@@ -6,6 +6,20 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style>
+	  @import "bourbon";
+.rating_scale {
+  display: block;
+  text-align: center;
+  font-size: 0;
+}
+
+.rating_scale input[type="radio"] {
+  display: none;
+}
+.rating_scale input[type="radio"]:checked ~ span {
+  background: #eb7823;
+  color: #fff;
+}
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
@@ -59,6 +73,26 @@ body {font-size:16px;}
   <rect class="my_bar"  id="rect_5" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 </div>
+<!-- !MY-FORM! -->
+
+<div id="my_form" class="rating_scale" style="display:none">
+  <label id="first-child">
+    <img src="1.jpg" onclick="chosen_icon(1)"/>
+  </label>
+  <label>
+    <img src="2.jpg" onclick="chosen_icon(2)"/> 
+  </label>
+  <label>
+	<img src="3.jpg" onclick="chosen_icon(3)"/>
+  </label>
+  <label>
+    <img src="4.jpg" onclick="chosen_icon(4)"/>
+  </label>
+  <label>
+    <img src="5.jpg" onclick="chosen_icon(5)"/>
+  </label>
+</div>
+
 
 <script>
 var traits={Openness:[2,3,4,5,6]}
@@ -82,7 +116,7 @@ function onClick(element) {
 }
 
 function choose_icon() {
-	alert("done");
+	document.getElementById("my_form").style.display = "block";
 }
 function configure_trait(trait_name) {
 //alert(trait_name);
@@ -100,8 +134,12 @@ for (i = 0; i < content.length; i++) {
 	content[i].style.fill=new_rgb;
 	content[i].style.display = new_status;
 }
-
 }
+
+function chosen_icon(chosen)
+  {
+	alert(chosen);
+  }
 </script>
 
 </body>
