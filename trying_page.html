@@ -85,7 +85,7 @@ body {font-size:16px;}
   <label>
     <img src="5.jpg" onclick="chosen_icon(5)"/>
   </label>
-  <button onclick="close()">Close</button>
+  <button onclick="close()" width="200" height="200">Close</button>
 </div>
 
 
@@ -118,23 +118,23 @@ function choose_icon(index) {
 }
 
 function configure_trait(trait_name) {
-//alert(trait_name);
-current_trait=trait_name;
-var content = document.getElementsByClassName("my_bar");
-var status = content[0].style.display;
-//alert(status=="none");
-//alert(traits[trait_name][0]);
-//if the bar is not showed, popup the bar, else- hide it.
-var new_status = (status=="none") ? "block":"none";
-//content.style.display = new_status;
-var i;
-for (i = 0; i < content.length; i++) {
-	//content[i].onclick=choose_icon;
-	//var new_color=255-traits[trait_name][i]*40;
-	//var new_rgb="rgb(0,0,"+new_color+")";
-	//content[i].style.fill="rgb(220,220,220)";
-	content[i].style.display = new_status;
-}
+	//alert(trait_name);
+	current_trait=trait_name;
+	var content = document.getElementsByClassName("my_bar");
+	var status = content[0].style.display;
+	//alert(status=="none");
+	//alert(traits[trait_name][0]);
+	//if the bar is not showed, popup the bar, else- hide it.
+	var new_status = (status=="none") ? "block":"none";
+	//content.style.display = new_status;
+	var i;
+	for (i = 0; i < content.length; i++) {
+		//content[i].onclick=choose_icon;
+		//var new_color=255-traits[trait_name][i]*40;
+		//var new_rgb="rgb(0,0,"+new_color+")";
+		//content[i].style.fill="rgb(220,220,220)";
+		content[i].style.display = new_status;
+	}
 }
 
 function chosen_icon(chosen)
@@ -159,10 +159,19 @@ function chosen_icon(chosen)
 	}
 	var blocks=document.getElementsByClassName("my_bar");
 	blocks[current_block].style.fill=new_color;
-	
+	traits[current_trait][current_block]=chosen;
+	message="("+current_trait+":"+traits[current_trait][0]+","+traits[current_trait][1]+","+traits[current_trait][2]+","+traits[current_trait][3]+","+traits[current_trait][4]+")";
+	alert(message);
 }
+
 function close()
 {
+	var content = document.getElementsByClassName("my_bar");
+	var i;
+	for (i = 0; i < content.length; i++) {
+		content[i].style.display = "none";
+	document.getElementById("my_form").style.display = "none";
+	}
 }  
 </script>
 
