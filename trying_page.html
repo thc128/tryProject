@@ -35,12 +35,6 @@ body {font-size:16px;}
   </div>
   <div class="w3-bar-block">
     <p Name="Openness" onclick="configure_trait('Openness')" class="w3-bar-item w3-button w3-hover-white">Openness</p>
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
-    <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Openness</a> 
-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
-    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Designers</a> 
-    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Packages</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
   </div>
 </nav>
 
@@ -56,27 +50,27 @@ body {font-size:16px;}
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
+<div id="scale_bar" class="w3-main" style="margin-left:340px;margin-right:40px;">
 <svg width="100" height="110" >
-  <rect class="my_bar"  id="rect_1" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_1" onclick="choose_icon(0)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>
 <svg width="100" height="110" >
-  <rect class="my_bar"  id="rect_2" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_2" onclick="choose_icon(1)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 <svg width="100" height="110" >            
-  <rect class="my_bar"  id="rect_3" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_3" onclick="choose_icon(2)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 <svg width="100" height="110" >            
-  <rect class="my_bar"  id="rect_4" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_4" onclick="choose_icon(3)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 <svg width="100" height="110" >            
-  <rect class="my_bar"  id="rect_5" width="100" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_5" onclick="choose_icon(4)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 </div>
 <!-- !MY-FORM! -->
 
 <div id="my_form" class="rating_scale" style="display:none">
-  <label id="first-child">
+  <label>
     <img src="1.jpg" onclick="chosen_icon(1)"/>
   </label>
   <label>
@@ -91,11 +85,14 @@ body {font-size:16px;}
   <label>
     <img src="5.jpg" onclick="chosen_icon(5)"/>
   </label>
+  <button onclick="close()">Close</button>
 </div>
 
 
 <script>
-var traits={Openness:[2,3,4,5,6]}
+var traits={Openness:[0,0,0,0,0]}
+var current_trait="";
+var current_block=0;
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
@@ -115,31 +112,58 @@ function onClick(element) {
   captionText.innerHTML = element.alt;
 }
 
-function choose_icon() {
+function choose_icon(index) {
+	current_block=index;
 	document.getElementById("my_form").style.display = "block";
 }
+
 function configure_trait(trait_name) {
 //alert(trait_name);
+current_trait=trait_name;
 var content = document.getElementsByClassName("my_bar");
 var status = content[0].style.display;
 //alert(status=="none");
 //alert(traits[trait_name][0]);
 //if the bar is not showed, popup the bar, else- hide it.
 var new_status = (status=="none") ? "block":"none";
+//content.style.display = new_status;
 var i;
 for (i = 0; i < content.length; i++) {
-	content[i].onclick=choose_icon;
-	var new_color=255-traits[trait_name][i]*40;
-	var new_rgb="rgb(0,0,"+new_color+")";
-	content[i].style.fill=new_rgb;
+	//content[i].onclick=choose_icon;
+	//var new_color=255-traits[trait_name][i]*40;
+	//var new_rgb="rgb(0,0,"+new_color+")";
+	//content[i].style.fill="rgb(220,220,220)";
 	content[i].style.display = new_status;
 }
 }
 
 function chosen_icon(chosen)
-  {
-	alert(chosen);
-  }
+{
+    var new_color="";
+	switch(chosen) {
+    case 1:
+        new_color="rgb(255,0,0)";
+        break;
+    case 2:
+        new_color="rgb(233,137,12)";
+        break;
+    case 3:
+        new_color="rgb(252,230,87)";
+        break;
+    case 4:
+        new_color="rgb(132,238,153)";
+        break;
+    case 5:
+        new_color="rgb(0,255,0)";
+        break;
+	}
+	var blocks=document.getElementsByClassName("my_bar");
+	blocks[current_block].style.fill=new_color;
+	
+}
+function close()
+{
+}  
 </script>
 
 </body>
