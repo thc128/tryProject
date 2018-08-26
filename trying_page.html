@@ -8,18 +8,11 @@
 <style>
 	  @import "bourbon";
 .rating_scale {
-  display: block;
   text-align: center;
-  font-size: 0;
+  font-size: 30;
 }
 
-.rating_scale input[type="radio"] {
-  display: none;
-}
-.rating_scale input[type="radio"]:checked ~ span {
-  background: #eb7823;
-  color: #fff;
-}
+
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
@@ -35,6 +28,7 @@ body {font-size:16px;}
   </div>
   <div class="w3-bar-block">
     <p Name="Openness" onclick="configure_trait('Openness')" class="w3-bar-item w3-button w3-hover-white">Openness</p>
+	<p Name="Tolerance" onclick="configure_trait('Tolerance')" class="w3-bar-item w3-button w3-hover-white">Tolerance</p>
   </div>
 </nav>
 
@@ -66,10 +60,14 @@ body {font-size:16px;}
 <svg width="100" height="110" >            
   <rect class="my_bar"  id="rect_5" onclick="choose_icon(4)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
+<button class="my_bar" type="button" onclick="closeBlocks()" style="display:none">Close</button>
 </div>
+
 <!-- !MY-FORM! -->
 
 <div id="my_form" class="rating_scale" style="display:none">
+  <p id="form_name">try</p>
+
   <label>
     <img src="1.jpg" onclick="chosen_icon(1)"/>
   </label>
@@ -85,12 +83,13 @@ body {font-size:16px;}
   <label>
     <img src="5.jpg" onclick="chosen_icon(5)"/>
   </label>
-  <button onclick="close()" width="200" height="200">Close</button>
+  <button type="button" onclick="closeIcons()">Close</button>
 </div>
 
 
 <script>
-var traits={Openness:[0,0,0,0,0]}
+var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
+var my_colors=["rgb(220,220,220)","rgb(255,0,0)","rgb(233,137,12)","rgb(252,230,87)","rgb(132,238,153)","rgb(0,255,0)"]
 var current_trait="";
 var current_block=0;
 // Script to open and close sidebar
@@ -114,65 +113,58 @@ function onClick(element) {
 
 function choose_icon(index) {
 	current_block=index;
+	document.getElementById("form_name").innerHTML="Configure block " + index;
+	document.getElementById("form_name").style.display = "block";
 	document.getElementById("my_form").style.display = "block";
 }
 
 function configure_trait(trait_name) {
-	//alert(trait_name);
 	current_trait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
-	var status = content[0].style.display;
+	var new_status = "block";
+	closeIcons();
+	//alert(trait_name);
+	//var status = content[0].style.display;
 	//alert(status=="none");
 	//alert(traits[trait_name][0]);
 	//if the bar is not showed, popup the bar, else- hide it.
-	var new_status = (status=="none") ? "block":"none";
+	//var new_status = (status=="none") ? "block":"none";
 	//content.style.display = new_status;
 	var i;
 	for (i = 0; i < content.length; i++) {
+		content[i].style.fill=my_colors[traits[current_trait][i]];
+		content[i].style.display = new_status;
 		//content[i].onclick=choose_icon;
 		//var new_color=255-traits[trait_name][i]*40;
 		//var new_rgb="rgb(0,0,"+new_color+")";
-		//content[i].style.fill="rgb(220,220,220)";
-		content[i].style.display = new_status;
 	}
 }
 
 function chosen_icon(chosen)
 {
-    var new_color="";
-	switch(chosen) {
-    case 1:
-        new_color="rgb(255,0,0)";
-        break;
-    case 2:
-        new_color="rgb(233,137,12)";
-        break;
-    case 3:
-        new_color="rgb(252,230,87)";
-        break;
-    case 4:
-        new_color="rgb(132,238,153)";
-        break;
-    case 5:
-        new_color="rgb(0,255,0)";
-        break;
-	}
+    var new_color=my_colors[chosen];
 	var blocks=document.getElementsByClassName("my_bar");
 	blocks[current_block].style.fill=new_color;
 	traits[current_trait][current_block]=chosen;
-	message="("+current_trait+":"+traits[current_trait][0]+","+traits[current_trait][1]+","+traits[current_trait][2]+","+traits[current_trait][3]+","+traits[current_trait][4]+")";
-	alert(message);
+	//message="("+current_trait+":"+traits[current_trait][0]+","+traits[current_trait][1]+","+traits[current_trait][2]+","+traits[current_trait][3]+","+traits[current_trait][4]+")";
+	//alert(message);
 }
 
-function close()
+function closeIcons()
 {
+	document.getElementById("my_form").style.display = "none";
+	document.getElementById("form_name").style.display = "none";
+}  
+
+function closeBlocks()
+{
+	closeIcons();
 	var content = document.getElementsByClassName("my_bar");
 	var i;
 	for (i = 0; i < content.length; i++) {
-		content[i].style.display = "none";
-	document.getElementById("my_form").style.display = "none";
+		content[i].style.display = "none";	
 	}
-}  
+}
 </script>
 
 </body>
