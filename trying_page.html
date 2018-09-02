@@ -25,8 +25,42 @@ body {font-size:16px;}
     <h3 class="w3-padding-64"><b>Company<br>Name</b></h3>
   </div>
   <div class="w3-bar-block">
-    <p Name="Openness" onclick="configure_trait('Openness')" class="w3-bar-item w3-button w3-hover-white">Openness</p>
-	<p Name="Tolerance" onclick="configure_trait('Tolerance')" class="w3-bar-item w3-button w3-hover-white">Tolerance</p>
+  <div id="other_scale_bar" class="w3-main" >
+  <p Name="Openness" onclick="configure_trait('Openness')" class="w3-bar-item w3-button w3-hover-white">Openness</p>
+<svg width="50" height="40" >
+  <rect class="Openness_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>
+<svg width="50" height="40" >
+  <rect class="Openness_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="50" height="40" >            
+  <rect class="Openness_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="50" height="40" >            
+  <rect class="Openness_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="50" height="40" >            
+  <rect class="Openness_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+</div>
+<p Name="Tolerance" onclick="configure_trait('Tolerance')" class="w3-bar-item w3-button w3-hover-white">Tolerance</p>
+<svg width="50" height="40" >
+  <rect class="Tolerance_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>
+<svg width="50" height="40" >
+  <rect class="Tolerance_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="50" height="40" >            
+  <rect class="Tolerance_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="50" height="40" >            
+  <rect class="Tolerance_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="50" height="40" >            
+  <rect class="Tolerance_preview" width="50" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+</div>
+    
   </div>
 </nav>
 
@@ -109,6 +143,7 @@ function choose_icon(index) {
 function configure_trait(trait_name) {
 	current_trait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
+	var preview = document.getElementsByClassName(trait_name+"_preview");
 	var new_status = "block";
 	closeIcons();
 	//alert(trait_name);
@@ -122,6 +157,8 @@ function configure_trait(trait_name) {
 	for (i = 0; i < content.length; i++) {
 		content[i].style.fill=my_colors[traits[current_trait][i]];
 		content[i].style.display = new_status;
+		preview[i].style.fill=my_colors[traits[current_trait][i]];
+		preview[i].style.display = new_status;
 		//content[i].onclick=choose_icon;
 		//var new_color=255-traits[trait_name][i]*40;
 		//var new_rgb="rgb(0,0,"+new_color+")";
@@ -132,7 +169,9 @@ function chosen_icon(chosen)
 {
     var new_color=my_colors[chosen];
 	var blocks=document.getElementsByClassName("my_bar");
+	var preview_blocks=document.getElementsByClassName(current_trait+"_preview")
 	blocks[current_block].style.fill=new_color;
+	preview_blocks[current_block].style.fill=new_color;
 	traits[current_trait][current_block]=chosen;
 	//message="("+current_trait+":"+traits[current_trait][0]+","+traits[current_trait][1]+","+traits[current_trait][2]+","+traits[current_trait][3]+","+traits[current_trait][4]+")";
 	//alert(message);
