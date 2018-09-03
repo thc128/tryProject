@@ -19,9 +19,9 @@ app.post('/addData', function(req, res){
   console.log('POST request made');
   console.log(req.body);
 
-  var selected = req.body.rad;
   res.redirect('/addData');
-  var pg = require('pg');
+  myData=JSON.parse(req.body);
+  /*var pg = require('pg');
   var client =new pg.Client({
 		user: 'postgres',
 		host: 'localhost',
@@ -42,7 +42,7 @@ app.post('/addData', function(req, res){
 	console.log("Command: ", res.command)
 	console.log("Rows: ", res.rows)
 	client.end()
-	})
+	})*/
 });
 
 app.get('/addData', function(req, res){

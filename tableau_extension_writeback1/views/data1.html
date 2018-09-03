@@ -62,7 +62,7 @@ body {font-size:16px;}
 </svg>                                     
 </div>
 </div>
-    
+<button onclick="submitForm()">Submit</button>    
   </div>
 </nav>
 
@@ -190,6 +190,27 @@ function savePreview()
 		preview[i].style.display = "block";
 	}
 }
+
+function submitForm()
+{
+	alert("Good!");
+	alert(traits[0]);
+	var form = document.createElement('form');
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', 'http://localhost:3000/addData');
+    form.style.display = 'hidden';
+    document.body.appendChild(form);
+	var input = document.createElement("input");
+	input.setAttribute("type", "hidden");
+	input.setAttribute("name", "traits");
+	input.setAttribute("value", JSON.stringify(traits));
+	form.appendChild(input);
+    form.submit();
+	alert("Done");
+
+}
+
+
 </script>
 
 </body>
