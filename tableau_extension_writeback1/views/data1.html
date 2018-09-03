@@ -1,65 +1,196 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-      <title>Write Back Example</title>
-      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script src="public/js/tableau-extensions-0.10.0.js"></script>
-      <script src="public/js/script.js"></script>
-	  <link rel="stylesheet" href="/style for data.css">
-      <style>
+<title>New Role Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
 	  @import "bourbon";
 .rating_scale {
-  display: block;
   text-align: center;
-  font-size: 0;
+  font-size: 30;
 }
 
-.rating_scale input[type="radio"] {
-  display: none;
-}
-.rating_scale input[type="radio"]:checked ~ span {
-  background: #eb7823;
-  color: #fff;
-}
-html, body {
-  background: #eee;
-}
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
 </style>
-  </head>
- <body>
-<form action="#" method="POST" >
-       <div class="rating_scale">
-  <label id="first-child">
-    <input type="radio" name="rad" value="1" /><span>1</span>
-    <img src="1.jpg"/>
-  </label>
-  <label>
-    <input type="radio" name="rad" value="2"/><span>2</span>
-    <img src="2.jpg"/> 
-  </label>
-  <label>
-    <input type="radio" name="rad" value="3"/><span>3</span>
-	<img src="3.jpg"/>
-  </label>
-  <label>
-    <input type="radio" name="rad" value="4"/><span>4</span>
-    <img src="4.jpg"/>
-  </label>
-  <label>
-    <input type="radio" name="rad" value="5"/><span>5</span>
-    <img src="5.jpg"/>
-  </label>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-large w3-padding" style="background:rgb(220,220,220);z-index:3;width:540px;font-weight:bold;" id="mySidebar"><br>
+  <div class="w3-container">
+    <h3><b>Role<br>Name</b></h3>
+  </div>
+  <div class="w3-bar-block">
+  <p Name="Openness" onclick="configure_trait('Openness')" class="w3-bar-item w3-button w3-hover-white">Openness</p>
+  <div style="display:flex" onclick="configure_trait('Openness')"  >
+<svg width="100" height="40" >
+  <rect class="Openness_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>
+<svg width="100" height="40" >
+  <rect class="Openness_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+<svg width="100" height="40" >            
+  <rect class="Openness_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+<svg width="100" height="40" >            
+  <rect class="Openness_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+<svg width="100" height="40" >            
+  <rect class="Openness_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
 </div>
+<p Name="Tolerance" onclick="configure_trait('Tolerance')" class="w3-bar-item w3-button w3-hover-white">Tolerance</p>
+<div style="display:flex" onclick="configure_trait('Tolerance')" >
+<svg width="100" height="40" >
+  <rect class="Tolerance_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>
+<svg width="100" height="40" >
+  <rect class="Tolerance_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+<svg width="100" height="40" >            
+  <rect class="Tolerance_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+<svg width="100" height="40" >            
+  <rect class="Tolerance_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+<svg width="100" height="40" >            
+  <rect class="Tolerance_preview" width="100" height="30" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:block" />  
+</svg>                                     
+</div>
+</div>
+    
+  </div>
+</nav>
+
+
+<!-- !PAGE CONTENT! -->
+<div id="scale_bar" class="w3-main" style="display:flex;margin-left:560px;margin-right:40px;">
+<svg width="100" height="110" >
+  <rect class="my_bar"  id="rect_1" onclick="choose_icon(0)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>
+<svg width="100" height="110" >
+  <rect class="my_bar"  id="rect_2" onclick="choose_icon(1)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="100" height="110" >            
+  <rect class="my_bar"  id="rect_3" onclick="choose_icon(2)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="100" height="110" >            
+  <rect class="my_bar"  id="rect_4" onclick="choose_icon(3)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                                     
+<svg width="100" height="110" >            
+  <rect class="my_bar"  id="rect_5" onclick="choose_icon(4)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+</svg>                          
+<div> 
+<button class="my_bar" type="button" onclick="closeBlocks()" style="display:none">Close</button>
+<button class="my_bar" type="button" onclick="savePreview()" style="display:none">Save</button>
+</div>
+</div>
+<!-- !MY-FORM! -->
+
+<div id="my_form" class="rating_scale" style="margin-left:540px;display:none">
+  <p id="form_name">try</p>
+
+  <label>
+    <img src="1.jpg" onclick="chosen_icon(1)"/>
+  </label>
+  <label>
+    <img src="2.jpg" onclick="chosen_icon(2)"/> 
+  </label>
+  <label>
+	<img src="3.jpg" onclick="chosen_icon(3)"/>
+  </label>
+  <label>
+    <img src="4.jpg" onclick="chosen_icon(4)"/>
+  </label>
+  <label>
+    <img src="5.jpg" onclick="chosen_icon(5)"/>
+  </label>
+  <button type="button" onclick="closeIcons()">Close</button>
+</div>
+
+
+<script>
+var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
+var my_colors=["rgb(220,220,220)","rgb(255,0,0)","rgb(233,137,12)","rgb(252,230,87)","rgb(132,238,153)","rgb(0,255,0)"]
+var current_trait="";
+var current_block=0;
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
  
-    <input type="submit" value="Submit">
-</form>
-	<script>
-  function myFunction()
-  {
-    x=document.querySelector("input[name=\"rad\"]:checked").value
-    document.write(x)
-  }
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+function choose_icon(index) {
+	current_block=index;
+	document.getElementById("form_name").innerHTML="Configure block " + index;
+	document.getElementById("form_name").style.display = "block";
+	document.getElementById("my_form").style.display = "block";
+}
+
+function configure_trait(trait_name) {
+	current_trait=trait_name;
+	var content = document.getElementsByClassName("my_bar");
+	var new_status = "block";
+	closeIcons();
+	savePreview();
+	var i;
+	for (i = 0; i < content.length; i++) {
+		content[i].style.fill=my_colors[traits[current_trait][i]];
+		content[i].style.display = new_status;
+	}
+}
+
+function chosen_icon(chosen)
+{
+    var new_color=my_colors[chosen];
+	var blocks=document.getElementsByClassName("my_bar");
+	blocks[current_block].style.fill=new_color;
+	traits[current_trait][current_block]=chosen;
+}
+
+function closeIcons()
+{
+	document.getElementById("my_form").style.display = "none";
+	document.getElementById("form_name").style.display = "none";
+}  
+
+function closeBlocks()
+{
+	closeIcons();
+	var content = document.getElementsByClassName("my_bar");
+	var i;
+	for (i = 0; i < content.length; i++) {
+		content[i].style.display = "none";	
+	}
+}
+
+function savePreview()
+{
+	var preview = document.getElementsByClassName(current_trait+"_preview");
+    var i;
+	for (i = 0; i < preview.length; i++) {
+		preview[i].style.fill=my_colors[traits[current_trait][i]];
+		preview[i].style.display = "block";
+	}
+}
 </script>
-  </body>
+
+</body>
 </html>
