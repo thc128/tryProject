@@ -36,9 +36,8 @@ app.post('/addData', function(req, res){
   		port: 5432
   	})
     client.connect();
-    myQuery="INSERT INTO asaf11 VALUES (\
-    \'"+x+"'\
-  	,"+x_array[0]+"\
+    myQuery="INSERT INTO traits ("+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES (\
+  	"+x_array[0]+"\
   	,"+x_array[1]+"\
   	,"+x_array[2]+"\
   	,"+x_array[3]+"\

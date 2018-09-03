@@ -1,0 +1,13 @@
+CREATE TABLE traits(
+Job_Name char(10),
+Openness_Low int,
+Openness_Below_Average int,
+Openness_Average int,
+Openness_Above_Average int,
+Openness_High int,
+Tolerance_Low int,
+Tolerance_Below_Average int,
+Tolerance_Average int,
+Tolerance_Above_Average int,
+Tolerance_High int
+)
