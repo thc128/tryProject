@@ -16,33 +16,40 @@ app.get('/', function(req, res) {
 });
 
 app.post('/addData', function(req, res){
+  res.redirect('/addData');
   console.log('POST request made');
   console.log(req.body);
-
-  res.redirect('/addData');
-  myData=JSON.parse(req.body);
-  /*var pg = require('pg');
-  var client =new pg.Client({
-		user: 'postgres',
-		host: 'localhost',
-		database: 'postgres',
-		password: 'Elichoref13',
-		port: 5432
-	})
-  client.connect();
-  myQuery="INSERT INTO asaf11 VALUES (\
-	'openness'\
-	,"+String(selected)+"\
-	,"+String(selected)+"\
-	,"+String(selected)+"\
-	,"+String(selected)+"\
-	,"+String(selected)+");";
-    client.query(myQuery, (err, res) => {
-	console.log("Errors: ",err)
-	console.log("Command: ", res.command)
-	console.log("Rows: ", res.rows)
-	client.end()
-	})*/
+  myData=JSON.parse(req.body.traits);
+  //console.log(myData.Tolerance);
+  var x
+  for (x in myData)
+  {
+	console.log(x);
+	console.log(eval('myData.'+x));
+    x_array=eval('myData.'+x);//using eval. Is it Good??????????
+    var pg = require('pg');
+    var client =new pg.Client({
+  		user: 'postgres',
+  		host: 'localhost',
+  		database: 'postgres',
+  		password: 'Elichoref13',
+  		port: 5432
+  	})
+    client.connect();
+    myQuery="INSERT INTO asaf11 VALUES (\
+    \'"+x+"'\
+  	,"+x_array[0]+"\
+  	,"+x_array[1]+"\
+  	,"+x_array[2]+"\
+  	,"+x_array[3]+"\
+  	,"+x_array[4]+");";
+  	console.log(myQuery);
+      client.query(myQuery, (err, res) => {
+  	console.log("Errors: ",err)
+  	console.log("Command: ", res.command)
+  	console.log("Rows: ", res.rows)
+  	client.end()
+  })}
 });
 
 app.get('/addData', function(req, res){

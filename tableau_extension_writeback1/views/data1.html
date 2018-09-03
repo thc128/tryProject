@@ -193,8 +193,6 @@ function savePreview()
 
 function submitForm()
 {
-	alert("Good!");
-	alert(traits[0]);
 	var form = document.createElement('form');
     form.setAttribute('method', 'post');
     form.setAttribute('action', 'http://localhost:3000/addData');
@@ -206,8 +204,6 @@ function submitForm()
 	input.setAttribute("value", JSON.stringify(traits));
 	form.appendChild(input);
     form.submit();
-	alert("Done");
-
 }
 
 
