@@ -118,6 +118,8 @@ var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
 var my_colors=["rgb(220,220,220)","rgb(235,72,65)","rgb(244,136,71)","rgb(255,200,74)","rgb(166,195,76)","rgb(78,192,78)"]
 var current_trait="";
 var current_block=0;
+var products = <%- JSON.stringify(products) %>;
+alert(products);
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";

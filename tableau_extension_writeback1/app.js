@@ -5,7 +5,7 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
-var products = [];
+var products = ['asaf'];
 
 app.use("/public", express.static(__dirname + "/public"));
 app.engine('html', require('ejs').renderFile);
