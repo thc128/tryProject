@@ -57,6 +57,29 @@ app.get('/addData', function(req, res){
 		console.log('simple GET request made');
 	}
 	else{
+		var pg = require('pg');
+		var client =new pg.Client({
+			user: 'postgres',
+			host: 'localhost',
+			database: 'postgres',
+			password: 'Elichoref13',
+			port: 5432
+		})
+		client.connect();
+		myQuery="SELECT * FROM traits WHERE job_name='" +req.query.role +"'";
+		console.log(myQuery);
+		  client.query(myQuery, (err, res2) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res2.command)
+		console.log("Rows: ", res2.rows)
+		myData=JSON.stringify(res2.rows)
+		res.render('data1.html', {products: myData});
+		console.log('GET request with params made');
+		client.end()
+	})
+	}
+});
+  
 app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
 });
