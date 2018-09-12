@@ -52,10 +52,11 @@ app.post('/addData', function(req, res){
 });
 
 app.get('/addData', function(req, res){
-   res.render('data1.html', {products: products});
-   console.log('GET request made');
- });
- 
+	if (Object.keys(req.query).length == 0){
+		res.render('data1.html', {products: products});
+		console.log('simple GET request made');
+	}
+	else{
 app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
 });
