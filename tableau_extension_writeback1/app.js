@@ -1,5 +1,6 @@
 var express = require('express');
 var fs = require('fs');
+var path = require('path')
 var app = express();
 
 var bodyParser = require('body-parser');
@@ -9,11 +10,12 @@ var products = [];
 
 app.use("/public", express.static(__dirname + "/public"));
 app.engine('html', require('ejs').renderFile);
-
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', function(req, res) {
   res.render('index.ejs');
 });
+
 
 app.post('/addData', function(req, res){
   res.redirect('/addData');
@@ -29,10 +31,10 @@ app.post('/addData', function(req, res){
     x_array=eval('myData.'+x);//using eval. Is it Good??????????
     var pg = require('pg');
     var client =new pg.Client({
-  		user: 'postgres',
-  		host: 'localhost',
-  		database: 'postgres',
-  		password: 'Elichoref13',
+  		user: 'ddanan',
+  		host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
+  		database: 'Testing_DB',
+  		password: 'DH204KY1!',
   		port: 5432
   	})
     client.connect();
@@ -55,6 +57,12 @@ app.get('/addData', function(req, res){
    res.render('data1.html', {products: products});
    console.log('GET request made');
  });
+ 
+ app.get('/addData', function(req, res){
+   res.render('testCSS.css', {products: products});
+   console.log('GET request made');
+ });
+ 
  
 app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
