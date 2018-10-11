@@ -11,6 +11,7 @@ var products = [];
 app.use("/public", express.static(__dirname + "/public"));
 app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/views')));
 
 app.get('/', function(req, res) {
   res.render('index.ejs');
