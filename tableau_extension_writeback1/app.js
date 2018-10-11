@@ -22,6 +22,7 @@ app.post('/addData', function(req, res){
   res.redirect('/addData');
   console.log('POST request made');
   console.log(req.body);
+  console.log(req.body.myRole);
   myData=JSON.parse(req.body.traits);
   //console.log(myData.Tolerance);
   var x
@@ -39,13 +40,30 @@ app.post('/addData', function(req, res){
   		port: 5432
   	})
     client.connect();
-    myQuery="INSERT INTO traits ("+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES (\
-  	"+x_array[0]+"\
+	var exist = false;
+	 client.query("SELECT Job_Name from traits ", (err, res) => {
+  	console.log("Errors: ",err)
+  	console.log("Command: ", res.command)
+  	console.log("Rows: ", res.rows)
+	var role_in_table = req.body.myRole;
+	if role_in_table in res.rows
+		exist=true;
+	 })
+	if (exist)
+	{		
+	myQuery="UPDATE traits, SET "+x+"_Low = "+x_array[0]+""+x+"_Below_Average= "+x_array[1]+""+x+"_Average= "+x_array[2]+""+x+"_Above_Average="+x_array[3]+""+x+"_High="+x_array[4]+","WHERE Job_Name = "role_in_table";
+	}
+	else 
+	{ 
+	myQuery="INSERT INTO traits (Job_Name,"+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES (\
+  	'"+role_in_table+"'\
+	,"+x_array[0]+"\
   	,"+x_array[1]+"\
   	,"+x_array[2]+"\
   	,"+x_array[3]+"\
   	,"+x_array[4]+");";
   	console.log(myQuery);
+	}
       client.query(myQuery, (err, res) => {
   	console.log("Errors: ",err)
   	console.log("Command: ", res.command)

@@ -23,7 +23,7 @@ body {font-size:16px;}
 <nav class="sidebar large padding" style="background:rgb(220,220,220);z-index:3;width:540px;font-weight:bold;" id="mySidebar"><br>
   <div class="container">
     <h3><b>Role<br>Name</b></h3>
-	<form autocomplete="off">
+	<form id="RoleForm" autocomplete="off">
 	<input id="myInput" type="text" name="myRole" placeholder="Role">
 </form>
 
@@ -203,10 +203,10 @@ function savePreview()
 
 function submitForm()
 {
-	var form = document.createElement('form');
+	var form = document.getElementById('RoleForm');
     form.setAttribute('method', 'post');
     form.setAttribute('action', 'http://localhost:3000/addData');
-    form.style.display = 'hidden';
+    //form.style.display = 'hidden';
     document.body.appendChild(form);
 	var input = document.createElement("input");
 	input.setAttribute("type", "hidden");
