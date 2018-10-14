@@ -118,14 +118,21 @@ body {font-size:16px;}
 
 
 <script>
-var roles = ["Boss","Teacher","Student"]
+var roles = []
 var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
 var my_colors=["rgb(220,220,220)","rgb(235,72,65)","rgb(244,136,71)","rgb(255,200,74)","rgb(166,195,76)","rgb(78,192,78)"]
 var current_trait="";
 var current_block=0;
 var myData = <%- JSON.stringify(products) %>;
-if (myData.length > 0) {
-	alert(myData);
+if (myData.length > 0)
+ {
+	roles=roles.concat(myData)
+	/*alert(myData);
+	for (i=0;i<myData.length;i++)
+	{
+		roles.push(myData[i]);
+	}*/
+	alert(roles);
 }
 // Script to open and close sidebar
 function w3_open() {

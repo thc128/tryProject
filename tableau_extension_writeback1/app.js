@@ -102,7 +102,13 @@ app.get('/addData', function(req, res){
 		console.log("Errors: ",err)
 		console.log("Command: ", res2.command)
 		console.log("Rows: ", res2.rows)
-		myData=JSON.stringify(res2.rows)
+		var myData=[]
+		for (i=0;i<res2.rows.length;i++)
+		{
+			console.log("Job name:",res2.rows[i].job_name);
+			myData.push(res2.rows[i].job_name)
+		}
+		console.log("Jobs:",myData);
 		res.render('data1.html', {products: myData});
 		console.log('GET request with params made');
 		client.end()
