@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.post('/addData', function(req, res){
+app.post('/addData', async function(req, res){
   res.redirect('/addData');
   console.log('POST request made');
   console.log(req.body);
@@ -26,24 +26,17 @@ app.post('/addData', function(req, res){
   var currentRole=req.body.myRole;
   myData=JSON.parse(req.body.traits);
   //console.log(myData.Tolerance);
-  var x
-  for (x in myData)
-  {
-	console.log(x);
-	console.log(eval('myData.'+x));
-    x_array=eval('myData.'+x);//using eval. Is it Good??????????
-    var pg = require('pg');
-    var client =new pg.Client({
-  		user: 'ddanan',
-  		host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-  		database: 'Testing_DB',
-  		password: 'DH204KY1!',
-  		port: 5432
-  	})
-    client.connect();
-	var exist = false;
-	
-	 client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", (err, res) => {
+  var pg = require('pg');
+  var client =new pg.Client({
+  	user: 'ddanan',
+  	host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
+  	database: 'Testing_DB',
+  	password: 'DH204KY1!',
+  	port: 5432
+  })
+  client.connect();
+  var exist = false;
+  await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
   	console.log("Errors: ",err)
   	console.log("Command: ", res.command)
   	console.log("Rows: ", res.rows)
@@ -52,6 +45,17 @@ app.post('/addData', function(req, res){
 	if (res.rows.length >0)
 	{
 		exist=true;
+	}
+  })
+  var x
+  for (x in myData)
+  {
+	console.log(x);
+	console.log(eval('myData.'+x));
+    x_array=eval('myData.'+x);//using eval. Is it Good??????????
+	
+	if (exist)
+	{
 		myQuery="UPDATE traits SET "+x+"_Low = "+x_array[0]+","+x+"_Below_Average= "+x_array[1]+","+x+"_Average= "+x_array[2]+","+x+"_Above_Average="+x_array[3]+","+x+"_High="+x_array[4]+" WHERE Job_Name = '"+currentRole+"';"
 	}
 	else 
@@ -65,15 +69,15 @@ app.post('/addData', function(req, res){
   	,"+x_array[4]+");";
 	}	
 	console.log(myQuery);
-      client.query(myQuery, (err, res) => {
-  	console.log("Errors: ",err)
-  	console.log("Command: ", res.command)
-  	console.log("Rows: ", res.rows)
-  	client.end()
-  })
+    client.query(myQuery, (err, res) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res.command)
+		console.log("Rows: ", res.rows)
+		client.end()
+	})
 
-})
-}});
+  }
+});
 
 app.get('/addData', function(req, res){
    res.render('data1.html', {products: products});
