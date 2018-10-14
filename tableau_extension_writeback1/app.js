@@ -28,10 +28,10 @@ app.post('/addData', async function(req, res){
   //console.log(myData.Tolerance);
   var pg = require('pg');
   var client =new pg.Client({
-  	user: 'ddanan',
-  	host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-  	database: 'Testing_DB',
-  	password: 'DH204KY1!',
+  	user: 'postgres',
+  	host: 'localhost',
+  	database: 'postgres',
+  	password: 'Elichoref13',
   	port: 5432
   })
   client.connect();
@@ -40,7 +40,7 @@ app.post('/addData', async function(req, res){
   	console.log("Errors: ",err)
   	console.log("Command: ", res.command)
   	console.log("Rows: ", res.rows)
-	console.log("Job: ", res.rows[0].job_name)
+	//console.log("Job: ", res.rows[0].job_name)
 	console.log("length: ", res.rows.length)
 	if (res.rows.length >0)
 	{
@@ -67,6 +67,7 @@ app.post('/addData', async function(req, res){
   	,"+x_array[2]+"\
   	,"+x_array[3]+"\
   	,"+x_array[4]+");";
+	exist=true;
 	}	
 	console.log(myQuery);
     client.query(myQuery, (err, res) => {
@@ -80,11 +81,12 @@ app.post('/addData', async function(req, res){
 });
 
 app.get('/addData', function(req, res){
-	if (Object.keys(req.query).length == 0){
+	/*if (Object.keys(req.query).length == 0){
 		res.render('data1.html', {products: products});
 		console.log('simple GET request made');
 	}
 	else{
+		*/
 		var pg = require('pg');
 		var client =new pg.Client({
 			user: 'postgres',
@@ -94,7 +96,7 @@ app.get('/addData', function(req, res){
 			port: 5432
 		})
 		client.connect();
-		myQuery="SELECT * FROM traits WHERE job_name='" +req.query.role +"'";
+		myQuery="SELECT job_name FROM traits";
 		console.log(myQuery);
 		  client.query(myQuery, (err, res2) => {
 		console.log("Errors: ",err)
@@ -104,8 +106,8 @@ app.get('/addData', function(req, res){
 		res.render('data1.html', {products: myData});
 		console.log('GET request with params made');
 		client.end()
-	})
-	}
+		  })
+	
 });
  
  app.get('/addData', function(req, res){
