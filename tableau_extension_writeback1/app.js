@@ -23,6 +23,7 @@ app.post('/addData', function(req, res){
   console.log('POST request made');
   console.log(req.body);
   console.log(req.body.myRole);
+  var currentRole=req.body.myRole;
   myData=JSON.parse(req.body.traits);
   //console.log(myData.Tolerance);
   var x
@@ -41,36 +42,38 @@ app.post('/addData', function(req, res){
   	})
     client.connect();
 	var exist = false;
-	 client.query("SELECT Job_Name from traits ", (err, res) => {
+	
+	 client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", (err, res) => {
   	console.log("Errors: ",err)
   	console.log("Command: ", res.command)
   	console.log("Rows: ", res.rows)
-	var role_in_table = req.body.myRole;
-	if role_in_table in res.rows
+	console.log("Job: ", res.rows[0].job_name)
+	console.log("length: ", res.rows.length)
+	if (res.rows.length >0)
+	{
 		exist=true;
-	 })
-	if (exist)
-	{		
-	myQuery="UPDATE traits, SET "+x+"_Low = "+x_array[0]+""+x+"_Below_Average= "+x_array[1]+""+x+"_Average= "+x_array[2]+""+x+"_Above_Average="+x_array[3]+""+x+"_High="+x_array[4]+","WHERE Job_Name = "role_in_table";
+		myQuery="UPDATE traits SET "+x+"_Low = "+x_array[0]+","+x+"_Below_Average= "+x_array[1]+","+x+"_Average= "+x_array[2]+","+x+"_Above_Average="+x_array[3]+","+x+"_High="+x_array[4]+" WHERE Job_Name = '"+currentRole+"';"
 	}
 	else 
 	{ 
 	myQuery="INSERT INTO traits (Job_Name,"+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES (\
-  	'"+role_in_table+"'\
+  	'"+currentRole+"'\
 	,"+x_array[0]+"\
   	,"+x_array[1]+"\
   	,"+x_array[2]+"\
   	,"+x_array[3]+"\
   	,"+x_array[4]+");";
-  	console.log(myQuery);
-	}
+	}	
+	console.log(myQuery);
       client.query(myQuery, (err, res) => {
   	console.log("Errors: ",err)
   	console.log("Command: ", res.command)
   	console.log("Rows: ", res.rows)
   	client.end()
-  })}
-});
+  })
+
+})
+}});
 
 app.get('/addData', function(req, res){
    res.render('data1.html', {products: products});
