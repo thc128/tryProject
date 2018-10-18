@@ -28,10 +28,10 @@ app.post('/addData', async function(req, res){
   //console.log(myData.Tolerance);
   var pg = require('pg');
   var client =new pg.Client({
-  	user: 'postgres',
-  	host: 'localhost',
-  	database: 'postgres',
-  	password: 'Elichoref13',
+  	user: 'ddanan',
+  	host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
+  	database: 'Testing_DB',
+  	password: 'DH204KY1!',
   	port: 5432
   })
   client.connect();
@@ -80,6 +80,7 @@ app.post('/addData', async function(req, res){
   }
 });
 
+
 app.get('/addData', function(req, res){
 	/*if (Object.keys(req.query).length == 0){
 		res.render('data1.html', {products: products});
@@ -89,10 +90,10 @@ app.get('/addData', function(req, res){
 		*/
 		var pg = require('pg');
 		var client =new pg.Client({
-			user: 'postgres',
-			host: 'localhost',
-			database: 'postgres',
-			password: 'Elichoref13',
+			user: 'ddanan',
+			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
+			database: 'Testing_DB',
+			password: 'DH204KY1!',
 			port: 5432
 		})
 		client.connect();
@@ -115,12 +116,44 @@ app.get('/addData', function(req, res){
 		  })
 	
 });
- 
+/* 
  app.get('/addData', function(req, res){
    res.render('testCSS.css', {products: products});
    console.log('GET request made');
  });
- 
+ */
+ //import information from DataBase
+ app.get('/xxx', function(req,res){
+	 console.log("succesful");
+ })
+
+app.post('/roleData', function(req, res){
+	console.log("Role DATA");
+	console.log(req.body);
+	var pg = require('pg');
+		var client =new pg.Client({
+			user: 'ddanan',
+			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
+			database: 'Testing_DB',
+			password: 'DH204KY1!',
+			port: 5432
+		})
+		client.connect();
+		myQuery="SELECT * FROM traits WHERE job_name='"+req.body.role.slice(1,-1)+"';";
+		console.log(myQuery);
+		  client.query(myQuery, (err, res2) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res2.command)
+		console.log("Rows: ", res2.rows)
+		var myData=res2.rows
+	
+		console.log("Data:",myData);
+		res.send({data:myData});
+		client.end()
+		  })
+   console.log(req.body);
+   console.log('POST request made');
+ }); 
  
 
 app.listen(3000, function(){
