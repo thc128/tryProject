@@ -134,7 +134,7 @@ if (myData.length > 0)
 	{
 		roles.push(myData[i]);
 	}*/
-	alert(roles);
+	//alert(roles);
 }
 // Script to open and close sidebar
 function w3_open() {
@@ -347,10 +347,9 @@ autocomplete(document.getElementById("myInput"), roles);
 
 function getData(role)
 {
-	alert(role);
 	if(role != '')
 	{
-		alert('TP')
+		alert('TP');
 	}
 	var http = new XMLHttpRequest();
 	http.open("POST",'/roleData', true);
@@ -374,7 +373,7 @@ function getData(role)
 
 function checkIt(role)
 {
-	alert(role);
+	//alert(role);
 	if(roles.indexOf(role) >= 0)
 		{
 			getData(role);
