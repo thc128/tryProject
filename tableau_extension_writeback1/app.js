@@ -146,7 +146,6 @@ app.post('/roleData', function(req, res){
 		console.log("Command: ", res2.command)
 		console.log("Rows: ", res2.rows)
 		var myData=res2.rows
-	
 		console.log("Data:",myData);
 		res.send({data:myData});
 		client.end()

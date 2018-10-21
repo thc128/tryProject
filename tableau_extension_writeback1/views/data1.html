@@ -24,7 +24,8 @@ body {font-size:16px;}
   <div class="container">
     <h3><b>Role<br>Name</b></h3>
 	<form id="RoleForm" autocomplete="off">
-	<input id="myInput" type="text" name="myRole" placeholder="Role" onblur="getData(value)">
+	<!-- <input id="myInput" type="text" name="myRole" placeholder="Role" onblur="getData(value)"> -->
+	<input id="myInput" type="text" name="myRole" placeholder="Role" >
 </form>
 
   </div>
@@ -118,6 +119,7 @@ body {font-size:16px;}
 
 
 <script>
+var traitNames=['Openness','Tolerance'];
 var roles = []
 var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
 var my_colors=["rgb(220,220,220)","rgb(235,72,65)","rgb(244,136,71)","rgb(255,200,74)","rgb(166,195,76)","rgb(78,192,78)"]
@@ -275,6 +277,7 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+			  getData(inp.value);
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -355,38 +358,28 @@ function getData(role)
 	var params="role=" + JSON.stringify(role);
 	http.send(params);
 	http.onload=function(){
-		alert(http.responseText);
-	}
+		//alert(http.responseText);
+		var myData=JSON.parse(http.responseText);
+		traitNames.forEach( function(trait){
+			traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
+			traits[trait][1]=myData['data'][0][trait.toLowerCase()+"_below_average"];
+			traits[trait][2]=myData['data'][0][trait.toLowerCase()+"_average"];
+			traits[trait][3]=myData['data'][0][trait.toLowerCase()+"_above_average"];
+			traits[trait][4]=myData['data'][0][trait.toLowerCase()+"_high"];		
+			current_trait=trait;
+			savePreview();
+			});
 }
-<!-- function getData(role) -->
-<!-- {  -->
-<!-- /////////////////////////////////// -->
-	<!-- alert(role); -->
-	<!-- if (role!='') -->
-	<!-- { -->
-		<!-- alert('TP'); -->
-	<!-- } -->
-	<!-- /* -->
-	<!-- var roleForm = document.createElement('form'); -->
-    <!-- roleForm.setAttribute('method', 'post'); -->
-    <!-- roleForm.setAttribute('action', 'http://localhost:3000/roleData'); -->
-    <!-- roleForm.style.display = 'hidden'; -->
-    <!-- document.body.appendChild(roleForm); -->
-	<!-- var input = document.createElement("input"); -->
-	<!-- input.setAttribute("type", "hidden"); -->
-	<!-- input.setAttribute("name", "role"); -->
-	<!-- input.setAttribute("value", JSON.stringify(role)); -->
-	<!-- roleForm.appendChild(input); -->
-    <!-- roleForm.submit(); -->
-	<!-- */ -->
-	<!-- //var http = new XMLHttpRequest(); -->
-    <!-- //http.open("POST", "localhost:3000/roleData", true); -->
-    <!-- //var params = "search=" + JSON.stringify(role)); -->
-    <!-- //http.send(params); -->
-    <!-- //http.onload = function() { -->
-    <!-- //    alert(http.responseText); -->
-<!-- /////////////////////////// -->
-<!-- }} -->
+}
+
+function checkIt(role)
+{
+	alert(role);
+	if(roles.indexOf(role) >= 0)
+		{
+			getData(role);
+		}
+}
 
 </script>
 
