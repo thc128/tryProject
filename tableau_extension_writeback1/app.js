@@ -36,7 +36,10 @@ app.post('/addData', async function(req, res){
   })
   client.connect();
   var exist = false;
-  await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
+  //prevent SQL injection
+  var textQuery = "SELECT * FROM traits WHERE Job_Name=$1;"
+  var values=[currentRole]
+  await client.query(textQuery,values, async(err, res) => {
   	console.log("Errors: ",err)
   	console.log("Command: ", res.command)
   	console.log("Rows: ", res.rows)
@@ -53,28 +56,32 @@ app.post('/addData', async function(req, res){
 	console.log(x);
 	console.log(eval('myData.'+x));
     x_array=eval('myData.'+x);//using eval. Is it Good??????????
-	
+	var myValues=[];
 	if (exist)
 	{
-		myQuery="UPDATE traits SET "+x+"_Low = "+x_array[0]+","+x+"_Below_Average= "+x_array[1]+","+x+"_Average= "+x_array[2]+","+x+"_Above_Average="+x_array[3]+","+x+"_High="+x_array[4]+" WHERE Job_Name = '"+currentRole+"';"
+		myQuery="UPDATE traits SET "+x+"_Low=$1, "+x+"_Below_Average=$2, "+x+"_Average=$3, "+x+"_Above_Average=$4, "+x+"_High=$5 WHERE Job_Name=$6;";
+//		myQuery="UPDATE traits SET "+x+"_Low = "+x_array[0]+","+x+"_Below_Average= "+x_array[1]+","+x+"_Average= "+x_array[2]+","+x+"_Above_Average="+x_array[3]+","+x+"_High="+x_array[4]+" WHERE Job_Name = '"+currentRole+"';"
+		myValues=[x_array[0],x_array[1],x_array[2],x_array[3],x_array[4],currentRole];
 	}
 	else 
 	{ 
-	myQuery="INSERT INTO traits (Job_Name,"+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES (\
-  	'"+currentRole+"'\
-	,"+x_array[0]+"\
-  	,"+x_array[1]+"\
-  	,"+x_array[2]+"\
-  	,"+x_array[3]+"\
-  	,"+x_array[4]+");";
+	myQuery="INSERT INTO traits (Job_Name,"+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES ($1,$2,$3,$4,$5,$6);";
+  	myValues=[currentRole,x_array[0],x_array[1],x_array[2],x_array[3],x_array[4]];
 	exist=true;
 	}	
 	console.log(myQuery);
-    client.query(myQuery, (err, res) => {
-		console.log("Errors: ",err)
+    await client.query(myQuery,myValues, async(err, res) => {
+		if (err)
+		{
+			console.log(err.stack)
+		} 
+		else
+		{
 		console.log("Command: ", res.command)
 		console.log("Rows: ", res.rows)
+		}
 		client.end()
+		
 	})
 
   }
