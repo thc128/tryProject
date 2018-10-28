@@ -178,6 +178,10 @@ function choose_icon(index) {
 
 
 function configure_trait(trait_name) {
+	if (trait_name==current_trait)
+	{
+		return;
+	}
 	current_trait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
 	var new_status = "block";
