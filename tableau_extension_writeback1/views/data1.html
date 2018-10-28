@@ -349,10 +349,6 @@ autocomplete(document.getElementById("myInput"), roles);
 
 function getData(role)
 {
-	if(role != '')
-	{
-		alert('TP');
-	}
 	var http = new XMLHttpRequest();
 	http.open("POST",'/roleData', true);
 	http.setRequestHeader("Content-type","application/x-www-form-urlencoded");

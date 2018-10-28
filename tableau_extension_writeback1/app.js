@@ -51,8 +51,8 @@ app.post('/addData', async function(req, res){
   for (x in myData)
   {
 	console.log(x);
-	console.log(eval('myData.'+x));
-    x_array=eval('myData.'+x);//using eval. Is it Good??????????
+	console.log(myData[x]);
+    x_array=myData[x];
 	
 	if (exist)
 	{
