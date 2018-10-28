@@ -27,7 +27,7 @@ body {font-size:16px;}
 	<!-- <input id="myInput" type="text" name="myRole" placeholder="Role" onblur="getData(value)"> -->
 	<input id="myInput" type="text" name="myRole" placeholder="Role" >
 </form>
-
+  
   </div>
   <div class="bar-block">
   <p Name="Openness" onclick="configure_trait('Openness')" class="bar-item button hover-white">Openness</p>
@@ -89,10 +89,6 @@ body {font-size:16px;}
 <svg width="100" height="110" >            
   <rect class="my_bar"  id="rect_5" onclick="choose_icon(4)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                          
-<div> 
-<button class="my_bar" type="button" onclick="closeBlocks()" style="display:none">Close</button>
-<button class="my_bar" type="button" onclick="savePreview()" style="display:none">Save</button>
-</div>
 </div>
 <!-- !MY-FORM! -->
 
@@ -114,7 +110,6 @@ body {font-size:16px;}
   <label>
     <img src="5.jpg" onclick="chosen_icon(5)"/>
   </label>
-  <button type="button" onclick="closeIcons()">Close</button>
 </div>
 
 
@@ -181,6 +176,7 @@ function choose_icon(index) {
 	document.getElementById("my_form").style.display = "block";
 }
 
+
 function configure_trait(trait_name) {
 	current_trait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
@@ -201,6 +197,8 @@ function chosen_icon(chosen)
     var new_color=my_colors[chosen];
 	var blocks=document.getElementsByClassName("my_bar");
 	blocks[current_block].style.fill=new_color;
+	var preview = document.getElementsByClassName(current_trait+"_preview");
+	preview[current_block].style.fill=new_color;
 	traits[current_trait][current_block]=chosen;
 }
 
