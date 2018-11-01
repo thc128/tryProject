@@ -1,33 +1,26 @@
+//imports
 var express = require('express');
 var fs = require('fs');
 var path = require('path')
 var app = express();
-
 var bodyParser = require('body-parser');
+var pg = require('pg');
+
+//Engine images and files
 app.use(bodyParser.urlencoded({extended: true}));
-
-var products = ['asaf'];
-
 app.use("/public", express.static(__dirname + "/public"));
 app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/views')));
 
+//The firs page, present text from index.ejs 
 app.get('/', function(req, res) {
   res.render('index.ejs');
 });
 
-
-app.post('/addData', async function(req, res){
-  res.redirect('/addData');
-  console.log('POST request made');
-  console.log(req.body);
-  console.log(req.body.myRole);
-  var currentRole=req.body.myRole;
-  myData=JSON.parse(req.body.traits);
-  //console.log(myData.Tolerance);
-  var pg = require('pg');
-  var client =new pg.Client({
+function openSession()
+{
+	var client =new pg.Client({
   	user: 'ddanan',
   	host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
   	database: 'Testing_DB',
@@ -35,6 +28,21 @@ app.post('/addData', async function(req, res){
   	port: 5432
   })
   client.connect();
+  return client;
+}
+
+function closeSession(client)
+{
+	client.end();
+}
+app.post('/addData', async function(req, res){
+  res.redirect('/addData');
+  console.log('POST request made');
+  console.log(req.body);
+  console.log(req.body.myRole);
+  var currentRole=req.body.myRole;
+  myData=JSON.parse(req.body.traits);  
+  var client=openSession();
   var exist = false;
   await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
   	console.log("Errors: ",err)
@@ -74,7 +82,7 @@ app.post('/addData', async function(req, res){
 		console.log("Errors: ",err)
 		console.log("Command: ", res.command)
 		console.log("Rows: ", res.rows)
-		client.end()
+		closeSession(client);
 	})
 
   }

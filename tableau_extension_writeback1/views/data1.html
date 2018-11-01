@@ -115,6 +115,7 @@ body {font-size:16px;}
 
 <script>
 var traitNames=['Openness','Tolerance'];
+var blockNames=[' Low',' Below Average',' Average',' Above Average',' High']
 var roles = []
 var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
 var myColors=["rgb(220,220,220)","rgb(235,72,65)","rgb(244,136,71)","rgb(255,200,74)","rgb(166,195,76)","rgb(78,192,78)"]
@@ -171,7 +172,7 @@ function onClick(element) {
 
 function chooseIcon(index) {
 	currentBlock=index;
-	document.getElementById("form_name").innerHTML="Configure block " + index;
+	document.getElementById("form_name").innerHTML=currentTrait + blockNames[index];
 	document.getElementById("form_name").style.display = "block";
 	document.getElementById("my_form").style.display = "block";
 }
