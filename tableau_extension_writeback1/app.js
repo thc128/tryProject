@@ -47,26 +47,26 @@ app.post('/addData', async function(req, res){
 		exist=true;
 	}
   })
-  var x
-  for (x in myData)
+  var oneTrait
+  for (oneTrait in myData)
   {
-	console.log(x);
-	console.log(myData[x]);
-    x_array=myData[x];
+	console.log(oneTrait);
+	console.log(myData[oneTrait]);
+    traitsValues=myData[oneTrait];
 	
 	if (exist)
 	{
-		myQuery="UPDATE traits SET "+x+"_Low = "+x_array[0]+","+x+"_Below_Average= "+x_array[1]+","+x+"_Average= "+x_array[2]+","+x+"_Above_Average="+x_array[3]+","+x+"_High="+x_array[4]+" WHERE Job_Name = '"+currentRole+"';"
+		myQuery="UPDATE traits SET "+oneTrait+"_Low = "+traitsValues[0]+","+oneTrait+"_Below_Average= "+traitsValues[1]+","+oneTrait+"_Average= "+traitsValues[2]+","+oneTrait+"_Above_Average="+traitsValues[3]+","+oneTrait+"_High="+traitsValues[4]+" WHERE Job_Name = '"+currentRole+"';"
 	}
 	else 
 	{ 
-	myQuery="INSERT INTO traits (Job_Name,"+x+"_Low,"+x+"_Below_Average,"+x+"_Average,"+x+"_Above_Average,"+x+"_High) VALUES (\
+	myQuery="INSERT INTO traits (Job_Name,"+oneTrait+"_Low,"+oneTrait+"_Below_Average,"+oneTrait+"_Average,"+oneTrait+"_Above_Average,"+oneTrait+"_High) VALUES (\
   	'"+currentRole+"'\
-	,"+x_array[0]+"\
-  	,"+x_array[1]+"\
-  	,"+x_array[2]+"\
-  	,"+x_array[3]+"\
-  	,"+x_array[4]+");";
+	,"+traitsValues[0]+"\
+  	,"+traitsValues[1]+"\
+  	,"+traitsValues[2]+"\
+  	,"+traitsValues[3]+"\
+  	,"+traitsValues[4]+");";
 	exist=true;
 	}	
 	console.log(myQuery);

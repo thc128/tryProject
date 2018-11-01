@@ -75,19 +75,19 @@ body {font-size:16px;}
 <!-- !PAGE CONTENT! -->
 <div id="scale_bar" class="main" style="display:flex;margin-left:560px;margin-right:40px;">
 <svg width="100" height="110" >
-  <rect class="my_bar"  id="rect_1" onclick="choose_icon(0)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_1" onclick="chooseIcon(0)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>
 <svg width="100" height="110" >
-  <rect class="my_bar"  id="rect_2" onclick="choose_icon(1)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_2" onclick="chooseIcon(1)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 <svg width="100" height="110" >            
-  <rect class="my_bar"  id="rect_3" onclick="choose_icon(2)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_3" onclick="chooseIcon(2)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 <svg width="100" height="110" >            
-  <rect class="my_bar"  id="rect_4" onclick="choose_icon(3)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_4" onclick="chooseIcon(3)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                                     
 <svg width="100" height="110" >            
-  <rect class="my_bar"  id="rect_5" onclick="choose_icon(4)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
+  <rect class="my_bar"  id="rect_5" onclick="chooseIcon(4)" width="100" height="50" style="fill:rgb(220,220,220);stroke-width:3;stroke:rgb(0,0,0);display:none" />  
 </svg>                          
 </div>
 <!-- !MY-FORM! -->
@@ -96,19 +96,19 @@ body {font-size:16px;}
   <p id="form_name">try</p>
 
   <label>
-    <img src="1.jpg" onclick="chosen_icon(1)"/>
+    <img src="1.jpg" onclick="chosenIcon(1)"/>
   </label>
   <label>
-    <img src="2.jpg" onclick="chosen_icon(2)"/> 
+    <img src="2.jpg" onclick="chosenIcon(2)"/> 
   </label>
   <label>
-	<img src="3.jpg" onclick="chosen_icon(3)"/>
+	<img src="3.jpg" onclick="chosenIcon(3)"/>
   </label>
   <label>
-    <img src="4.jpg" onclick="chosen_icon(4)"/>
+    <img src="4.jpg" onclick="chosenIcon(4)"/>
   </label>
   <label>
-    <img src="5.jpg" onclick="chosen_icon(5)"/>
+    <img src="5.jpg" onclick="chosenIcon(5)"/>
   </label>
 </div>
 
@@ -117,9 +117,9 @@ body {font-size:16px;}
 var traitNames=['Openness','Tolerance'];
 var roles = []
 var traits={Openness:[0,0,0,0,0],Tolerance:[0,0,0,0,0]}
-var my_colors=["rgb(220,220,220)","rgb(235,72,65)","rgb(244,136,71)","rgb(255,200,74)","rgb(166,195,76)","rgb(78,192,78)"]
-var current_trait="";
-var current_block=0;
+var myColors=["rgb(220,220,220)","rgb(235,72,65)","rgb(244,136,71)","rgb(255,200,74)","rgb(166,195,76)","rgb(78,192,78)"]
+var currentTrait="";
+var currentBlock=0;
 //updatePage()
 var myData = <%- JSON.stringify(products) %>;
 if (myData.length > 0)
@@ -169,8 +169,8 @@ function onClick(element) {
   captionText.innerHTML = element.alt;
 }
 
-function choose_icon(index) {
-	current_block=index;
+function chooseIcon(index) {
+	currentBlock=index;
 	document.getElementById("form_name").innerHTML="Configure block " + index;
 	document.getElementById("form_name").style.display = "block";
 	document.getElementById("my_form").style.display = "block";
@@ -178,32 +178,32 @@ function choose_icon(index) {
 
 
 function configure_trait(trait_name) {
-	if (trait_name==current_trait)
+	if (trait_name==currentTrait)
 	{
 		return;
 	}
-	current_trait=trait_name;
+	currentTrait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
 	var new_status = "block";
 	closeIcons();
 	savePreview();
 	var i;
 	for (i = 0; i < content.length; i++) {
-		content[i].style.fill=my_colors[traits[current_trait][i]];
+		content[i].style.fill=myColors[traits[currentTrait][i]];
 		content[i].style.display = new_status;
 	}
 }
 
 
 
-function chosen_icon(chosen)
+function chosenIcon(chosen)
 {
-    var new_color=my_colors[chosen];
+    var new_color=myColors[chosen];
 	var blocks=document.getElementsByClassName("my_bar");
-	blocks[current_block].style.fill=new_color;
-	var preview = document.getElementsByClassName(current_trait+"_preview");
-	preview[current_block].style.fill=new_color;
-	traits[current_trait][current_block]=chosen;
+	blocks[currentBlock].style.fill=new_color;
+	var preview = document.getElementsByClassName(currentTrait+"_preview");
+	preview[currentBlock].style.fill=new_color;
+	traits[currentTrait][currentBlock]=chosen;
 }
 
 function closeIcons()
@@ -224,10 +224,10 @@ function closeBlocks()
 
 function savePreview()
 {
-	var preview = document.getElementsByClassName(current_trait+"_preview");
+	var preview = document.getElementsByClassName(currentTrait+"_preview");
     var i;
 	for (i = 0; i < preview.length; i++) {
-		preview[i].style.fill=my_colors[traits[current_trait][i]];
+		preview[i].style.fill=myColors[traits[currentTrait][i]];
 		preview[i].style.display = "block";
 	}
 }
@@ -363,7 +363,7 @@ function getData(role)
 			traits[trait][2]=myData['data'][0][trait.toLowerCase()+"_average"];
 			traits[trait][3]=myData['data'][0][trait.toLowerCase()+"_above_average"];
 			traits[trait][4]=myData['data'][0][trait.toLowerCase()+"_high"];		
-			current_trait=trait;
+			currentTrait=trait;
 			savePreview();
 			});
 }
