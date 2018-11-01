@@ -18,6 +18,7 @@ app.get('/', function(req, res) {
   res.render('index.ejs');
 });
 
+//functions to open/close sessions front of server. OCP
 function openSession()
 {
 	var client =new pg.Client({
@@ -35,6 +36,37 @@ function closeSession(client)
 {
 	client.end();
 }
+
+//import the page thus user request
+app.get('/addData', function(req, res){
+	/*if (Object.keys(req.query).length == 0){
+		res.render('data1.html', {products: products});
+		console.log('simple GET request made');
+	}
+	else{
+		*/
+		var client =openSession();
+		myQuery="SELECT job_name FROM traits";
+		console.log(myQuery);
+		  client.query(myQuery, (err, res2) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res2.command)
+		console.log("Rows: ", res2.rows)
+		var myData=[]
+		for (i=0;i<res2.rows.length;i++)
+		{
+			console.log("Job name:",res2.rows[i].job_name);
+			myData.push(res2.rows[i].job_name)
+		}
+		console.log("Jobs:",myData);
+		res.render('data1.html', {products: myData});
+		console.log('GET request with params made');
+		closeSession(client);
+		  })
+	
+});
+
+//
 app.post('/addData', async function(req, res){
   res.redirect('/addData');
   console.log('POST request made');
@@ -89,41 +121,7 @@ app.post('/addData', async function(req, res){
 });
 
 
-app.get('/addData', function(req, res){
-	/*if (Object.keys(req.query).length == 0){
-		res.render('data1.html', {products: products});
-		console.log('simple GET request made');
-	}
-	else{
-		*/
-		var pg = require('pg');
-		var client =new pg.Client({
-			user: 'ddanan',
-			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-			database: 'Testing_DB',
-			password: 'DH204KY1!',
-			port: 5432
-		})
-		client.connect();
-		myQuery="SELECT job_name FROM traits";
-		console.log(myQuery);
-		  client.query(myQuery, (err, res2) => {
-		console.log("Errors: ",err)
-		console.log("Command: ", res2.command)
-		console.log("Rows: ", res2.rows)
-		var myData=[]
-		for (i=0;i<res2.rows.length;i++)
-		{
-			console.log("Job name:",res2.rows[i].job_name);
-			myData.push(res2.rows[i].job_name)
-		}
-		console.log("Jobs:",myData);
-		res.render('data1.html', {products: myData});
-		console.log('GET request with params made');
-		client.end()
-		  })
-	
-});
+
 /* 
  app.get('/addData', function(req, res){
    res.render('testCSS.css', {products: products});
