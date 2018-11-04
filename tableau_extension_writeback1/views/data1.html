@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/testCSS.css"><!--define the size of left window -->
+<link rel="stylesheet" type="text/css" href="/Entry page.css"><!--define the size of left window -->
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 <style><!--define the font of left menu -->
 	  @import "bourbon";
@@ -19,14 +21,35 @@ body {font-size:16px;}
 </style>
 <body>
 
-<!-- Sidebar/menu -->
-<nav class="sidebar large padding" style="background:rgb(220,220,220);z-index:3;width:540px;font-weight:bold;" id="mySidebar"><br>
-  <div class="container">
-    <h3><b>Role<br>Name</b></h3>
+<!--Entry page-->
+<button onclick="newRole()" style="width:auto;">Enter New Role</button>
+
+<div id="id01" class="modal">
+  
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+	
+    <div class="container">
+      <label for="uname"><b>Role Name</b></label>
 	<form id="RoleForm" autocomplete="off">
-	<!-- <input id="myInput" type="text" name="myRole" placeholder="Role" onblur="getData(value)"> -->
-	<input id="myInput" type="text" name="myRole" placeholder="Role" >
-</form>
+	<input id="myInput" type="text" name="myRole" placeholder="Enter Role Name" >
+    </form>
+    
+        
+      <button type="submit" onclick="roleNameDefined()">Submit</button>
+
+     
+    </div>
+
+    
+  </div>
+</div>
+<!-- Sidebar/menu -->
+<nav class="sidebar large padding" style="background:rgb(220,220,220);z-index:3;width:540px;font-weight:bold;display:none" id="mySidebar"><br>
+  <div class="container">
+	<p id="roleName" />
   
   </div>
   <div class="bar-block">
@@ -132,6 +155,14 @@ if (myData.length > 0)
 	}*/
 	//alert(roles);
 }
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
@@ -147,6 +178,7 @@ function openCSS()
 {
 	document.getElementById("MyControl").MyClass = "MyClass";
 }
+
 
 function updatePage(){
 	if(typeof(EventSource)!=="undefined") {
@@ -168,6 +200,19 @@ function onClick(element) {
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
+}
+
+function newRole()
+{
+	document.getElementById("id01").style.display="block";
+	document.getElementById("mySidebar").style.display = "none";
+}
+
+function roleNameDefined()
+{
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("id01").style.display="none";
+	document.getElementById("roleName").innerHTML = document.getElementById("myInput").value;
 }
 
 function chooseIcon(index) {
