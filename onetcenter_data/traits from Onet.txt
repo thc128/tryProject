@@ -1,0 +1,90 @@
+Visualization
+Deductive Reasoning
+Arm-Hand Steadiness
+Near Vision
+Speech Clarity
+Static Strength
+Selective Attention
+Wrist-Finger Speed
+Trunk Strength
+Originality
+Explosive Strength
+Number Facility
+Control Precision
+Glare Sensitivity
+Memorization
+Auditory Attention
+Fluency of Ideas
+Far Vision
+Perceptual Speed
+Spatial Orientation
+Stamina
+Oral Comprehension
+Depth Perception
+Problem Sensitivity
+Night Vision
+Extent Flexibility
+Manual Dexterity
+Speed of Limb Movement
+Speech Recognition
+Inductive Reasoning
+Response Orientation
+Reaction Time
+Peripheral Vision
+Hearing Sensitivity
+Visual Color Discrimination
+Mathematical Reasoning
+Written Expression
+Element Name
+Rate Control
+Multilimb Coordination
+Dynamic Flexibility
+Category Flexibility
+Written Comprehension
+Gross Body Equilibrium
+Time Sharing
+Gross Body Coordination
+Oral Expression
+Dynamic Strength
+Speed of Closure
+Flexibility of Closure
+Sound Localization
+Information Ordering
+Finger Dexterity
+Second Interest High-Point
+Conventional
+Third Interest High-Point
+First Interest High-Point
+Realistic
+Investigative
+Element Name
+Social
+Enterprising
+Artistic
+Relationships
+Third Work Value High-Point
+Achievement
+Support
+Working Conditions
+First Work Value High-Point
+Element Name
+Independence
+Recognition
+Second Work Value High-Point
+Dependability
+Concern for Others
+Adaptability/Flexibility
+Stress Tolerance
+Independence
+Self Control
+Attention to Detail
+Analytical Thinking
+Leadership
+Initiative
+Element Name
+Cooperation
+Innovation
+Achievement/Effort
+Integrity
+Persistence
+Social Orientation
