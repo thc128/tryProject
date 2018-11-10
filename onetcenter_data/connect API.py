@@ -21,8 +21,8 @@ def get_elements(data):
     for item in data:
         try:
             element_names.append(item[2])
-        except:
-            pass
+        except Exception as e:
+            print(e.message)
     element_names=list(set(element_names))
     return element_names
 
@@ -35,25 +35,23 @@ def get_data_values(data,dict):
             if not job_id in dict:
                 dict[job_id]={}
             dict[job_id][trait]=data_value
-        except:
-            pass
+        except Exception as e:
+            print(e.message)
     return dict
 
 def data_mining(base_url, name):
     my_link = base_url + name + '.txt'
     r = get_data(my_link)
     data = parse_data(r.text)
-    return get_elements(data)
+    return data
 
 
 base_url = r'https://www.onetcenter.org/dl_files/database/db_23_0_text/'
 table_name=['Abilities','Interests','Work%20Values','Work%20Styles']
-big_data={}
-my_link = base_url + table_name[0] + '.txt'
-r = get_data(my_link)
-data = parse_data(r.text)
-big_data=get_data_values(data,big_data)
-print big_data
+serialized_data={}
+data = data_mining(base_url,table_name[0])
+serialized_data=get_data_values(data,serialized_data)
+print serialized_data
 '''
 with open(r'traits from Onet.txt',"r") as traits_pool:
     trait_list=traits_pool.readlines()
