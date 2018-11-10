@@ -47,10 +47,13 @@ def data_mining(base_url, name):
 
 
 base_url = r'https://www.onetcenter.org/dl_files/database/db_23_0_text/'
-table_name=['Abilities','Interests','Work%20Values','Work%20Styles']
+table_names=['Abilities','Interests','Work%20Values','Work%20Styles']
 serialized_data={}
-data = data_mining(base_url,table_name[0])
-serialized_data=get_data_values(data,serialized_data)
+for name in table_names:
+    data = data_mining(base_url,name)
+    serialized_data=get_data_values(data,serialized_data)
+with open(r'output.txt','w+') as data:
+    data.write(str(serialized_data))
 print serialized_data
 '''
 with open(r'traits from Onet.txt',"r") as traits_pool:
