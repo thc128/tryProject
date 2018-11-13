@@ -3,12 +3,11 @@ module.exports =
 {
 	openSession: function(pgModule)
 	{
-		console.log("Working on it...");
 		var client =new pgModule.Client({
-			user: 'ddanan',
-			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-			database: 'Testing_DB',
-			password: 'DH204KY1!',
+			user: 'postgres',
+			host: 'localhost',
+			database: 'postgres',
+			password: 'Elichoref13',
 			port: 5432
 		})
 		client.connect();
@@ -18,7 +17,17 @@ module.exports =
 	closeSession: function(client)
 	{
 		client.end();
+	},
+	
+	runQuery: function(pgclient,queryString)
+	{
+		pgclient.query(queryString, (err, res) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res.command)
+		console.log("Rows: ", res.rows)
+	})
 	}
+
 }
 function initClient(postgresModule){
 	var myClient=new postgresModule.Client({
@@ -31,16 +40,6 @@ function initClient(postgresModule){
 	return myClient
 }
 
-function runQuery(pgclient,queryString)
-{
-	//pgclient.connect();
-	pgclient.query(queryString, (err, res) => {
-	console.log("Errors: ",err)
-	console.log("Command: ", res.command)
-	console.log("Rows: ", res.rows)
-	//pgclient.end()
-	})
-}
 function askTable(pgclient,tableName)
 {
 	myQuery="SELECT * from "+tableName

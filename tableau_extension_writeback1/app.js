@@ -118,15 +118,9 @@ app.post('/addData', async function(req, res){
 app.post('/roleData', function(req, res){
 	console.log("Role DATA");
 	console.log(req.body);
+	console.log('POST request made');
 	var pg = require('pg');
-		var client =new pg.Client({
-			user: 'ddanan',
-			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-			database: 'Testing_DB',
-			password: 'DH204KY1!',
-			port: 5432
-		})
-		client.connect();
+		var client = db.openSession(pg)
 		myQuery="SELECT * FROM traits WHERE job_name='"+req.body.role.slice(1,-1)+"';";
 		console.log(myQuery);
 		  client.query(myQuery, (err, res2) => {
@@ -136,10 +130,9 @@ app.post('/roleData', function(req, res){
 		var myData=res2.rows
 		console.log("Data:",myData);
 		res.send({data:myData});
-		client.end()
+		db.closeSession(client);
 		  })
-   console.log(req.body);
-   console.log('POST request made');
+   
  }); 
  
 
