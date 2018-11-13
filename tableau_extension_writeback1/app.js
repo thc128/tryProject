@@ -2,10 +2,10 @@
 var express = require('express');
 var fs = require('fs');
 var path = require('path')
-var app = express();
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var db=require('./database_access');
+var app = express();
 //Engine images and files
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public", express.static(__dirname + "/public"));
@@ -115,10 +115,11 @@ app.post('/roleData', function(req, res){
 	console.log(req.body);
 	console.log('POST request made');
 	var pg = require('pg');
-		var client = db.openSession(pg)
-		myQuery="SELECT * FROM traits WHERE job_name='"+req.body.role.slice(1,-1)+"';";
-		console.log(myQuery);
-		  client.query(myQuery, (err, res2) => {
+	var client = db.openSession(pg)
+	var myRole=req.body.role.slice(1,-1);
+	myQuery="SELECT * FROM traits WHERE job_name='"+myRole+"';";
+	console.log(myQuery);
+	client.query(myQuery, (err, res2) => {
 		console.log("Errors: ",err)
 		console.log("Command: ", res2.command)
 		console.log("Rows: ", res2.rows)
@@ -126,8 +127,8 @@ app.post('/roleData', function(req, res){
 		console.log("Data:",myData);
 		res.send({data:myData});
 		db.closeSession(client);
-		  })
-   
+	})
+  
  }); 
  
 

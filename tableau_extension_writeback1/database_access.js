@@ -28,8 +28,20 @@ module.exports =
 		this.closeSession(pgclient);
 	})
 	}
-
+	
+	
 }
+/*
+getRole :function(pgclient,role)
+	{
+		myQuery="SELECT * FROM traits WHERE job_name='"+role+"';";
+		return pgclient.query(myQuery, (err, res) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res.command)
+		console.log("Rows: ", res.rows)
+		})
+	}
+	*/
 function initClient(postgresModule){
 	var myClient=new postgresModule.Client({
 		user: 'postgres',
