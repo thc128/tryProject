@@ -5,7 +5,7 @@ var path = require('path')
 var app = express();
 var bodyParser = require('body-parser');
 var pg = require('pg');
-
+var db=require('./database_access');
 //Engine images and files
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public", express.static(__dirname + "/public"));
@@ -18,24 +18,6 @@ app.get('/', function(req, res) {
   res.render('index.ejs');
 });
 
-//functions to open/close sessions front of server. OCP
-function openSession()
-{
-	var client =new pg.Client({
-  	user: 'ddanan',
-  	host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-  	database: 'Testing_DB',
-  	password: 'DH204KY1!',
-  	port: 5432
-  })
-  client.connect();
-  return client;
-}
-
-function closeSession(client)
-{
-	client.end();
-}
 
 //import the page thus user request
 app.get('/addData', function(req, res){
@@ -45,7 +27,7 @@ app.get('/addData', function(req, res){
 	}
 	else{
 		*/
-		var client =openSession();
+		var client =db.openSession(pg);
 		myQuery="SELECT job_name FROM traits";
 		console.log(myQuery);
 		  client.query(myQuery, (err, res2) => {
@@ -61,7 +43,7 @@ app.get('/addData', function(req, res){
 		console.log("Jobs:",myData);
 		res.render('data1.html', {products: myData});
 		console.log('GET request with params made');
-		closeSession(client);
+		db.closeSession(client);
 		  })
 	
 });
@@ -74,7 +56,7 @@ app.post('/addData', async function(req, res){
   console.log(req.body.myRole);
   var currentRole=req.body.myRole;
   myData=JSON.parse(req.body.traits);  
-  var client=openSession();
+  var client=db.openSession(pg);
   var exist = false;
   await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
   	console.log("Errors: ",err)
@@ -114,7 +96,7 @@ app.post('/addData', async function(req, res){
 		console.log("Errors: ",err)
 		console.log("Command: ", res.command)
 		console.log("Rows: ", res.rows)
-		closeSession(client);
+		db.closeSession(client);
 	})
 
   }

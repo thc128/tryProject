@@ -1,4 +1,25 @@
+//functions to open/close sessions front of server. OCP
+module.exports =
+{
+	openSession: function(pgModule)
+	{
+		console.log("Working on it...");
+		var client =new pgModule.Client({
+			user: 'ddanan',
+			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
+			database: 'Testing_DB',
+			password: 'DH204KY1!',
+			port: 5432
+		})
+		client.connect();
+		return client;
+	},
 
+	closeSession: function(client)
+	{
+		client.end();
+	}
+}
 function initClient(postgresModule){
 	var myClient=new postgresModule.Client({
 		user: 'postgres',
@@ -62,7 +83,7 @@ function insertOneTrait(pgclient,roleName,myTrait)
 }
 
 
-
+/*
 var pg = require('pg');
 var client = initClient(pg)
 client.connect();
@@ -70,7 +91,7 @@ var traits=[["'boie'",1,5,3,4,9],["'shamen'",5,8,4,1,9],["'gavoah'",7,9,4,2,6],[
 var tableName="asaf11";
 createNewRole(client,tableName,traits);
 askTable(client,tableName);
-
+*/
 
 
 //insertOneTrait(client,"asaf9",myTrait);
