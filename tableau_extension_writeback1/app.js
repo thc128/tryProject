@@ -114,7 +114,6 @@ app.post('/roleData', function(req, res){
 	console.log("Role DATA");
 	console.log(req.body);
 	console.log('POST request made');
-	var pg = require('pg');
 	var client = db.openSession(pg)
 	var myRole=req.body.role.slice(1,-1);
 	myQuery="SELECT * FROM traits WHERE job_name='"+myRole+"';";
