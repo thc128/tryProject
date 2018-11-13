@@ -92,12 +92,7 @@ app.post('/addData', async function(req, res){
 	exist=true;
 	}	
 	console.log(myQuery);
-    client.query(myQuery, (err, res) => {
-		console.log("Errors: ",err)
-		console.log("Command: ", res.command)
-		console.log("Rows: ", res.rows)
-		db.closeSession(client);
-	})
+	db.pushData(client,myQuery);
 
   }
 });

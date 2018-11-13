@@ -19,12 +19,13 @@ module.exports =
 		client.end();
 	},
 	
-	runQuery: function(pgclient,queryString)
+	pushData: function(pgclient,queryString)
 	{
 		pgclient.query(queryString, (err, res) => {
 		console.log("Errors: ",err)
 		console.log("Command: ", res.command)
 		console.log("Rows: ", res.rows)
+		this.closeSession(pgclient);
 	})
 	}
 
