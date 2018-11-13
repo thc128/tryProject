@@ -30,21 +30,19 @@ app.get('/addData', function(req, res){
 		var client =db.openSession(pg);
 		myQuery="SELECT job_name FROM traits";
 		console.log(myQuery);
-		  client.query(myQuery, (err, res2) => {
-		console.log("Errors: ",err)
-		console.log("Command: ", res2.command)
-		console.log("Rows: ", res2.rows)
-		var myData=[]
-		for (i=0;i<res2.rows.length;i++)
-		{
-			console.log("Job name:",res2.rows[i].job_name);
-			myData.push(res2.rows[i].job_name)
-		}
-		console.log("Jobs:",myData);
-		res.render('data1.html', {products: myData});
-		console.log('GET request with params made');
-		db.closeSession(client);
-		  })
+		client.query(myQuery, (err, res2) => {
+			queryLog(err,res2);
+			var myData=[]
+			for (i=0;i<res2.rows.length;i++)
+			{
+				console.log("Job name:",res2.rows[i].job_name);
+				myData.push(res2.rows[i].job_name)
+			}
+			console.log("Jobs:",myData);
+			res.render('data1.html', {products: myData});
+			console.log('GET request with params made');
+			db.closeSession(client);
+		})
 	
 });
 
@@ -59,11 +57,9 @@ app.post('/addData', async function(req, res){
   var client=db.openSession(pg);
   var exist = false;
   await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
-  	console.log("Errors: ",err)
-  	console.log("Command: ", res.command)
-  	console.log("Rows: ", res.rows)
+  	queryLog(err,res,{"length": res.rows.length});
 	//console.log("Job: ", res.rows[0].job_name)
-	console.log("length: ", res.rows.length)
+	//console.log("length: ", res.rows.length)
 	if (res.rows.length >0)
 	{
 		exist=true;
@@ -78,7 +74,13 @@ app.post('/addData', async function(req, res){
 	
 	if (exist)
 	{
-		myQuery="UPDATE traits SET "+oneTrait+"_Low = "+traitsValues[0]+","+oneTrait+"_Below_Average= "+traitsValues[1]+","+oneTrait+"_Average= "+traitsValues[2]+","+oneTrait+"_Above_Average="+traitsValues[3]+","+oneTrait+"_High="+traitsValues[4]+" WHERE Job_Name = '"+currentRole+"';"
+		myQuery="UPDATE traits SET \
+		"+oneTrait+"_Low = "+traitsValues[0]+",\
+		"+oneTrait+"_Below_Average= "+traitsValues[1]+",\
+		"+oneTrait+"_Average= "+traitsValues[2]+",\
+		"+oneTrait+"_Above_Average="+traitsValues[3]+",\
+		"+oneTrait+"_High="+traitsValues[4]+"\
+		WHERE Job_Name = '"+currentRole+"';"
 	}
 	else 
 	{ 
@@ -119,11 +121,9 @@ app.post('/roleData', function(req, res){
 	myQuery="SELECT * FROM traits WHERE job_name='"+myRole+"';";
 	console.log(myQuery);
 	client.query(myQuery, (err, res2) => {
-		console.log("Errors: ",err)
-		console.log("Command: ", res2.command)
-		console.log("Rows: ", res2.rows)
-		var myData=res2.rows
-		console.log("Data:",myData);
+		var myData=res2.rows;
+		queryLog(err,res2,{"Data":myData});
+		//console.log("Data:",myData);
 		res.send({data:myData});
 		db.closeSession(client);
 	})
@@ -134,3 +134,17 @@ app.post('/roleData', function(req, res){
 app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
 });
+
+function queryLog(err,res)
+{
+	console.log("Errors: ",err)
+  	console.log("Command: ", res.command)
+  	console.log("Rows: ", res.rows)
+	if (arguments.length>2)
+	{
+		for (i=2;i<arguments.length;i++)
+		{
+			console.log(arguments[i]);
+		}
+	}
+}
