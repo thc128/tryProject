@@ -1,4 +1,47 @@
+//functions to open/close sessions front of server. OCP
+module.exports =
+{
+	openSession: function(pgModule)
+	{
+		var client =new pgModule.Client({
+			user: 'postgres',
+			host: 'localhost',
+			database: 'postgres',
+			password: 'Elichoref13',
+			port: 5432
+		})
+		client.connect();
+		return client;
+	},
 
+	closeSession: function(client)
+	{
+		client.end();
+	},
+	
+	pushData: function(pgclient,queryString)
+	{
+		pgclient.query(queryString, (err, res) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res.command)
+		console.log("Rows: ", res.rows)
+		this.closeSession(pgclient);
+	})
+	}
+	
+	
+}
+/*
+getRole :function(pgclient,role)
+	{
+		myQuery="SELECT * FROM traits WHERE job_name='"+role+"';";
+		return pgclient.query(myQuery, (err, res) => {
+		console.log("Errors: ",err)
+		console.log("Command: ", res.command)
+		console.log("Rows: ", res.rows)
+		})
+	}
+	*/
 function initClient(postgresModule){
 	var myClient=new postgresModule.Client({
 		user: 'postgres',
@@ -10,16 +53,6 @@ function initClient(postgresModule){
 	return myClient
 }
 
-function runQuery(pgclient,queryString)
-{
-	//pgclient.connect();
-	pgclient.query(queryString, (err, res) => {
-	console.log("Errors: ",err)
-	console.log("Command: ", res.command)
-	console.log("Rows: ", res.rows)
-	//pgclient.end()
-	})
-}
 function askTable(pgclient,tableName)
 {
 	myQuery="SELECT * from "+tableName
@@ -62,7 +95,7 @@ function insertOneTrait(pgclient,roleName,myTrait)
 }
 
 
-
+/*
 var pg = require('pg');
 var client = initClient(pg)
 client.connect();
@@ -70,7 +103,7 @@ var traits=[["'boie'",1,5,3,4,9],["'shamen'",5,8,4,1,9],["'gavoah'",7,9,4,2,6],[
 var tableName="asaf11";
 createNewRole(client,tableName,traits);
 askTable(client,tableName);
-
+*/
 
 
 //insertOneTrait(client,"asaf9",myTrait);
