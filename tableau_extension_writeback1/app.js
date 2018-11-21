@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var pg = require('pg');
 var db=require('./database_access');
 var app = express();
+
 //Engine images and files
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public", express.static(__dirname + "/public"));
@@ -20,26 +21,34 @@ app.get('/', function(req, res) {
 
 
 //import the page thus user request
-app.get('/addData', function(req, res){
+app.get('/addData', async function(req, res){
 	var client =db.openSession(pg);
-	myQuery="SELECT job_name FROM traits";
-	console.log(myQuery);
-	client.query(myQuery, (err, res2) => {
-		queryLog(err,res2);
-		var myData=[]
-		for (i=0;i<res2.rows.length;i++)
-		{
-			console.log("Job name:",res2.rows[i].job_name);
-			myData.push(res2.rows[i].job_name)
-		}
-		console.log("Jobs:",myData);
-		res.render('data1.html', {products: myData});
-		console.log('GET request with params made');
-		db.closeSession(client);
-	})
-	
+	var myData=[]
+	myData=myData.concat(await job_name(client,"traits"));
+	myData=myData.concat(await job_name(client,"ONet_traits"));
+	console.log("Jobs:",myData);
+	res.render('data1.html', {products: myData});
+	console.log('GET request with params made');
+	db.closeSession(client);
 });
+	
 
+//query function
+async function job_name(client,table_name)
+{
+	myQuery="SELECT job_name FROM "+table_name;
+	var data=[]
+	console.log(myQuery);
+	await client.query(myQuery, async(err, res) => {
+		queryLog(err,res);
+		for (i=0;i<res.rows.length;i++)
+		{
+			console.log("Job name:",res.rows[i].job_name);
+			data.push(res.rows[i].job_name)
+		}
+	});
+	return data;
+}
 //
 app.post('/addData', async function(req, res){
 	res.redirect('/addData');
@@ -116,7 +125,7 @@ app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
 });
 
-
+//print to Console
 function queryLog(err,res)
 {
 	console.log("Errors: ",err)
