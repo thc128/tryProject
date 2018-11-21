@@ -1,7 +1,7 @@
 import psycopg2 as pg
 import numpy as np
 
-
+N=2
 values=[0.2,0.2,0.2,0.2,0.2]
 connection_pg = pg.connect(database="Testing_DB", user="ddanan", password="DH204KY1!",host="rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com", port="5432")
 pg_cursor = connection_pg.cursor()
@@ -18,7 +18,10 @@ for item in result:
     #print sum_of_items
     #print '========================'
     OCEAN_grade[item[0].replace(' ','')]=np.dot(values,scores)
-    print sorted(OCEAN_grade,key=OCEAN_grade.__getitem__,reverse=True)
+
+sorted_list = sorted(OCEAN_grade,key=OCEAN_grade.__getitem__,reverse=True)
+print sorted_list
+print sorted_list[:N]
 for item in OCEAN_grade.items():
     print item
 
