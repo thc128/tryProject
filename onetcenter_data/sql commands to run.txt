@@ -1,0 +1,4 @@
+ALTER TABLE traits
+ALTER COLUMN job_name type char(150)
+ADD COLUMN onet boolean;
+
