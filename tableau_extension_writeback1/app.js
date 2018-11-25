@@ -25,8 +25,7 @@ app.get('/addData', async function(req, res){
 	var client =db.openSession(pg);
 	var myData=[]
 	myData=myData.concat(await job_name(client,"traits"));
-	myData=myData.concat(await job_name(client,"ONet_traits"));
-	console.log("Jobs:",myData);
+	//console.log("Jobs:",myData);
 	res.render('data1.html', {products: myData});
 	console.log('GET request with params made');
 	db.closeSession(client);
@@ -40,10 +39,10 @@ async function job_name(client,table_name)
 	var data=[]
 	console.log(myQuery);
 	await client.query(myQuery, async(err, res) => {
-		queryLog(err,res);
+		//queryLog(err,res);
 		for (i=0;i<res.rows.length;i++)
 		{
-			console.log("Job name:",res.rows[i].job_name);
+			//console.log("Job name:",res.rows[i].job_name);
 			data.push(res.rows[i].job_name)
 		}
 	});
@@ -86,13 +85,14 @@ app.post('/addData', async function(req, res){
 		}
 		else 
 		{ 
-		myQuery="INSERT INTO traits (Job_Name,"+oneTrait+"_Low,"+oneTrait+"_Below_Average,"+oneTrait+"_Average,"+oneTrait+"_Above_Average,"+oneTrait+"_High) VALUES (\
+		myQuery="INSERT INTO traits (Job_Name,"+oneTrait+"_Low,"+oneTrait+"_Below_Average,"+oneTrait+"_Average,"+oneTrait+"_Above_Average,"+oneTrait+"_High,onet) VALUES (\
 		'"+currentRole+"'\
 		,"+traitsValues[0]+"\
 		,"+traitsValues[1]+"\
 		,"+traitsValues[2]+"\
 		,"+traitsValues[3]+"\
-		,"+traitsValues[4]+");";
+		,"+traitsValues[4]+"\
+		,False);";
 		exist=true;
 		}	
 		console.log(myQuery);
@@ -101,7 +101,7 @@ app.post('/addData', async function(req, res){
 });
 
 
-app.post('/roleData', function(req, res){
+app.post('/roleData',async function(req, res){
 	console.log("Role DATA");
 	console.log(req.body);
 	console.log('POST request made');
@@ -109,10 +109,14 @@ app.post('/roleData', function(req, res){
 	var myRole=req.body.role.slice(1,-1);
 	myQuery="SELECT * FROM traits WHERE job_name='"+myRole+"';";
 	console.log(myQuery);
-	client.query(myQuery, (err, res2) => {
+	client.query(myQuery,async (err, res2) => {
 		var myData=res2.rows;
 		queryLog(err,res2,{"Data":myData});
-		//console.log("Data:",myData);
+		if(res2.rows[0].onet)
+		{
+			onet_data=await db.getFromOnetTable(client,myRole);
+			console.log(onet_data);
+		}
 		res.send({data:myData});
 
 		db.closeSession(client);

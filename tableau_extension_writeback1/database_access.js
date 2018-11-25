@@ -19,6 +19,15 @@ module.exports =
 		client.end();
 	},
 	
+	getFromOnetTable:async function(pgclient,roleName)
+	{
+		var result;
+		await pgclient.query("SELECT * FROM ONet_traits WHERE job_name='"+roleName+"';",(err, res) => {
+			result= res.rows[0];
+			});
+		return result;		
+	},
+	
 	pushData: function(pgclient,queryString)
 	{
 		pgclient.query(queryString, (err, res) => {
