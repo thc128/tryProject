@@ -15,17 +15,16 @@ except Exception as e:
 for key, value in dic_of_jobs.iteritems():
     refined_job_name=code_to_name[key].replace('\'','\"')
     one_name="\'"+refined_job_name+"\'"
-    query="INSERT INTO traits (job_name,onet) VALUES("+one_name+",1)"
+    query="INSERT INTO traits (job_name,onet) VALUES("+one_name+",True);"
+    print query
     try:
         pg_cursor.execute(query)
     except Exception as e:
         print e.message
-    print str
 try:
     connection_pg.commit()
 except Exception as e:
     print e.message
-print 'looks good!'
 try:
     connection_pg.close()
 except Exception as e:
