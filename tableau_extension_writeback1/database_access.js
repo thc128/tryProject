@@ -36,6 +36,32 @@ module.exports =
 		console.log("Rows: ", res.rows)
 		this.closeSession(pgclient);
 	})
+	},
+	//query function
+	job_name:async function (client,table_name)
+	{
+		myQuery="SELECT job_name FROM "+table_name;
+		var data=[]
+		console.log(myQuery);
+		await client.query(myQuery, async(err, res) => {
+			for (i=0;i<res.rows.length;i++)
+			{
+				data.push(res.rows[i].job_name)
+			}
+		}	);
+		return data;
+	},
+	verifyExistance:async function(client,currentRole)
+	{
+		var exist=false;
+		await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
+
+			if (res.rows.length >0)
+			{
+				exist=true;
+			}
+		});
+		return exist;
 	}
 	
 	

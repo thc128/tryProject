@@ -6,6 +6,14 @@ var bodyParser = require('body-parser');
 var pg = require('pg');
 var db=require('./database_access');
 var app = express();
+/*var UPDATE_TEMPLATE="UPDATE traits SET \
+			[trait]_Low = [0],\
+			[trait]_Below_Average= [1],\
+			[trait]_Average= [2],\
+			[trait]_Above_Average=[3],\
+			[trait]_High=[4]\
+			WHERE Job_Name = '[currentRole]';"
+*/
 
 //Engine images and files
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,7 +32,7 @@ app.get('/', function(req, res) {
 app.get('/addData', async function(req, res){
 	var client =db.openSession(pg);
 	var myData=[]
-	myData=myData.concat(await job_name(client,"traits"));
+	myData=myData.concat(await db.job_name(client,"traits"));
 	//console.log("Jobs:",myData);
 	res.render('data1.html', {products: myData});
 	console.log('GET request with params made');
@@ -32,22 +40,7 @@ app.get('/addData', async function(req, res){
 });
 	
 
-//query function
-async function job_name(client,table_name)
-{
-	myQuery="SELECT job_name FROM "+table_name;
-	var data=[]
-	console.log(myQuery);
-	await client.query(myQuery, async(err, res) => {
-		//queryLog(err,res);
-		for (i=0;i<res.rows.length;i++)
-		{
-			//console.log("Job name:",res.rows[i].job_name);
-			data.push(res.rows[i].job_name)
-		}
-	});
-	return data;
-}
+
 //
 app.post('/addData', async function(req, res){
 	res.redirect('/addData');
@@ -58,15 +51,7 @@ app.post('/addData', async function(req, res){
 	myData=JSON.parse(req.body.traits);  
 	
 	var client=db.openSession(pg);
-	var exist = false;
-	await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
-
-		queryLog(err,res,{"length": res.rows.length});
-		if (res.rows.length >0)
-		{
-			exist=true;
-		}
-	})
+	var exist = await db.verifyExistance(client,currentRole);
 	var oneTrait
 	for (oneTrait in myData)
 	{
@@ -74,7 +59,15 @@ app.post('/addData', async function(req, res){
 		console.log(myData[oneTrait]);
 		traitsValues=myData[oneTrait];
 		if (exist)
-		{
+		{/*
+			myQuery=UPDATE_TEMPLATE.replace(/\[trait\]/g,oneTrait);
+			myQuery=myQuery.replace(/\[0\]/g,traitsValues[0]);
+			myQuery=myQuery.replace(/\[1\]/g,traitsValues[1]);
+			myQuery=myQuery.replace(/\[2\]/g,traitsValues[2]);
+			myQuery=myQuery.replace(/\[3\]/g,traitsValues[3]);
+			myQuery=myQuery.replace(/\[4\]/g,traitsValues[4]);
+			myQuery=myQuery.replace(/\[currentRole\]/g,currentRole);
+			*/
 			myQuery="UPDATE traits SET \
 			"+oneTrait+"_Low = "+traitsValues[0]+",\
 			"+oneTrait+"_Below_Average= "+traitsValues[1]+",\
