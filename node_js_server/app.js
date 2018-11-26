@@ -107,10 +107,14 @@ app.post('/roleData',async function(req, res){
 		queryLog(err,res2,{"Data":myData});
 		if(res2.rows[0].onet)
 		{
-			onet_data=await db.getFromOnetTable(client,myRole);
-			console.log(onet_data);
+			onetData=await db.getFromOnetTable(client,myRole);
+			console.log(onetData);
 		}
-		res.send({data:myData});
+		else
+		{
+			onetData=null;
+		}
+		res.send({data:myData,OnetData:onetData});
 
 		db.closeSession(client);
 	})
