@@ -1,0 +1,11 @@
+CREATE TABLE candidates_grades(
+candidate_name char(50),
+Openness float,
+Consciousness float,
+Extaversion float,
+Agreeableness float,
+Neuroticism float,
+Simple_Grade float,
+Variance float,
+Final_Grade float
+)
