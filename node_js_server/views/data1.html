@@ -229,15 +229,13 @@ function chooseIcon(index) {
 
 
 function configure_trait(trait_name) {
-	if (trait_name==currentTrait)
+	if (trait_name!=currentTrait)
 	{
-		return;
+		closeIcons();
 	}
 	currentTrait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
 	var new_status = "block";
-	closeIcons();
-	savePreview();
 	var i;
 	for (i = 0; i < content.length; i++) {
 		content[i].style.fill=myColors[traits[currentTrait][i]];
