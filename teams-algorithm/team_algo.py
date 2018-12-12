@@ -43,13 +43,9 @@ for item in result:
     OCEAN_grade[name]=grade*variance
 '''
 OCEAN_grade=grade_calculation(weights,ideal_score,result)
-sorted_list = sorted(OCEAN_grade.iteritems(),key=lambda (k,v): (v['final_grade'],k))
+#sorted_list = sorted(OCEAN_grade.iteritems(),key=lambda (k,v): (v['final_grade'],k))
 
-print sorted_list
-print sorted_list[:team_size]
+#print OCEAN_grade
 for item in OCEAN_grade.items():
     print item
 
-    #   print item[0]
-  #  scoring =
-#print result
