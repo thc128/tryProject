@@ -28,13 +28,12 @@ module.exports =
 		return result;		
 	},
 	
-	pushData: function(pgclient,queryString)
+	pushData: function(pgclient,queryString,queryValues)
 	{
-		pgclient.query(queryString, (err, res) => {
+		pgclient.query(queryString,queryValues, (err, res) => {
 		console.log("Errors: ",err)
 		console.log("Command: ", res.command)
 		console.log("Rows: ", res.rows)
-		this.closeSession(pgclient);
 	})
 	},
 	//query function

@@ -58,10 +58,10 @@ app.post('/addData', async function(req, res){
 		console.log(oneTrait);
 		console.log(myData[oneTrait]);
 		traitsValues=myData[oneTrait];
+		var myValues=[];
 		if (exist)
 		{/*
-			myQuery=UPDATE_TEMPLATE.replace(/\[trait\]/g,oneTrait);
-			myQuery=myQuery.replace(/\[0\]/g,traitsValues[0]);
+			myQuery=myQuery.replace(/\[0\]/g,tr
 			myQuery=myQuery.replace(/\[1\]/g,traitsValues[1]);
 			myQuery=myQuery.replace(/\[2\]/g,traitsValues[2]);
 			myQuery=myQuery.replace(/\[3\]/g,traitsValues[3]);
@@ -69,12 +69,16 @@ app.post('/addData', async function(req, res){
 			myQuery=myQuery.replace(/\[currentRole\]/g,currentRole);
 			*/
 			myQuery="UPDATE traits SET \
-			"+oneTrait+"_Low = "+traitsValues[0]+",\
-			"+oneTrait+"_Below_Average= "+traitsValues[1]+",\
-			"+oneTrait+"_Average= "+traitsValues[2]+",\
-			"+oneTrait+"_Above_Average="+traitsValues[3]+",\
-			"+oneTrait+"_High="+traitsValues[4]+"\
-			WHERE Job_Name = '"+currentRole+"';"
+			[trait]_Low = $1,\
+			[trait]_Below_Average= $2,\
+			[trait]_Average= $3,\
+			[trait]_Above_Average=$4,\
+			[trait]_High=$5\
+			WHERE Job_Name = $6;"
+			myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
+			myValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],currentRole];
+			myValues.forEach(assume);
+			console.log(myValues);
 		}
 		else 
 		{ 
@@ -89,8 +93,10 @@ app.post('/addData', async function(req, res){
 		exist=true;
 		}	
 		console.log(myQuery);
-		db.pushData(client,myQuery);
+		db.pushData(client,myQuery,myValues);
+		
 	}
+	db.closeSession(client);
 });
 
 
@@ -139,4 +145,10 @@ function queryLog(err,res)
 			console.log(arguments[i]);
 		}
 	}
+}
+
+function assume(value,index,arr)
+{	
+	if (value==undefined||value==null)
+		arr[index]=0;
 }
