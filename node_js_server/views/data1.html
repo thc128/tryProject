@@ -793,7 +793,7 @@ var modal = document.getElementById('id01');
 
 function createTraitEntry(name)
 {
-	var myArray=[0,0,0,0,0];
+	var myArray=[,,,,];
 	traits[name]=myArray;
 }
 
@@ -872,12 +872,12 @@ function configure_trait(trait_name) {
 	currentTrait=trait_name;
 	var content = document.getElementsByClassName("my_bar");
 	var new_status = "block";
-	alert(traits[currentTrait].toString());
-	alert(traits[currentTrait].length);
-	alert(traits[currentTrait][2]);
 	var i;
-	for (i = 0; i < content.length; i++) {
-		content[i].style.fill=myColors[traits[currentTrait][i]];
+	for (i = 0; i < content.length; i++) 
+	{
+		var val=traits[currentTrait][i];
+		var color=(val==undefined)?myColors[0]:myColors[val];
+		content[i].style.fill=color;
 		content[i].style.display = new_status;
 	}
 }
