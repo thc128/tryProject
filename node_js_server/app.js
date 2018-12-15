@@ -60,21 +60,8 @@ app.post('/addData', async function(req, res){
 		traitsValues=myData[oneTrait];
 		var myValues=[];
 		if (exist)
-		{/*
-			myQuery=myQuery.replace(/\[0\]/g,tr
-			myQuery=myQuery.replace(/\[1\]/g,traitsValues[1]);
-			myQuery=myQuery.replace(/\[2\]/g,traitsValues[2]);
-			myQuery=myQuery.replace(/\[3\]/g,traitsValues[3]);
-			myQuery=myQuery.replace(/\[4\]/g,traitsValues[4]);
-			myQuery=myQuery.replace(/\[currentRole\]/g,currentRole);
-			*/
-			myQuery="UPDATE traits SET \
-			[trait]_Low = $1,\
-			[trait]_Below_Average= $2,\
-			[trait]_Average= $3,\
-			[trait]_Above_Average=$4,\
-			[trait]_High=$5\
-			WHERE Job_Name = $6;"
+		{
+			myQuery="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = $6;"
 			myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
 			myValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],currentRole];
 			myValues.forEach(assume);
@@ -93,8 +80,8 @@ app.post('/addData', async function(req, res){
 		exist=true;
 		}	
 		console.log(myQuery);
-		db.pushData(client,myQuery,myValues);
-		
+		console.log(myValues);
+		await pushhh(client,myQuery,myValues);
 	}
 	db.closeSession(client);
 });
@@ -152,3 +139,13 @@ function assume(value,index,arr)
 	if (value==undefined||value==null)
 		arr[index]=0;
 }
+
+async function pushhh(pgclient,queryString,queryValues)
+	{
+		await pgclient.query(queryString,queryValues)
+		.then(async res => {
+		console.log(res.rows[0])
+		})
+		.catch(async e => console.error(e.stack))
+		
+	}

@@ -1,0 +1,50 @@
+myQuery="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = $6;"
+myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
+myValues=[String(traitsValues[0]),String(traitsValues[1]),String(traitsValues[2]),String(traitsValues[3]),String(traitsValues[4]),currentRole];
+myValues.forEach(assume);
+console.log(myValues);
+
+console.log(myQuery);
+pushhh(client,myQuery,myValues);
+break;
+
+
+function assume(value,index,arr)
+{	
+	if (value==undefined||value==null)
+		arr[index]=0;
+}
+
+function pushhh(pgclient,queryString,queryValues)
+	{
+		pgclient.query(queryString,queryValues)
+		.then(res => {
+		console.log(res.rows[0])
+		})
+		.catch(e => console.error(e.stack))
+		
+	}
+			
+================================================
+
+myQuery="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = $6;"
+myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
+myValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],currentRole];
+myValues.forEach(assume);
+console.log(myValues);
+
+console.log(myQuery);
+pushhh(client,myQuery,myValues);
+break;
+========================================================
+myQuery="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = 'Speaker';"
+myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
+myValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4]];
+myValues.forEach(assume);
+console.log(myValues);
+
+console.log(myQuery);
+console.log(myValues);
+pushhh(client,myQuery,myValues);
+break;
+=======================================
