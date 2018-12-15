@@ -69,14 +69,11 @@ app.post('/addData', async function(req, res){
 		}
 		else 
 		{ 
-		myQuery="INSERT INTO traits (Job_Name,"+oneTrait+"_Low,"+oneTrait+"_Below_Average,"+oneTrait+"_Average,"+oneTrait+"_Above_Average,"+oneTrait+"_High,onet) VALUES (\
-		'"+currentRole+"'\
-		,"+traitsValues[0]+"\
-		,"+traitsValues[1]+"\
-		,"+traitsValues[2]+"\
-		,"+traitsValues[3]+"\
-		,"+traitsValues[4]+"\
-		,False);";
+		myQuery="INSERT INTO traits (Job_Name,[trait]_Low,[trait]_Below_Average,[trait]_Average,[trait]_Above_Average,[trait]_High,onet) \
+		VALUES ($1,$2,$3,$4,$5,$6,False);";
+		myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
+		myValues=[currentRole,traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4]];
+		myValues.forEach(assume);
 		exist=true;
 		}	
 		console.log(myQuery);
