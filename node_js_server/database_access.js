@@ -4,10 +4,10 @@ module.exports =
 	openSession: function(pgModule)
 	{
 		var client =new pgModule.Client({
-			user: 'ddanan',
-			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-			database: 'Testing_DB',
-			password: 'DH204KY1!',
+			user: 'postgres',
+			host: 'localhost',
+			database: 'postgres',
+			password: 'Elichoref13',
 			port: 5432
 		})
 		client.connect();
@@ -28,13 +28,14 @@ module.exports =
 		return result;		
 	},
 	
-	pushData: function(pgclient,queryString,queryValues)
+	pushData: async function(pgclient,queryString,queryValues)
 	{
-		pgclient.query(queryString,queryValues, (err, res) => {
-		console.log("Errors: ",err)
-		console.log("Command: ", res.command)
-		console.log("Rows: ", res.rows)
-	})
+		var result=null;
+		await pgclient.query(queryString,queryValues)
+		.then(async res => {result=res.command;})
+		.catch(async e => {result=e.stack;})
+		return result;
+	
 	},
 	//query function
 	job_name:async function (client,table_name)
@@ -50,17 +51,14 @@ module.exports =
 		}	);
 		return data;
 	},
-	verifyExistance:async function(client,currentRole)
+	
+	getRoleData:async function(client,currentRole)
 	{
-		var exist=false;
-		await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';", async(err, res) => {
-
-			if (res.rows.length >0)
-			{
-				exist=true;
-			}
-		});
-		return exist;
+		var result=null;
+		await client.query("SELECT * FROM traits WHERE Job_Name='"+currentRole+"';")
+		.then(async res => {result=res.rows;})
+		.catch(async e => {result=e.stack;})		
+		return result;
 	}
 	
 	

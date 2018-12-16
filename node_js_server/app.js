@@ -6,14 +6,7 @@ var bodyParser = require('body-parser');
 var pg = require('pg');
 var db=require('./database_access');
 var app = express();
-/*var UPDATE_TEMPLATE="UPDATE traits SET \
-			[trait]_Low = [0],\
-			[trait]_Below_Average= [1],\
-			[trait]_Average= [2],\
-			[trait]_Above_Average=[3],\
-			[trait]_High=[4]\
-			WHERE Job_Name = '[currentRole]';"
-*/
+
 
 //Engine images and files
 app.use(bodyParser.urlencoded({extended: true}));
@@ -51,8 +44,8 @@ app.post('/addData', async function(req, res){
 	myData=JSON.parse(req.body.traits);  
 	
 	var client=db.openSession(pg);
-	var exist = await db.verifyExistance(client,currentRole);
-	var oneTrait
+	var exist = await db.getRoleData(client,currentRole)==null?false:true;
+	var oneTrait;
 	for (oneTrait in myData)
 	{
 		console.log(oneTrait);
@@ -78,7 +71,8 @@ app.post('/addData', async function(req, res){
 		}	
 		console.log(myQuery);
 		console.log(myValues);
-		await pushhh(client,myQuery,myValues);
+		result=await db.pushData(client,myQuery,myValues);
+		console.log("returned:",result);
 	}
 	db.closeSession(client);
 });
@@ -90,24 +84,20 @@ app.post('/roleData',async function(req, res){
 	console.log('POST request made');
 	var client = db.openSession(pg)
 	var myRole=req.body.role.slice(1,-1);
-	myQuery="SELECT * FROM traits WHERE job_name='"+myRole+"';";
-	console.log(myQuery);
-	client.query(myQuery,async (err, res2) => {
-		var myData=res2.rows;
-		queryLog(err,res2,{"Data":myData});
-		if(res2.rows[0].onet)
-		{
-			onetData=await db.getFromOnetTable(client,myRole);
-			console.log(onetData);
-		}
-		else
-		{
-			onetData=null;
-		}
-		res.send({data:myData,OnetData:onetData});
-
-		db.closeSession(client);
-	})
+	var myData= await db.getRoleData(client,myRole);
+	console.log({"Data":myData});
+	if(myData[0].onet)
+	{
+		onetData=await db.getFromOnetTable(client,myRole);
+		console.log(onetData);
+	}
+	else
+	{
+		onetData=null;
+	}
+	res.send({data:myData,OnetData:onetData});
+	db.closeSession(client);
+	
   
  }); 
  
@@ -136,13 +126,3 @@ function assume(value,index,arr)
 	if (value==undefined||value==null)
 		arr[index]=0;
 }
-
-async function pushhh(pgclient,queryString,queryValues)
-	{
-		await pgclient.query(queryString,queryValues)
-		.then(async res => {
-		console.log(res.rows[0])
-		})
-		.catch(async e => console.error(e.stack))
-		
-	}
