@@ -44,7 +44,9 @@ app.post('/addData', async function(req, res){
 	myData=JSON.parse(req.body.traits);  
 	
 	var client=db.openSession(pg);
-	var exist = await db.getRoleData(client,currentRole)==null?false:true;
+	roleData=await db.getRoleData(client,currentRole);
+	console.log(roleData.length>0);
+	var exist = (roleData.length>0);
 	var oneTrait;
 	for (oneTrait in myData)
 	{

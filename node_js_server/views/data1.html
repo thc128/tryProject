@@ -851,13 +851,21 @@ function newRole()
 	document.getElementById("onetSection").innerHTML="";
 	document.getElementById("id01").style.display="block";
 	document.getElementById("mySidebar").style.display = "none";
+	var content = document.getElementsByClassName("my_bar");
+	var i;
+	for (i = 0; i < content.length; i++) 
+	{
+		content[i].style.display = "none";
+	}
 }
 
 function roleNameDefined()
 {
 	document.getElementById("mySidebar").style.display = "block";
 	document.getElementById("id01").style.display="none";
-	document.getElementById("roleName").innerHTML = document.getElementById("myInput").value;
+	var myRoleName=document.getElementById("myInput").value;
+	document.getElementById("roleName").innerHTML = myRoleName;
+	getData(myRoleName);
 }
 
 function chooseIcon(index) {
@@ -919,7 +927,9 @@ function savePreview()
 	var preview = document.getElementsByClassName(currentTrait+"_preview");
     var i;
 	for (i = 0; i < preview.length; i++) {
-		preview[i].style.fill=myColors[traits[currentTrait][i]];
+		var val=traits[currentTrait][i];
+		var color=(val==undefined)?myColors[0]:myColors[val];
+		preview[i].style.fill=color;
 		preview[i].style.display = "block";
 	}
 }
@@ -971,7 +981,7 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-			  getData(inp.value);
+			  //getData(inp.value);
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -1041,6 +1051,15 @@ autocomplete(document.getElementById("myInput"), roles);
 
 function getData(role)
 {
+	if (roles.indexOf(role)==-1)
+	{
+		traitNames.forEach( function(trait){
+			traits[trait]=[,,,,];		
+			currentTrait=trait;
+			savePreview();
+		})
+		return;
+	}
 	var http = new XMLHttpRequest();
 	http.open("POST",'/roleData', true);
 	http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -1071,14 +1090,7 @@ function getData(role)
 }
 }
 
-function checkIt(role)
-{
-	//alert(role);
-	if(roles.indexOf(role) >= 0)
-		{
-			getData(role);
-		}
-}
+
 
 </script>
 
