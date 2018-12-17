@@ -33,7 +33,6 @@ app.get('/addData', async function(req, res){
 });
 	
 
-
 //
 app.post('/addData', async function(req, res){
 	res.redirect('/addData');
@@ -42,13 +41,15 @@ app.post('/addData', async function(req, res){
 	console.log(req.body.myRole);
 	var currentRole=req.body.myRole;
 	myData=JSON.parse(req.body.traits);  
-	
 	var client=db.openSession(pg);
 	roleData=await db.getRoleData(client,currentRole);
-	console.log(roleData.length>0);
-	var exist = (roleData.length>0);
-	var oneTrait;
-		
+	console.log(roleData);
+	if (roleData.length<=0)
+	{
+		result=await db.addNewRole(client,currentRole);
+		console.log("returned:",result);
+	}
+	var oneTrait;		
 	for (oneTrait in myData)
 	{
 		if (traitNames.indexOf(oneTrait)==-1)
@@ -59,27 +60,7 @@ app.post('/addData', async function(req, res){
 		console.log(oneTrait);
 		console.log(myData[oneTrait]);
 		traitsValues=myData[oneTrait];
-		var myValues=[];
-		if (exist)
-		{
-			myQuery="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = $6;"
-			myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
-			myValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],currentRole];
-			myValues.forEach(assume);
-			console.log(myValues);
-		}
-		else 
-		{ 
-		myQuery="INSERT INTO traits (Job_Name,[trait]_Low,[trait]_Below_Average,[trait]_Average,[trait]_Above_Average,[trait]_High,onet) \
-		VALUES ($1,$2,$3,$4,$5,$6,False);";
-		myQuery=myQuery.replace(/\[trait\]/g,oneTrait);
-		myValues=[currentRole,traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4]];
-		myValues.forEach(assume);
-		exist=true;
-		}	
-		console.log(myQuery);
-		console.log(myValues);
-		result=await db.pushData(client,myQuery,myValues);
+		result=await db.pushData(client,oneTrait,traitsValues,currentRole);
 		console.log("returned:",result);
 	}
 	db.closeSession(client);
@@ -115,8 +96,3 @@ app.listen(3000, function(){
 });
 
 
-function assume(value,index,arr)
-{	
-	if (value==undefined||value==null)
-		arr[index]=0;
-}

@@ -31,14 +31,26 @@ module.exports =
 		return result;		
 	},
 	
-	pushData: async function(pgclient,queryString,queryValues)
+	addNewRole: async function(pgclient,roleName)
 	{
+		var result=null;
+		await pgclient.query("INSERT INTO traits (Job_Name,onet) VALUES ($1,False);",[roleName])
+		.then(async res => {result=res.command;})
+		.catch(async e => {result=e.stack;})		
+		return result;
+	},
+	
+	pushData: async function(pgclient,traitName,traitsValues,currentRole)
+	{
+		var queryString="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = $6;"
+		queryString=queryString.replace(/\[trait\]/g,traitName);
+		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],currentRole];
+		queryValues.forEach(assume);
 		var result=null;
 		await pgclient.query(queryString,queryValues)
 		.then(async res => {result=res.command;})
 		.catch(async e => {result=e.stack;})
-		return result;
-	
+		return result;	
 	},
 	//query function
 	job_name:async function (client)
@@ -68,4 +80,10 @@ module.exports =
 	}
 	
 	
+}
+
+function assume(value,index,arr)
+{	
+	if (value==undefined||value==null)
+		arr[index]=0;
 }
