@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
 app.get('/addData', async function(req, res){
 	var client =db.openSession(pg);
 	var myData=[]
-	myData=myData.concat(await db.job_name(client,"traits"));
+	myData=myData.concat(await db.job_name(client));
 	//console.log("Jobs:",myData);
 	res.render('data1.html', {products: myData});
 	console.log('GET request with params made');
@@ -109,7 +109,7 @@ app.listen(3000, function(){
 });
 
 //print to Console
-function queryLog(err,res)
+/*function queryLog(err,res)
 {
 	console.log("Errors: ",err)
   	console.log("Command: ", res.command)
@@ -122,7 +122,7 @@ function queryLog(err,res)
 		}
 	}
 }
-
+*/
 function assume(value,index,arr)
 {	
 	if (value==undefined||value==null)
