@@ -108,21 +108,7 @@ app.listen(3000, function(){
   console.log('Server is running on localhost:3000');
 });
 
-//print to Console
-/*function queryLog(err,res)
-{
-	console.log("Errors: ",err)
-  	console.log("Command: ", res.command)
-  	console.log("Rows: ", res.rows)
-	if (arguments.length>2)
-	{
-		for (i=2;i<arguments.length;i++)
-		{
-			console.log(arguments[i]);
-		}
-	}
-}
-*/
+
 function assume(value,index,arr)
 {	
 	if (value==undefined||value==null)
