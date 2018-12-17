@@ -22,9 +22,12 @@ module.exports =
 	getFromOnetTable:async function(pgclient,roleName)
 	{
 		var result;
-		await pgclient.query("SELECT * FROM ONet_traits WHERE job_name='"+roleName+"';",(err, res) => {
+		await pgclient.query("SELECT * FROM ONet_traits WHERE job_name='"+roleName+"';")
+		.then(async res => 
+		{
 			result= res.rows[0];
-			});
+		})
+		.catch(async e => {result=e.stack;})
 		return result;		
 	},
 	
@@ -43,12 +46,15 @@ module.exports =
 		myQuery="SELECT job_name FROM "+table_name;
 		var data=[]
 		console.log(myQuery);
-		await client.query(myQuery, async(err, res) => {
+		await client.query(myQuery)
+		.then( async res => 
+		{
 			for (i=0;i<res.rows.length;i++)
 			{
 				data.push(res.rows[i].job_name)
 			}
-		}	);
+		}	)
+		.catch(async e => {data.push(e.stack);})
 		return data;
 	},
 	
