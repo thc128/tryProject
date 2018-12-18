@@ -50,13 +50,46 @@ body {font-size:16px;}
 <nav class="sidebar large padding" style="background:rgb(220,220,220);z-index:3;width:560px;font-weight:bold;display:none" id="mySidebar"><br>
   <div class="container">
 	<p id="roleName" />
-  
+	<form id="dataForm">
+		Submission Date<br/>
+		<input type="text" name="Submission_Date" placeholder="SubmissionDate" >
+		Job Description<br/>
+		<input type="text" name="Job_Description" placeholder="JobDescription" >
+		Job Category<br/>
+		<input type="text" name="Job_Category" placeholder="JobCategory" >
+		Reqruting Entity<br/>
+		<input type="text" name="Reqruting_Entity" placeholder="ReqrutingEntity" >
+		Job Department<br/>
+		<input type="text" name="Job_Department" placeholder="JobDepartment" >
+		Note<br/>
+		<input type="text" name="Note" placeholder="Note" >
+		Gender Preference<br/>
+		<input type="text" name="Gender_Preference" placeholder="GenderPreference" >
+		Age Preferences<br/>
+		<input type="text" name="Age_Preferences" placeholder="AgePreferences" >
+		Date Entered<br/>
+		<input type="text" name="Date_Entered" placeholder="DateEntered" >
+		Trait Range Table ID<br/>
+		<input type="text" name="Trait_Range_Table_ID" placeholder="TraitRangeTableID" >
+    </form>
   </div>
+  
   <div id="onetDiv" style="display:none">
+  <svg height="10" width="560">
+   <g fill="none" stroke="black">
+    <path stroke-width="10" d="M0 10 l560 0"/>
+  </g>
+  </svg>
 	<p id="onetSection" style="word-break: break-all"/>
 </div>
 
   <div class="bar-block">
+   <svg height="4" width="560">
+   <g fill="none" stroke="black">
+    <path stroke-width="4" d="M0 0 l560 0"/>
+  </g>
+  </svg>
+  <p>Traits range</p>
   <p Name="Openness" onclick="configure_trait('Openness')" class="bar-item button hover-white">Openness</p>
   <div style="display:flex" onclick="configure_trait('Openness')"  >
 <svg width="100" height="40" >
@@ -775,6 +808,7 @@ body {font-size:16px;}
 
 <script>
 var traitNames=['Openness','Consciousness','Extaversion','Agreeableness','Neuroticism','Secure','Anxious_preoccupied','Fearfull_Avoidant','Dissmising_Avoidant','Soical_Desirability','Creativity','Locus_of_control','Self_efficacy','Risk_taking','istress_Tolerance','Distress_Appraisal','Distress_Absorbsion','Distress_Regulation','Distress_Tolerance','Tolerance_for_Ambiguity','Ambiguous_stimuli','Complex_stimuli','Uncertain_stimuli','New_stimuli','Insoluble_stimuli','Emotional_Intelligence','Self_emotion_appraisal','Others_emotion_appraisal','Use_of_emotion','Regulation_of_emotion','Improvisation__Total_score','Improvisation_creativity_and_bricolage','Improvisasion_function_under_pressure___stress','Improvisation_spontaneity_and_persistence','Self_dicipline','The_Short_Dark_Triad','SImprovisasion_function_under_pressure___stress','Narcissism_related_tendencies','Psychopathy_related_tendencies'];
+var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Note','Gender_Preference','Age_Preferences','Date_Entered','Trait_Range_Table_ID']
 var blockNames=[' Low',' Below Average',' Average',' Above Average',' High']
 var roles = []
 var traits={}
@@ -936,11 +970,12 @@ function savePreview()
 
 function submitForm()
 {
-	var form = document.getElementById('RoleForm');
+	var form = document.getElementById('dataForm');
     form.setAttribute('method', 'post');
     form.setAttribute('action', 'http://localhost:3000/addData');
     //form.style.display = 'hidden';
     document.body.appendChild(form);
+	form.appendChild(document.getElementById('RoleForm').myRole);
 	var input = document.createElement("input");
 	input.setAttribute("type", "hidden");
 	input.setAttribute("name", "traits");
@@ -1065,9 +1100,13 @@ function getData(role)
 	http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	var params="role=" + JSON.stringify(role);
 	http.send(params);
-	http.onload=function(){
+	http.onload=function()
+	{
 		//alert(http.responseText);
 		var myData=JSON.parse(http.responseText);
+		otherColumnNames.forEach(function (columnName){
+			document.getElementsByName(columnName)[0].value=myData['data'][0][columnName.toLowerCase()];
+			});
 		traitNames.forEach( function(trait){
 			traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
 			traits[trait][1]=myData['data'][0][trait.toLowerCase()+"_below_average"];
@@ -1087,7 +1126,7 @@ function getData(role)
 			message=message.replace(/\"/g,"");
 			document.getElementById("onetSection").innerHTML=message;
 		}
-}
+	}
 }
 
 

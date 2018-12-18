@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var pg = require('pg');
 var db=require('./database_access');
 var app = express();
+var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Note','Gender_Preference','Age_Preferences','Date_Entered','Trait_Range_Table_ID']
 var traitNames=['Openness','Consciousness','Extaversion','Agreeableness','Neuroticism','Secure','Anxious_preoccupied','Fearfull_Avoidant','Dissmising_Avoidant','Soical_Desirability','Creativity','Locus_of_control','Self_efficacy','Risk_taking','istress_Tolerance','Distress_Appraisal','Distress_Absorbsion','Distress_Regulation','Distress_Tolerance','Tolerance_for_Ambiguity','Ambiguous_stimuli','Complex_stimuli','Uncertain_stimuli','New_stimuli','Insoluble_stimuli','Emotional_Intelligence','Self_emotion_appraisal','Others_emotion_appraisal','Use_of_emotion','Regulation_of_emotion','Improvisation__Total_score','Improvisation_creativity_and_bricolage','Improvisasion_function_under_pressure___stress','Improvisation_spontaneity_and_persistence','Self_dicipline','The_Short_Dark_Triad','SImprovisasion_function_under_pressure___stress','Narcissism_related_tendencies','Psychopathy_related_tendencies'];
 
 //Engine images and files
@@ -38,8 +39,14 @@ app.post('/addData', async function(req, res){
 	res.redirect('/addData');
 	console.log('POST request made');
 	console.log(req.body);
-	console.log(req.body.myRole);
-	var currentRole=req.body.myRole;
+	console.log(req.body['myRole']);
+	var currentRole=req.body['myRole'];
+	var otherColumns=[]
+	otherColumnNames.forEach(function(columnName){
+		otherColumns.push(req.body[columnName])
+		console.log(columnName);
+		console.log(req.body[columnName]);
+	})
 	myData=JSON.parse(req.body.traits);  
 	var client=db.openSession(pg);
 	roleData=await db.getRoleData(client,currentRole);
@@ -47,8 +54,11 @@ app.post('/addData', async function(req, res){
 	if (roleData.length<=0)
 	{
 		result=await db.addNewRole(client,currentRole);
-		console.log("returned:",result);
+		console.log("INSERT returned:",result);
 	}
+	result=await db.pushOtherColumns(client,otherColumns,currentRole);
+	console.log("Other columns returned:",result);
+	console.log(otherColumns);
 	var oneTrait;		
 	for (oneTrait in myData)
 	{
