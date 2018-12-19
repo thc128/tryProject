@@ -1108,9 +1108,7 @@ function getData(role)
 			var value=myData['data'][0][columnName.toLowerCase()];
 			if(columnName=="Submission_Date")
 			{
-				alert(value);
 				value=value.slice(0,10);
-				alert(value);
 			}
 			document.getElementsByName(columnName)[0].value=value
 			});
