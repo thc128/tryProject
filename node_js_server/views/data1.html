@@ -68,7 +68,7 @@ body {font-size:16px;}
 		<br/>Age Preferences<br/>
 		<input type="text" name="Age_Preferences" placeholder="AgePreferences" >
 		<br/>Date Entered<br/>
-		<input type="text" name="Date_Entered" placeholder="DateEntered" >
+		<input type="date" name="Date_Entered" placeholder="DateEntered" >
 		<br/>Trait Range Table ID<br/>
 		<input type="text" name="Trait_Range_Table_ID" placeholder="TraitRangeTableID" >
     </form>
@@ -1106,7 +1106,7 @@ function getData(role)
 		var myData=JSON.parse(http.responseText);
 		otherColumnNames.forEach(function (columnName){
 			var value=myData['data'][0][columnName.toLowerCase()];
-			if(columnName=="Submission_Date")
+			if(columnName=="Submission_Date"||columnName=="Date_Entered")
 			{
 				value=value.slice(0,10);
 			}
