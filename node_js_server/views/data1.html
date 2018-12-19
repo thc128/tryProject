@@ -52,24 +52,24 @@ body {font-size:16px;}
 	<p id="roleName" />
 	<form id="dataForm">
 		Submission Date<br/>
-		<input type="text" name="Submission_Date" placeholder="SubmissionDate" >
-		Job Description<br/>
+		<input type="date" name="Submission_Date" placeholder="SubmissionDate" >
+		<br/>Job Description<br/>
 		<input type="text" name="Job_Description" placeholder="JobDescription" >
-		Job Category<br/>
+		<br/>Job Category<br/>
 		<input type="text" name="Job_Category" placeholder="JobCategory" >
-		Reqruting Entity<br/>
+		<br/>Reqruting Entity<br/>
 		<input type="text" name="Reqruting_Entity" placeholder="ReqrutingEntity" >
-		Job Department<br/>
+		<br/>Job Department<br/>
 		<input type="text" name="Job_Department" placeholder="JobDepartment" >
-		Note<br/>
+		<br/>Note<br/>
 		<input type="text" name="Note" placeholder="Note" >
-		Gender Preference<br/>
+		<br/>Gender Preference<br/>
 		<input type="text" name="Gender_Preference" placeholder="GenderPreference" >
-		Age Preferences<br/>
+		<br/>Age Preferences<br/>
 		<input type="text" name="Age_Preferences" placeholder="AgePreferences" >
-		Date Entered<br/>
+		<br/>Date Entered<br/>
 		<input type="text" name="Date_Entered" placeholder="DateEntered" >
-		Trait Range Table ID<br/>
+		<br/>Trait Range Table ID<br/>
 		<input type="text" name="Trait_Range_Table_ID" placeholder="TraitRangeTableID" >
     </form>
   </div>
@@ -1105,7 +1105,14 @@ function getData(role)
 		//alert(http.responseText);
 		var myData=JSON.parse(http.responseText);
 		otherColumnNames.forEach(function (columnName){
-			document.getElementsByName(columnName)[0].value=myData['data'][0][columnName.toLowerCase()];
+			var value=myData['data'][0][columnName.toLowerCase()];
+			if(columnName=="Submission_Date")
+			{
+				alert(value);
+				value=value.slice(0,10);
+				alert(value);
+			}
+			document.getElementsByName(columnName)[0].value=value
 			});
 		traitNames.forEach( function(trait){
 			traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
