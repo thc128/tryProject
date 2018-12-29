@@ -22,7 +22,7 @@ body {font-size:16px;}
 <body>
 
 <!--Entry page-->
-<button onclick="newRole()" style="width:auto;">Enter New Role</button>
+<button id="NewRoleButton" onclick="newRole()" style="width:auto;">Enter New Role</button>
 
 <div id="id01" class="modal">
   
@@ -48,7 +48,7 @@ body {font-size:16px;}
 </div>
 <!-- Sidebar/menu -->
 <nav class="sidebar large padding" style="background:rgb(220,220,220);z-index:3;width:560px;font-weight:bold;display:none" id="mySidebar"><br>
-  <div class="container">
+  <div id="roleNameDiv" class="container">
 	<p id="roleName" />
 	<form id="dataForm">
 		Submission Date<br/>
@@ -83,7 +83,7 @@ body {font-size:16px;}
 	<p id="onetSection" style="word-break: break-all"/>
 </div>
 
-  <div class="bar-block">
+  <div id="traitsDiv" class="bar-block">
    <svg height="4" width="560">
    <g fill="none" stroke="black">
     <path stroke-width="4" d="M0 0 l560 0"/>
@@ -805,6 +805,9 @@ body {font-size:16px;}
   </label>
 </div>
 
+<div id="loading" style="display:none">
+<h1 style="color:blue;font-size:500%">Loading...</h1>
+</div>
 
 <script>
 var traitNames=['Openness','Consciousness','Extaversion','Agreeableness','Neuroticism','Secure','Anxious_preoccupied','Fearfull_Avoidant','Dissmising_Avoidant','Soical_Desirability','Creativity','Locus_of_control','Self_efficacy','Risk_taking','istress_Tolerance','Distress_Appraisal','Distress_Absorbsion','Distress_Regulation','Distress_Tolerance','Tolerance_for_Ambiguity','Ambiguous_stimuli','Complex_stimuli','Uncertain_stimuli','New_stimuli','Insoluble_stimuli','Emotional_Intelligence','Self_emotion_appraisal','Others_emotion_appraisal','Use_of_emotion','Regulation_of_emotion','Improvisation__Total_score','Improvisation_creativity_and_bricolage','Improvisasion_function_under_pressure___stress','Improvisation_spontaneity_and_persistence','Self_dicipline','The_Short_Dark_Triad','SImprovisasion_function_under_pressure___stress','Narcissism_related_tendencies','Psychopathy_related_tendencies'];
@@ -969,7 +972,16 @@ function savePreview()
 }
 
 function submitForm()
-{
+{	
+	document.getElementById("my_form").style.display = "none";
+	document.getElementById("form_name").style.display = "none";
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("roleNameDiv").style.display = "none";
+	document.getElementById("onetDiv").style.display = "none";
+	document.getElementById("traitsDiv").style.display = "none";
+	document.getElementById("NewRoleButton").style.display = "none";
+	document.getElementById("dataForm").style.display = "none";
+	document.getElementById("loading").style.display = "block";
 	var form = document.getElementById('dataForm');
     form.setAttribute('method', 'post');
     form.setAttribute('action', 'http://localhost:3000/addData');
