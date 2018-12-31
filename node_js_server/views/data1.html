@@ -1118,14 +1118,16 @@ function getData(role)
 	{
 		//alert(http.responseText);
 		var myData=JSON.parse(http.responseText);
-		otherColumnNames.forEach(function (columnName){
+		//alert("Working...");
+		/*otherColumnNames.forEach(function (columnName){
 			var value=myData['data'][0][columnName.toLowerCase()];
 			if(columnName=="Submission_Date"||columnName=="Date_Entered")
 			{
 				value=value.slice(0,10);
 			}
-			document.getElementsByName(columnName)[0].value=value
-			});
+			document.getElementsByName(columnName)[0].value=value;
+			});*/
+		//alert("Still working...");
 		traitNames.forEach( function(trait){
 			traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
 			traits[trait][1]=myData['data'][0][trait.toLowerCase()+"_below_average"];
@@ -1133,6 +1135,7 @@ function getData(role)
 			traits[trait][3]=myData['data'][0][trait.toLowerCase()+"_above_average"];
 			traits[trait][4]=myData['data'][0][trait.toLowerCase()+"_high"];		
 			currentTrait=trait;
+			//alert(currentTrait);
 			savePreview();
 			});
 		
