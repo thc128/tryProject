@@ -864,7 +864,7 @@ function openCSS()
 function updatePage(){
 	if(typeof(EventSource)!=="undefined") {
 	//create an object, passing it the name and location of the server side script
-	var eSource = new EventSource("http://localhost:3000");
+	var eSource = new EventSource("http://firstfirst.us.openode.io");
 	//detect message receipt
 	eSource.onmessage = function(event) {
 		//write the received data to the page
@@ -986,7 +986,7 @@ function submitForm()
 	document.getElementById("loading").style.display = "block";
 	var form = document.getElementById('dataForm');
     form.setAttribute('method', 'post');
-    form.setAttribute('action', 'http://localhost:3000/addData');
+    form.setAttribute('action', 'http://firstfirst.us.openode.io/addData');
     //form.style.display = 'hidden';
     document.body.appendChild(form);
 	form.appendChild(document.getElementById('RoleForm').myRole);

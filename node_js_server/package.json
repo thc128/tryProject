@@ -4,6 +4,7 @@
   "description": "Tableau Extension API: Write Back to Local File\r =====================================\r Created by [Andre de Vries](https://www.twitter.com/andre347_) (22nd Jan 2018)",
   "main": "index.js",
   "scripts": {
+	"start":"node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
