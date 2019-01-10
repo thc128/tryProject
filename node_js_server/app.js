@@ -36,7 +36,6 @@ app.get('/addData', async function(req, res){
 
 //
 app.post('/addData', async function(req, res){
-	res.redirect('/addData');
 	console.log('POST request made');
 	console.log(req.body);
 	console.log(req.body['myRole']);
@@ -74,6 +73,7 @@ app.post('/addData', async function(req, res){
 		console.log("returned:",result);
 	}
 	db.closeSession(client);
+	res.redirect('/addData');
 });
 
 
@@ -101,8 +101,8 @@ app.post('/roleData',async function(req, res){
  }); 
  
 
-app.listen(3000, function(){
-  console.log('Server is running on localhost:3000');
+app.listen(80, function(){
+  console.log('Server is running on localhost:80');
 });
 
 
