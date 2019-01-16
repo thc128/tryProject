@@ -70,29 +70,25 @@
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
 		var traits={};
 		traitNames.forEach(createTraitEntry);
-		var currentBlock="";
+		var currentBlock=""
+		var traitName="";
+		var blockNumber="";
 		
 		function chosenBlock(blockID)
 		{
 			if(currentBlock!="")
 			{
-				document.getElementById(currentBlock).style.borderColor="#000000";
-				document.getElementById(currentBlock).style.borderStyle="solid";
-				document.getElementById(currentBlock).style.borderWidth="1px";
+				unMarkBlock(currentBlock);
 			}
 			currentBlock=blockID;
-			document.getElementById(currentBlock).style.borderStyle="double";
-			document.getElementById(currentBlock).style.borderColor="#f48847";
-			document.getElementById(currentBlock).style.borderWidth="1px";
-			traitName=currentBlock.slice(0,-2);
-			blockNumber=currentBlock.slice(-1);
-			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="How much do you like candidates with "+traitName + blockNames[blockNumber] +" ?";
+			markBlock(currentBlock);
+			setBlockData(currentBlock);
+			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="How much do you like candidates with "+traitName + blockNames[blockNumber-1] +" ?";
 		}
 		
 		function chosenIcon(iconNumber)
 		{
-			traitName=currentBlock.slice(0,-2);
-			blockNumber=currentBlock.slice(-1);
+			setBlockData(currentBlock);
 			traits[traitName][blockNumber-1]=iconNumber;
 			document.getElementById(currentBlock).style.backgroundColor=myColors[iconNumber];
 		}
@@ -102,6 +98,27 @@
 			var myArray=[,,,,,];
 			traits[name]=myArray;
 		}
+		
+		function markBlock(blockID)
+		{
+			document.getElementById(blockID).style.borderStyle="double";
+			document.getElementById(blockID).style.borderColor="#f48847";
+			document.getElementById(blockID).style.borderWidth="1px";
+		}
+
+		function unMarkBlock(blockID)
+		{
+			document.getElementById(blockID).style.borderColor="#000000";
+			document.getElementById(blockID).style.borderStyle="solid";
+			document.getElementById(blockID).style.borderWidth="1px";
+		}
+		
+		function setBlockData(blockID)
+		{
+			traitName=blockID.slice(0,-2);
+			blockNumber=blockID.slice(-1);
+		}
+		
 	</script>
 	</body>
 </html>
