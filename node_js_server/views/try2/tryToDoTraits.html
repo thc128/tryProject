@@ -10,7 +10,16 @@
 	</style>
 	</head>
 	<body>
-	<div>
+	<div style="display:inline-block">
+	<button onclick="navigateToPage(1)">1</button>
+	<button onclick="navigateToPage(2)">2</button>
+	<button onclick="navigateToPage(3)">3</button>
+	</div>
+	<div class="pages">
+		<h1><b>First</b></h1>
+	</div>
+	<div class="pages" style="display:none">
+		<div>
 		<div style="display:inline-block">
 			<img height="100" width="100" src="important.jpg" alt="scale"/>
 		</div>
@@ -64,6 +73,11 @@
 			<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
 		</div>
 	</div>
+	
+	</div>
+	<div class="pages" style="display:none">
+		<h1><b>Third</b></h1>
+	</div>
 	<script>
 		var traitNames=['Openness','Agreeableness'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
@@ -74,6 +88,16 @@
 		var traitName="";
 		var blockNumber="";
 		
+		function navigateToPage(pageNumber)
+		{
+			var pages = document.getElementsByClassName("pages");
+			var i;
+			for (i = 0; i < pages.length; i++) 
+			{
+				pages[i].style.display = (i==pageNumber-1) ? "block" : "none";
+			}
+		}
+	
 		function chosenBlock(blockID)
 		{
 			if(currentBlock!="")
@@ -88,6 +112,8 @@
 		
 		function chosenIcon(iconNumber)
 		{
+			if (currentBlock=="")
+				return;
 			setBlockData(currentBlock);
 			traits[traitName][blockNumber-1]=iconNumber;
 			document.getElementById(currentBlock).style.backgroundColor=myColors[iconNumber];
