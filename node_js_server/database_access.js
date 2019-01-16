@@ -4,10 +4,10 @@ module.exports =
 	openSession: function(pgModule)
 	{
 		var client =new pgModule.Client({
-			user: 'ddanan',
-			host: 'rds-postgresql-10mintutorial.cwmieimhe1v4.us-east-2.rds.amazonaws.com',
-			database: 'Testing_DB',
-			password: 'DH204KY1!',
+			user: 'postgres',
+			host: 'localhost',
+			database: 'postgres',
+			password: 'Elichoref13',
 			port: 5432
 		})
 		client.connect();
