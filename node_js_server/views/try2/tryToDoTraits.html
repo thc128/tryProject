@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<title>Cyber Traits - New Role Page</title>
 	<style>
 	p,h1,h2 {
 		font-family:"Arial";	
@@ -14,7 +15,7 @@
 		outline-width:3px;
 	}
 	.input-objects {
-		display:inline-block;
+		float:left;
 		margin-right:20px;
 		margin-left:20px;
 	}
@@ -34,7 +35,7 @@
 		<h1>General Position Properties</h1>
 		<p>Section 1: General Job Description</p>
 		<form id="dataForm">
-			<div style="display:inline-block">
+			<div class="input-objects">
 				<p><b>Job ID</b></p>
 				<input name="roleID"/>
 			</div>
@@ -73,7 +74,7 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Description</b></p>
-				<input name="jobDescription" style="width:500px"></input>
+				<input name="jobDescription" style="width:400px"></input>
 				<p class="input-description">Please enter a brief job description</p>
 			</div>
 			<div class="input-objects">
@@ -98,7 +99,7 @@
 				<p class="input-description">Please select job Name</p>
 			</div>
 			<div class="input-objects">
-				<p><b>Age Preference</b></p>
+				<p><b>Date Entered</b></p>
 				<input type="datetime-local"></input>
 			</div>
 		</form>
