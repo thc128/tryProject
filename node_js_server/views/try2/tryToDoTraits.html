@@ -6,6 +6,8 @@
 		border: 1px solid black;
 		border-collapse:collapse;
 		background-color:#dcd9d9;
+		outline-color:#f48847;
+		outline-width:3px;
 	}
 	</style>
 	</head>
@@ -153,16 +155,16 @@
 		
 		function markBlock(blockID)
 		{
-			document.getElementById(blockID).style.borderStyle="double";
+			document.getElementById(blockID).style.outlineStyle="solid";
 			document.getElementById(blockID).style.borderColor="#f48847";
-			document.getElementById(blockID).style.borderWidth="1px";
+			document.getElementById(blockID).style.borderStyle="double";
 		}
 
 		function unMarkBlock(blockID)
 		{
+			document.getElementById(blockID).style.outlineStyle="none";
 			document.getElementById(blockID).style.borderColor="#000000";
 			document.getElementById(blockID).style.borderStyle="solid";
-			document.getElementById(blockID).style.borderWidth="1px";
 		}
 		
 		function setBlockData(blockID)
