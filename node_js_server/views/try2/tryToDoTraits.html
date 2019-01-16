@@ -2,7 +2,11 @@
 <html>
 	<head>
 	<style>
+	p,h1,h2{
+		font-family:"Arial";	
+	}
 	table,td {
+		font-family:"Arial";			
 		border: 1px solid black;
 		border-collapse:collapse;
 		background-color:#dcd9d9;
@@ -55,7 +59,8 @@
 			<h2>Openness</h2>
 			<p>The degree of intellectual curiosity</p>
 		</div>
-		<p style="font-size:20px"><b>Please select desiered trait score below:</b></p>
+		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.
+</b></p>
 		<table width="610">
 			<tr>
 				<td id="Openness_1" onclick="chosenBlock('Openness_1')">Click here to select the desiered trait value</td>
@@ -65,7 +70,7 @@
 				<td id="Openness_5" onclick="chosenBlock('Openness_5')">Click here to select the desiered trait value</td>
 			</tr>
 		</table>
-		<p id="OpennessCurrentBlockMessage">You need to select trait score</p>
+		<p id="OpennessCurrentBlockMessage">You need to specify a square</p>
 		<div style="display:inline-block">
 			<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
 			<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
@@ -82,7 +87,8 @@
 			<h2>Agreeableness</h2>
 			<p>The degree of bla bla bla</p>
 		</div>
-		<p style="font-size:20px"><b>Please select desiered trait score below:</b></p>
+		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.
+</b></p>
 		<table width="610">
 			<tr>
 				<td id="Agreeableness_1" onclick="chosenBlock('Agreeableness_1')">Click here to select the desiered trait value</td>
@@ -92,7 +98,7 @@
 				<td id="Agreeableness_5" onclick="chosenBlock('Agreeableness_5')">Click here to select the desiered trait value</td>
 			</tr>
 		</table>
-		<p id="AgreeablenessCurrentBlockMessage">You need to select trait score</p>
+		<p id="AgreeablenessCurrentBlockMessage">You need to specify a square</p>
 		<div style="display:inline-block">
 			<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
 			<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
@@ -130,12 +136,12 @@
 		{
 			if(currentBlock!="")
 			{
-				unMarkBlock(currentBlock);
+				unSetBlock(currentBlock);
 			}
 			currentBlock=blockID;
 			markBlock(currentBlock);
 			setBlockData(currentBlock);
-			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="How much do you like candidates with "+traitName + blockNames[blockNumber-1] +" ?";
+			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="Please select your prefered score/color for \""+traitName +" - "+ blockNames[blockNumber-1]+"\"";
 		}
 		
 		function chosenIcon(iconNumber)
@@ -165,6 +171,14 @@
 			document.getElementById(blockID).style.outlineStyle="none";
 			document.getElementById(blockID).style.borderColor="#000000";
 			document.getElementById(blockID).style.borderStyle="solid";
+			
+		}
+		
+		function unSetBlock(blockID)
+		{
+			unMarkBlock(blockID);
+			setBlockData(currentBlock);
+			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="You need to specify a square";
 		}
 		
 		function setBlockData(blockID)
