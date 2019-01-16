@@ -41,7 +41,7 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Organization Name</b></p>
-				<select size="3">
+				<select name="organizaionName" size="3" style="width:150px">
 					<option value="CBL">CBL</option>
 					<option value="JCT">JCT</option>
 					<option value="KLM">KLM</option>
@@ -52,7 +52,8 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Category</b></p>
-				<select>
+				<select name="jobCategory" id="positionCategory" oninput="chosenCategory()" style="width:150px">
+					<option hidden disabled selected>--select an option--</option>
 					<option value="aaa">aaa</option>
 					<option value="bbb">bbb</option>
 					<option value="ccc">ccc</option>
@@ -63,12 +64,7 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Name</b></p>
-				<select>
-					<option value="aaa">aaa</option>
-					<option value="bbb">bbb</option>
-					<option value="ccc">ccc</option>
-					<option value="ddd">ddd</option>
-					<option value="eee">eee</option>
+				<select name="jobName" id="positionName" style="width:150px">
 				</select>
 				<p class="input-description">Please select job Name</p>
 			</div>
@@ -105,6 +101,8 @@
 		</form>
 	</div>
 	<div name="TraitsPage" class="pages" style="display:none">
+		<h1>General Job Properties - Or how do you like your candidate for this specific job?</h1>
+		<p>Section 2: Defining Optimal Traits specifications (per the above job)</p>
 		<div>
 		<div style="display:inline-block">
 			<img height="100" width="100" src="important.jpg" alt="scale"/>
@@ -113,8 +111,7 @@
 			<h2>Openness</h2>
 			<p>The degree of intellectual curiosity</p>
 		</div>
-		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.
-</b></p>
+		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
 		<table width="610">
 			<tr>
 				<td id="Openness_1" onclick="chosenBlock('Openness_1')">Click here to select the desiered trait value</td>
@@ -133,6 +130,7 @@
 			<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
 		</div>
 	</div>
+	<hr style="border-width:3px"/>
 	<div>
 		<div style="display:inline-block">
 			<img height="100" width="100" src="important.jpg" alt="scale"/>
@@ -141,8 +139,7 @@
 			<h2>Agreeableness</h2>
 			<p>The degree of bla bla bla</p>
 		</div>
-		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.
-</b></p>
+		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
 		<table width="610">
 			<tr>
 				<td id="Agreeableness_1" onclick="chosenBlock('Agreeableness_1')">Click here to select the desiered trait value</td>
@@ -161,12 +158,12 @@
 			<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
 		</div>
 	</div>
-	
 	</div>
 	<div class="pages" style="display:none">
 		<h1><b>Third</b></h1>
 	</div>
 	<script>
+		var jobsByCategory={aaa:['adi','asaf','avi'],bbb:['beni','beri','bili'],ccc:['cali','coca','coco'],ddd:['dudi','dor','dani'],eee:['eli','efi','egi']}
 		var traitNames=['Openness','Agreeableness'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
@@ -175,6 +172,7 @@
 		var currentBlock=""
 		var traitName="";
 		var blockNumber="";
+		
 		
 		function navigateToPage(pageNumber)
 		{
@@ -186,6 +184,29 @@
 			}
 		}
 	
+		function chosenCategory()
+		{
+			categoryName=document.getElementById("positionCategory").value;
+			var jobNames=jobsByCategory[categoryName];
+			positionNames=document.getElementById("positionName");
+			if (positionNames.length>0)
+				cleanSelectObject(positionNames);
+			jobNames.forEach(addOption);
+		}
+		
+		function cleanSelectObject(selectObject)
+		{
+			while (selectObject.length>0)
+				selectObject.remove(0);
+		}
+		
+		function addOption(jobName)
+		{
+			var option = document.createElement("option");
+			option.text = jobName;
+			document.getElementById("positionName").add(option);
+		}
+		
 		function chosenBlock(blockID)
 		{
 			if(currentBlock!="")
