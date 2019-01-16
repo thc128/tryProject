@@ -14,11 +14,37 @@
 	<button onclick="navigateToPage(1)">1</button>
 	<button onclick="navigateToPage(2)">2</button>
 	<button onclick="navigateToPage(3)">3</button>
+	<button onclick="submitForm()">Submit</button>
 	</div>
-	<div class="pages">
-		<h1><b>First</b></h1>
+	<div name="MetadataPage" class="pages">
+		<form id="dataForm">
+			<div style="display:inline-block">
+				<p><b>Job ID</b></p>
+				<input name="roleID"/>
+			</div>
+			<div style="display:inline-block">
+				<p><b>Organization Name</b></p>
+				<select size="3">
+					<option value="CBL">CBL</option>
+					<option value="JCT">JCT</option>
+					<option value="KLM">KLM</option>
+					<option value="DDD">DDD</option>
+					<option value="WWW">WWW</option>
+				</select>
+			</div>
+			<div style="display:inline-block">
+				<p><b>Position (Job) Category</b></p>
+				<select>
+					<option value="aaa">aaa</option>
+					<option value="bbb">bbb</option>
+					<option value="ccc">ccc</option>
+					<option value="ddd">ddd</option>
+					<option value="eee">eee</option>
+				</select>
+			</div>
+		</form>
 	</div>
-	<div class="pages" style="display:none">
+	<div name="TraitsPage" class="pages" style="display:none">
 		<div>
 		<div style="display:inline-block">
 			<img height="100" width="100" src="important.jpg" alt="scale"/>
@@ -143,6 +169,19 @@
 		{
 			traitName=blockID.slice(0,-2);
 			blockNumber=blockID.slice(-1);
+		}
+		
+		function submitForm()
+		{
+			var form = document.getElementById('dataForm');
+			form.setAttribute('method', 'post');
+			form.setAttribute('action', '/addData');
+			var input = document.createElement("input");
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", "traits");
+			input.setAttribute("value", JSON.stringify(traits));
+			form.appendChild(input);
+			form.submit();
 		}
 		
 	</script>
