@@ -2,7 +2,7 @@
 <html>
 	<head>
 	<style>
-	p,h1,h2{
+	p,h1,h2 {
 		font-family:"Arial";	
 	}
 	table,td {
@@ -10,25 +10,35 @@
 		border: 1px solid black;
 		border-collapse:collapse;
 		background-color:#dcd9d9;
-		outline-color:#f48847;
+		outline-color:#42c0fb;
 		outline-width:3px;
+	}
+	.input-objects {
+		display:inline-block;
+		margin-right:20px;
+		margin-left:20px;
+	}
+	.input-description {
+		font-size:10px;
 	}
 	</style>
 	</head>
 	<body>
-	<div style="display:inline-block">
+	<div name="navigationButtons" style="display:inline-block">
 	<button onclick="navigateToPage(1)">1</button>
 	<button onclick="navigateToPage(2)">2</button>
 	<button onclick="navigateToPage(3)">3</button>
 	<button onclick="submitForm()">Submit</button>
 	</div>
 	<div name="MetadataPage" class="pages">
+		<h1>General Position Properties</h1>
+		<p>Section 1: General Job Description</p>
 		<form id="dataForm">
 			<div style="display:inline-block">
 				<p><b>Job ID</b></p>
 				<input name="roleID"/>
 			</div>
-			<div style="display:inline-block">
+			<div class="input-objects">
 				<p><b>Organization Name</b></p>
 				<select size="3">
 					<option value="CBL">CBL</option>
@@ -37,8 +47,9 @@
 					<option value="DDD">DDD</option>
 					<option value="WWW">WWW</option>
 				</select>
+				<p class="input-description">Please select your organization</p>
 			</div>
-			<div style="display:inline-block">
+			<div class="input-objects">
 				<p><b>Position (Job) Category</b></p>
 				<select>
 					<option value="aaa">aaa</option>
@@ -47,6 +58,48 @@
 					<option value="ddd">ddd</option>
 					<option value="eee">eee</option>
 				</select>
+				<p class="input-description">Please select job Category</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Position (Job) Name</b></p>
+				<select>
+					<option value="aaa">aaa</option>
+					<option value="bbb">bbb</option>
+					<option value="ccc">ccc</option>
+					<option value="ddd">ddd</option>
+					<option value="eee">eee</option>
+				</select>
+				<p class="input-description">Please select job Name</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Position (Job) Description</b></p>
+				<input name="jobDescription" style="width:500px"></input>
+				<p class="input-description">Please enter a brief job description</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Recruiting Department</b></p>
+				<input name="recruitingDepartment"></input>
+				<p class="input-description">Enter the Recruiting Department</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Job Placement Department</b></p>
+				<input name="jobPlacementDepartment"></input>
+				<p class="input-description">Enter the placement Department</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Gender Preference</b></p>
+				<input type="radio" name="genderPreference">Male</input><br/>
+				<input type="radio" name="genderPreference">Female</input><br/>
+				<input type="radio" name="genderPreference">No Preference</input>
+			</div>
+			<div class="input-objects">
+				<p><b>Age Preference</b></p>
+				<input name="agePreference"></input>
+				<p class="input-description">Please select job Name</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Age Preference</b></p>
+				<input type="datetime-local"></input>
 			</div>
 		</form>
 	</div>
@@ -162,7 +215,7 @@
 		function markBlock(blockID)
 		{
 			document.getElementById(blockID).style.outlineStyle="solid";
-			document.getElementById(blockID).style.borderColor="#f48847";
+			document.getElementById(blockID).style.borderColor="#42c0fb";
 			document.getElementById(blockID).style.borderStyle="double";
 		}
 
