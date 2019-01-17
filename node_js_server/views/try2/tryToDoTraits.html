@@ -37,7 +37,7 @@
 		<form id="dataForm">
 			<div class="input-objects">
 				<p><b>Job ID</b></p>
-				<input name="roleID"/>
+				<input name="Job_ID"/>
 			</div>
 			<div class="input-objects">
 				<p><b>Organization Name</b></p>
@@ -52,51 +52,46 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Category</b></p>
-				<select name="jobCategory" id="positionCategory" oninput="chosenCategory()" style="width:150px">
+				<select name="Job_Category" id="positionCategory" oninput="chosenCategory()" style="width:150px">
 					<option hidden disabled selected>--select an option--</option>
-					<option value="aaa">aaa</option>
-					<option value="bbb">bbb</option>
-					<option value="ccc">ccc</option>
-					<option value="ddd">ddd</option>
-					<option value="eee">eee</option>
 				</select>
 				<p class="input-description">Please select job Category</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Name</b></p>
-				<select name="jobName" id="positionName" style="width:150px">
+				<select name="Job_Name" id="positionName" style="width:150px">
 				</select>
 				<p class="input-description">Please select job Name</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Description</b></p>
-				<input name="jobDescription" style="width:400px"></input>
+				<input name="Job_Description" style="width:400px"></input>
 				<p class="input-description">Please enter a brief job description</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Recruiting Department</b></p>
-				<input name="recruitingDepartment"></input>
+				<input name="Reqruting_entity"></input>
 				<p class="input-description">Enter the Recruiting Department</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Job Placement Department</b></p>
-				<input name="jobPlacementDepartment"></input>
+				<input name="Job_Department"></input>
 				<p class="input-description">Enter the placement Department</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Gender Preference</b></p>
-				<input type="radio" name="genderPreference">Male</input><br/>
-				<input type="radio" name="genderPreference">Female</input><br/>
-				<input type="radio" name="genderPreference">No Preference</input>
+				<input type="radio" name="Gender_Preference">Male</input><br/>
+				<input type="radio" name="Gender_Preference">Female</input><br/>
+				<input type="radio" name="Gender_Preference">No Preference</input>
 			</div>
 			<div class="input-objects">
 				<p><b>Age Preference</b></p>
-				<input name="agePreference"></input>
+				<input name="Age_Preferences"></input>
 				<p class="input-description">Please select job Name</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Date Entered</b></p>
-				<input type="datetime-local"></input>
+				<input name="Date_Entered" type="datetime-local"></input>
 			</div>
 		</form>
 	</div>
@@ -167,6 +162,8 @@
 		var traitNames=['Openness','Agreeableness'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
+		var categoryNames=Object.keys(jobsByCategory);
+		addOptions(categoryNames,"positionCategory");
 		var traits={};
 		traitNames.forEach(createTraitEntry);
 		var currentBlock=""
@@ -188,10 +185,10 @@
 		{
 			categoryName=document.getElementById("positionCategory").value;
 			var jobNames=jobsByCategory[categoryName];
-			positionNames=document.getElementById("positionName");
+			var positionNames=document.getElementById("positionName");
 			if (positionNames.length>0)
 				cleanSelectObject(positionNames);
-			jobNames.forEach(addOption);
+			addOptions(jobNames,"positionName")
 		}
 		
 		function cleanSelectObject(selectObject)
@@ -200,13 +197,16 @@
 				selectObject.remove(0);
 		}
 		
-		function addOption(jobName)
+		function addOptions(optionsList,selectObjectID)
 		{
-			var option = document.createElement("option");
-			option.text = jobName;
-			document.getElementById("positionName").add(option);
+			var selectObject=document.getElementById(selectObjectID);
+			optionsList.forEach((option)=>{
+				optionObject = document.createElement("option");
+				optionObject.text = option;
+				selectObject.add(optionObject);	
+			});
 		}
-		
+				
 		function chosenBlock(blockID)
 		{
 			if(currentBlock!="")
