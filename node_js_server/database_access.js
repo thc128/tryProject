@@ -83,6 +83,28 @@ module.exports =
 		return data;
 	},
 	
+	jobsData: async function(client)
+	{
+		myQuery="SELECT * FROM jobs;";
+		var data={}
+		console.log(myQuery);
+		await client.query(myQuery)
+		.then( async res => 
+		{
+		    for (i=0;i<res.rows.length;i++)
+			{
+				jobName=res.rows[i]['position_name'];
+				jobID=res.rows[i]['position_code'];
+				category=res.rows[i]['position_category']
+				if (data[category]==null)
+					data[category]={};
+				data[category][jobID]=jobName;
+			}
+		}	)
+		.catch(async e => {data=e.stack;})
+		return data;
+	},
+	
 	getRoleData:async function(client,currentRole)
 	{
 		var result=null;

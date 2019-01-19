@@ -26,13 +26,14 @@ app.get('/', function(req, res) {
 
 //import the page thus user request
 app.get('/addData', async function(req, res){
-	//var client =db.openSession(pg);
-	var myData=[]
-	//myData=myData.concat(await db.job_name(client));
-	//console.log("Jobs:",myData);
-	res.render('try2/tryToDoTraits.html', {products: myData});
+	var client =db.openSession(pg);
+	var myData=[];
+	myData=await db.jobsData(client);
+	console.log(myData);
+	console.log(typeof myData);
+	res.render('try2/tryToDoTraits.html', {categories: myData});
 	console.log('GET request with params made');
-	//db.closeSession(client);
+	db.closeSession(client);
 });
 	
 

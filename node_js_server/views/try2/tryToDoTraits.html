@@ -158,10 +158,11 @@
 		<h1><b>Third</b></h1>
 	</div>
 	<script>
-		var jobsByCategory={aaa:['adi','asaf','avi'],bbb:['beni','beri','bili'],ccc:['cali','coca','coco'],ddd:['dudi','dor','dani'],eee:['eli','efi','egi']}
+		var jobsByCategory = <%- JSON.stringify(categories) %>;
 		var traitNames=['Openness','Agreeableness'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
+		refineCategoryNames();
 		var categoryNames=Object.keys(jobsByCategory);
 		addOptions(categoryNames,"positionCategory");
 		var traits={};
@@ -181,10 +182,19 @@
 			}
 		}
 	
+		function refineCategoryNames()
+		{
+			Object.keys(jobsByCategory).forEach((key)=>{
+				newKey=key.trim();
+				jobsByCategory[newKey]=jobsByCategory[key];
+				delete jobsByCategory[key];
+			});
+		}
+		
 		function chosenCategory()
 		{
 			categoryName=document.getElementById("positionCategory").value;
-			var jobNames=jobsByCategory[categoryName];
+			var jobNames=Object.values(jobsByCategory[categoryName]);
 			var positionNames=document.getElementById("positionName");
 			if (positionNames.length>0)
 				cleanSelectObject(positionNames);
