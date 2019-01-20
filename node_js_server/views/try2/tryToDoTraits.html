@@ -37,7 +37,7 @@
 		<form id="dataForm">
 			<div class="input-objects">
 				<p><b>Job ID</b></p>
-				<input name="Job_ID"/>
+				<input id="positionID" name="Job_ID" disabled/>
 			</div>
 			<div class="input-objects">
 				<p><b>Organization Name</b></p>
@@ -59,7 +59,8 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Name</b></p>
-				<select name="Job_Name" id="positionName" style="width:150px">
+				<select name="Job_Name" id="positionName" oninput="chosenName()" style="width:150px">
+					<option hidden disabled selected>--Please select category--</option>
 				</select>
 				<p class="input-description">Please select job Name</p>
 			</div>
@@ -164,7 +165,7 @@
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
 		refineCategoryNames();
 		var categoryNames=Object.keys(jobsByCategory);
-		addOptions(categoryNames,"positionCategory");
+		addOptionsFromList(categoryNames,"positionCategory");
 		var traits={};
 		traitNames.forEach(createTraitEntry);
 		var currentBlock=""
@@ -194,20 +195,33 @@
 		function chosenCategory()
 		{
 			categoryName=document.getElementById("positionCategory").value;
-			var jobNames=Object.values(jobsByCategory[categoryName]);
+			var jobNames=jobsByCategory[categoryName];
 			var positionNames=document.getElementById("positionName");
 			if (positionNames.length>0)
 				cleanSelectObject(positionNames);
-			addOptions(jobNames,"positionName")
+			addOptionsFromObject(jobNames,"positionName");
 		}
+		
+		function chosenName()
+		{
+			positionID=document.getElementById("positionName").selectedOptions[0].id;
+			document.getElementById("positionID").value=positionID;
+		}
+		
 		
 		function cleanSelectObject(selectObject)
 		{
 			while (selectObject.length>0)
 				selectObject.remove(0);
+			optionObject=document.createElement("option");
+			optionObject.text="--select an option--";
+			optionObject.hidden=true;
+			optionObject.disabled=true;
+			optionObject.selected=true;
+			selectObject.add(optionObject);
 		}
 		
-		function addOptions(optionsList,selectObjectID)
+		function addOptionsFromList(optionsList,selectObjectID)
 		{
 			var selectObject=document.getElementById(selectObjectID);
 			optionsList.forEach((option)=>{
@@ -215,6 +229,19 @@
 				optionObject.text = option;
 				selectObject.add(optionObject);	
 			});
+		}
+		
+		function addOptionsFromObject(optionsListObject,selectObjectID)
+		{
+			var selectObject=document.getElementById(selectObjectID);
+			Object.keys(optionsListObject).forEach((key)=>{
+				optionObject = document.createElement("option");
+				optionObject.id=key;
+				optionObject.text = optionsListObject[key];
+				selectObject.add(optionObject);
+			});
+
+		
 		}
 				
 		function chosenBlock(blockID)
