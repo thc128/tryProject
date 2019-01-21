@@ -41,9 +41,7 @@ module.exports =
 	},
 	pushOtherColumns: async function(pgclient,values,roleName)
 	{
-		var queryString="UPDATE traits SET Submission_Date = $1 , Job_Description = $2 , Job_Category = $3 , Reqruting_entity = $4 ,\
-		Job_Department = $5 , Note = $6 , Gender_Preference = $7 , Age_Preferences = $8 , Date_Entered = $9 , Trait_range_table_ID = $10 \
-		WHERE Job_Name = $11;"
+		var queryString="UPDATE traits SET Submission_Date = $1 , Job_Description = $2 , Job_Category = $3 , Reqruting_entity = $4 ,Job_Department = $5 , Note = $6 , Gender_Preference = $7 , Age_Preferences = $8 , Date_Entered = $9 WHERE Job_Name = $10;"
 		var queryValues=values.concat([roleName]);
 		queryValues.forEach(assume);
 		var result=null;
