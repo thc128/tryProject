@@ -60,7 +60,7 @@
 			<div class="input-objects">
 				<p><b>Position (Job) Name</b></p>
 				<select name="Job_Name" id="positionName" oninput="chosenName()" style="width:150px">
-					<option hidden disabled selected>--Please select category--</option>
+					<option id="JobNameOption" hidden disabled selected>--Please select category--</option>
 				</select>
 				<p class="input-description">Please select job Name</p>
 			</div>
@@ -197,8 +197,10 @@
 			categoryName=document.getElementById("positionCategory").value;
 			var jobNames=jobsByCategory[categoryName];
 			var positionNames=document.getElementById("positionName");
-			if (positionNames.length>0)
+			if (positionNames.length>1)
 				cleanSelectObject(positionNames);
+			else
+				document.getElementById("JobNameOption").text="--select an option--";
 			addOptionsFromObject(jobNames,"positionName");
 		}
 		
@@ -211,14 +213,8 @@
 		
 		function cleanSelectObject(selectObject)
 		{
-			while (selectObject.length>0)
-				selectObject.remove(0);
-			optionObject=document.createElement("option");
-			optionObject.text="--select an option--";
-			optionObject.hidden=true;
-			optionObject.disabled=true;
-			optionObject.selected=true;
-			selectObject.add(optionObject);
+			while (selectObject.length>1)
+				selectObject.remove(1);
 		}
 		
 		function addOptionsFromList(optionsList,selectObjectID)
