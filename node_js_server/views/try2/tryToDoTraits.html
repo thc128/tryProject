@@ -22,6 +22,9 @@
 	.input-description {
 		font-size:10px;
 	}
+	.input-no-change{
+		background-color:#dcd9d9;
+	}
 	</style>
 	</head>
 	<body>
@@ -37,18 +40,11 @@
 		<form id="dataForm">
 			<div class="input-objects">
 				<p><b>Job ID</b></p>
-				<input id="positionID" name="Job_ID" readonly/>
+				<input id="positionID" class="input-no-change" name="Job_ID" readonly/>
 			</div>
 			<div class="input-objects">
 				<p><b>Organization Name</b></p>
-				<select name="organizaionName" size="3" style="width:150px">
-					<option value="CBL">CBL</option>
-					<option value="JCT">JCT</option>
-					<option value="KLM">KLM</option>
-					<option value="DDD">DDD</option>
-					<option value="WWW">WWW</option>
-				</select>
-				<p class="input-description">Please select your organization</p>
+				<input  name="organizationName" class="input-no-change" style="width:150px" value="Maccabi" readonly/>
 			</div>
 			<div class="input-objects">
 				<p><b>Position (Job) Category</b></p>
@@ -156,7 +152,7 @@
 	</div>
 	</div>
 	<div class="pages" style="display:none">
-		<h1><b>Third</b></h1>
+		<h1><b>This page is still in work. Please click the Submit button</b></h1>
 	</div>
 	<script>
 		var jobsByCategory = <%- JSON.stringify(categories) %>;
@@ -223,7 +219,7 @@
 				console.log(myData);
 				otherColumnNames.forEach(function (columnName){
 					console.log(columnName);
-					if (columnName=="Submission_Date"||columnName=="Note")
+					if (columnName=="Submission_Date"||columnName=="Note"||columnName=="Job_Category"||columnName=="Job_Name")
 						return;
 					console.log("working...");
 					var value=myData['data'][0][columnName.toLowerCase()];
