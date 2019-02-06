@@ -1,0 +1,58 @@
+CREATE TABLE jobs_catalog_table(
+jobs_catalog_id char(10) NOT NULL PRIMARY KEY,
+trait_range_and_specific_job_information_id int4,
+cpa_job_template_id int4,
+organizational_units_information_id int4,
+job_name varchar(256),
+Job_Category_name varchar(255),
+Job_Category_id int4,
+Job_Description varchar(1000),
+notes varchar,
+date_entered timestamp,
+onet bool
+);
+
+INSERT INTO jobs_catalog_table (job_name,jobs_catalog_id,Job_Category_name,Job_Category_id/*,onet*/) VALUES ($1,$2,$3,$4/*,False*/);
+SELECT jobs_catalog_id,job_name,Job_Category_name FROM jobs_catalog_table;
+UPDATE jobs_catalog_table SET Job_Description = $1 , Job_Category = $2 /*, Reqruting_entity = $4 ,Job_Department = $5*/ , Note = $3 /*, Gender_Preference = $7 , Age_Preferences = $8*/ , Date_Entered = $4 WHERE Job_Name = $5;
+
+CREATE TABLE organizational_units_information_table(
+organizational_units_information_id int4 NOT NULL PRIMARY KEY,
+organization_id int4 NOT NULL,
+job_department varchar,
+recruiting_entity varchar
+organizationes_table_organization_id int4,
+Organization_name varchar(255),
+note varchar,
+date_entered timestamp
+);
+
+CREATE TABLE trait_range_per_job(
+jobform_unique_job_information_submission_id int4,
+jobs_catalog_id char(10),
+trait_low int4,
+trait_below_average int4,
+trait_average int4,
+trait_above_average int4,
+trait_high int4,
+trait_name varchar NOT NULL,
+traits_metadata_catalog_id varchar(32)
+);
+
+UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5 WHERE jobs_catalog_id = $6 AND trait_name= $7;
+INSERT INTO trait_range_per_job (trait_low, trait_below_average, trait_average, trait_above_average ,trait_high, jobs_catalog_id, trait_name) VALUES($1,$2,$3,$4,$5,$6,$7);
+
+SELECT * FROM trait_range_per_job WHERE jobs_catalog_id=$1;
+SELECT * FROM jobs_catalog_table WHERE jobs_catalog_id=$1;
+
+Gender_Preference char(20),
+Age_Preferences char(10),
+jobs_catalog_id char(10) NOT NULL PRIMARY KEY,
+								  ^^^^^^^^^^^ 	
+Job_Category_id int4, >> char?
+trait_range_and_specific_jot_information_id
+                         job   
+						 
+reqruiting_entity varchar
+  ^
+recruiting?

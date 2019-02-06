@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Cyber Traits - New Role Page</title>
+	<style>
+	p,h1,h2 {
+		font-family:"Arial";	
+	}
+	table,td {
+		font-family:"Arial";			
+		border: 1px solid black;
+		border-collapse:collapse;
+		background-color:#dcd9d9;
+		outline-color:#42c0fb;
+		outline-width:3px;
+	}
+	.input-objects {
+		float:left;
+		margin-right:20px;
+		margin-left:20px;
+	}
+	.input-description {
+		font-size:10px;
+	}
+	.input-no-change{
+		background-color:#dcd9d9;
+	}
+	</style>
+	</head>
+	<body>
+	<div name="navigationButtons" style="display:inline-block">
+	<button onclick="navigateToPage(1)">1</button>
+	<button onclick="navigateToPage(2)">2</button>
+	<button onclick="navigateToPage(3)">3</button>
+	<button onclick="submitForm()">Submit</button>
+	</div>
+	<div name="MetadataPage" class="pages">
+		<h1>General Position Properties</h1>
+		<p>Section 1: General Job Description</p>
+		<form id="dataForm">
+			<div class="input-objects">
+				<p><b>Job ID</b></p>
+				<input id="positionID" class="input-no-change" name="Job_ID" readonly/>
+			</div>
+			<div class="input-objects">
+				<p><b>Organization Name</b></p>
+				<input  name="organizationName" class="input-no-change" style="width:150px" value="Maccabi" readonly/>
+			</div>
+			<div class="input-objects">
+				<p><b>Position (Job) Category</b></p>
+				<select name="Job_Category" id="positionCategory" oninput="chosenCategory()" style="width:150px">
+					<option hidden disabled selected>--select an option--</option>
+				</select>
+				<p class="input-description">Please select job Category</p>
+			</div>
+			<div class="input-objects">
+				<button type="button" onclick="openNewPositionNameDiv()">Add new position name</button>
+				<br/>
+				<br/>
+				<div id="newPositionNameDiv" style="display:none">
+					<input id="newPositionName" style="width:150px"/>
+					<button type="button" onclick="addNewPositionName()">Add</button>
+				</div>
+				<p id="addedSuccessfully" style="display:none;font-size:10px;color:green">New position name added successfully!!!</p>
+				<p><b>Position (Job) Name</b></p>
+				<select name="Job_Name" id="positionName" oninput="chosenName()" style="width:150px">
+					<option id="JobNameOption" hidden disabled selected>--Please select category--</option>
+				</select>
+				<p class="input-description">Please select job Name</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Position (Job) Description</b></p>
+				<input name="Job_Description" style="width:400px"></input>
+				<p class="input-description">Please enter a brief job description</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Recruiting Department</b></p>
+				<input name="Reqruting_Entity"></input>
+				<p class="input-description">Enter the Recruiting Department</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Job Placement Department</b></p>
+				<input name="Job_Department"></input>
+				<p class="input-description">Enter the placement Department</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Gender Preference</b></p>
+				<input type="radio" name="Gender_Preference">Male</input><br/>
+				<input type="radio" name="Gender_Preference">Female</input><br/>
+				<input type="radio" name="Gender_Preference">No Preference</input>
+			</div>
+			<div class="input-objects">
+				<p><b>Age Preference</b></p>
+				<input name="Age_Preferences"></input>
+				<p class="input-description">Please select job Name</p>
+			</div>
+			<div class="input-objects">
+				<p><b>Date Entered</b></p>
+				<input name="Date_Entered" type="datetime-local"></input>
+			</div>
+		</form>
+	</div>
+	<div name="TraitsPage" class="pages" style="display:none">
+		<h1>General Job Properties - Or how do you like your candidate for this specific job?</h1>
+		<p>Section 2: Defining Optimal Traits specifications (per the above job)</p>
+		<div>
+		<div style="display:inline-block">
+			<img height="100" width="100" src="important.jpg" alt="scale"/>
+		</div>
+		<div style="display:inline-block">
+			<h2>Openness</h2>
+			<p>The degree of intellectual curiosity</p>
+		</div>
+		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+		<table width="610">
+			<tr>
+				<td id="Openness_1" onclick="chosenBlock('Openness_1')">Click here to select the desiered trait value</td>
+				<td id="Openness_2" onclick="chosenBlock('Openness_2')">Click here to select the desiered trait value</td>
+				<td id="Openness_3" onclick="chosenBlock('Openness_3')">Click here to select the desiered trait value</td>
+				<td id="Openness_4" onclick="chosenBlock('Openness_4')">Click here to select the desiered trait value</td>
+				<td id="Openness_5" onclick="chosenBlock('Openness_5')">Click here to select the desiered trait value</td>
+			</tr>
+		</table>
+		<p id="OpennessCurrentBlockMessage">You need to specify a square</p>
+		<div style="display:inline-block">
+			<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+			<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+			<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+			<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+			<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+		</div>
+	</div>
+	<hr style="border-width:3px"/>
+	<div>
+		<div style="display:inline-block">
+			<img height="100" width="100" src="important.jpg" alt="scale"/>
+		</div>
+		<div style="display:inline-block">
+			<h2>Agreeableness</h2>
+			<p>The degree of bla bla bla</p>
+		</div>
+		<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+		<table width="610">
+			<tr>
+				<td id="Agreeableness_1" onclick="chosenBlock('Agreeableness_1')">Click here to select the desiered trait value</td>
+				<td id="Agreeableness_2" onclick="chosenBlock('Agreeableness_2')">Click here to select the desiered trait value</td>
+				<td id="Agreeableness_3" onclick="chosenBlock('Agreeableness_3')">Click here to select the desiered trait value</td>
+				<td id="Agreeableness_4" onclick="chosenBlock('Agreeableness_4')">Click here to select the desiered trait value</td>
+				<td id="Agreeableness_5" onclick="chosenBlock('Agreeableness_5')">Click here to select the desiered trait value</td>
+			</tr>
+		</table>
+		<p id="AgreeablenessCurrentBlockMessage">You need to specify a square</p>
+		<div style="display:inline-block">
+			<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+			<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+			<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+			<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+			<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+		</div>
+	</div>
+	</div>
+	<div class="pages" style="display:none">
+		<h1><b>This page is still in work. Please click the Submit button</b></h1>
+	</div>
+	<script>
+		var jobsByCategory = <%- JSON.stringify(categories) %>;
+		var traitNames=['Openness','Agreeableness'];
+		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Note','Gender_Preference','Age_Preferences','Date_Entered'];
+		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
+		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
+		refineCategoryNames();
+		var categoryNames=Object.keys(jobsByCategory);
+		addOptionsFromList(categoryNames,"positionCategory");
+		var traits={};
+		traitNames.forEach(createTraitEntry);
+		var currentBlock=""
+		var traitName="";
+		var blockNumber="";
+		
+		//navigation functions
+		function navigateToPage(pageNumber)
+		{
+			var pages = document.getElementsByClassName("pages");
+			var i;
+			for (i = 0; i < pages.length; i++) 
+			{
+				pages[i].style.display = (i==pageNumber-1) ? "block" : "none";
+			}
+		}
+		
+		//metadata page functions
+		function refineCategoryNames()
+		{
+			Object.keys(jobsByCategory).forEach((key)=>{
+				newKey=key.trim();
+				jobsByCategory[newKey]=jobsByCategory[key];
+				delete jobsByCategory[key];
+			});
+		}
+		
+		function chosenCategory()
+		{
+			categoryName=document.getElementById("positionCategory").value;
+			var jobNames=jobsByCategory[categoryName];
+			var positionNames=document.getElementById("positionName");
+			if (positionNames.length>1)
+				cleanSelectObject(positionNames);
+			else
+				document.getElementById("JobNameOption").text="--select an option--";
+			addOptionsFromObject(jobNames,"positionName");
+		}
+		
+		function chosenName()
+		{
+			positionName=document.getElementById("positionName").selectedOptions[0].text;
+			console.log(positionName);
+			positionID=document.getElementById("positionName").selectedOptions[0].id;
+			document.getElementById("positionID").value=positionID;
+			var http = new XMLHttpRequest();
+			http.open("POST",'/roleData', true);
+			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			var params="role=" + JSON.stringify(positionName);
+			http.send(params);
+			console.log(params);
+			http.onload=function()
+			{
+				var myData=JSON.parse(http.responseText);
+				console.log(myData);
+				otherColumnNames.forEach(function (columnName){
+					console.log(columnName);
+					if (columnName=="Submission_Date"||columnName=="Note"||columnName=="Job_Category"||columnName=="Job_Name")
+						return;
+					console.log("working...");
+					var value=myData['data'][0][columnName.toLowerCase()];
+					console.log(value)
+					document.getElementsByName(columnName)[0].value=value;
+					});
+				traitNames.forEach( function(trait){
+					console.log(myData['data'][0]);
+					traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
+					traits[trait][1]=myData['data'][0][trait.toLowerCase()+"_below_average"];
+					traits[trait][2]=myData['data'][0][trait.toLowerCase()+"_average"];
+					traits[trait][3]=myData['data'][0][trait.toLowerCase()+"_above_average"];
+					traits[trait][4]=myData['data'][0][trait.toLowerCase()+"_high"];		
+					document.getElementById(trait+"_1").style.backgroundColor=myColors[traits[trait][0]];
+					document.getElementById(trait+"_2").style.backgroundColor=myColors[traits[trait][1]];
+					document.getElementById(trait+"_3").style.backgroundColor=myColors[traits[trait][2]];
+					document.getElementById(trait+"_4").style.backgroundColor=myColors[traits[trait][3]];
+					document.getElementById(trait+"_5").style.backgroundColor=myColors[traits[trait][4]];
+
+					});
+			
+			}
+		}
+		
+		
+		function cleanSelectObject(selectObject)
+		{
+			while (selectObject.length>1)
+				selectObject.remove(1);
+		}
+		
+		function addOptionsFromList(optionsList,selectObjectID)
+		{
+			var selectObject=document.getElementById(selectObjectID);
+			optionsList.forEach((option)=>{
+				optionObject = document.createElement("option");
+				optionObject.text = option;
+				selectObject.add(optionObject);	
+			});
+		}
+		
+		function addOptionsFromObject(optionsListObject,selectObjectID)
+		{
+			var selectObject=document.getElementById(selectObjectID);
+			Object.keys(optionsListObject).forEach((key)=>{
+				optionObject = document.createElement("option");
+				optionObject.id=key;
+				optionObject.text = optionsListObject[key];
+				selectObject.add(optionObject);
+			});
+
+		
+		}
+		
+		function openNewPositionNameDiv()
+		{
+			console.log("working on it");
+			document.getElementById("newPositionNameDiv").style.display="block";
+		}
+		
+		function addNewPositionName()
+		{
+			var newNameInput=document.getElementById("newPositionName");
+			var newName= newNameInput.value;
+			newNameInput.value="";
+			document.getElementById("newPositionNameDiv").style.display="none";
+			var http = new XMLHttpRequest();
+			http.open("POST",'/addName', true);
+			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			var params="name=" + JSON.stringify(newName);
+			http.send(params);
+			console.log(params);
+			http.onload=function()
+			{
+				var response=JSON.parse(http.responseText);
+				console.log(response);
+				if(response.result=="INSERT")
+				{
+					document.getElementById("addedSuccessfully").style.display="block";
+					setTimeout(function(){document.getElementById("addedSuccessfully").style.display="none";}, 5000);
+				}
+			}
+		}
+		
+		//traits page functions
+		function chosenBlock(blockID)
+		{
+			if(currentBlock!="")
+			{
+				unSetBlock(currentBlock);
+			}
+			currentBlock=blockID;
+			markBlock(currentBlock);
+			setBlockData(currentBlock);
+			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="Please select your prefered score/color for \""+traitName +" - "+ blockNames[blockNumber-1]+"\"";
+		}
+		
+		function chosenIcon(iconNumber)
+		{
+			if (currentBlock=="")
+				return;
+			setBlockData(currentBlock);
+			traits[traitName][blockNumber-1]=iconNumber;
+			document.getElementById(currentBlock).style.backgroundColor=myColors[iconNumber];
+		}
+		
+		function createTraitEntry(name)
+		{	
+			var myArray=[,,,,,];
+			traits[name]=myArray;
+		}
+		
+		function markBlock(blockID)
+		{
+			document.getElementById(blockID).style.outlineStyle="solid";
+			document.getElementById(blockID).style.borderColor="#42c0fb";
+			document.getElementById(blockID).style.borderStyle="double";
+		}
+
+		function unMarkBlock(blockID)
+		{
+			document.getElementById(blockID).style.outlineStyle="none";
+			document.getElementById(blockID).style.borderColor="#000000";
+			document.getElementById(blockID).style.borderStyle="solid";
+			
+		}
+		
+		function unSetBlock(blockID)
+		{
+			unMarkBlock(blockID);
+			setBlockData(currentBlock);
+			document.getElementById(traitName+"CurrentBlockMessage").innerHTML="You need to specify a square";
+		}
+		
+		function setBlockData(blockID)
+		{
+			traitName=blockID.slice(0,-2);
+			blockNumber=blockID.slice(-1);
+		}
+		
+		//submit function
+		function submitForm()
+		{
+			var form = document.getElementById('dataForm');
+			form.setAttribute('method', 'post');
+			form.setAttribute('action', '/addData');
+			var input = document.createElement("input");
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", "traits");
+			input.setAttribute("value", JSON.stringify(traits));
+			form.appendChild(input);
+			form.submit();
+		}
+		
+	</script>
+	</body>
+</html>
