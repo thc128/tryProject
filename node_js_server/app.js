@@ -99,11 +99,21 @@ app.post('/roleData',async function(req, res){
 	}
 	res.send({data:myData,OnetData:onetData});
 	db.closeSession(client);
-	
-  
  }); 
  
 
+app.post('/addName',async function(req, res){
+	console.log("New Name");
+	console.log(req.body);
+	console.log('POST request made');
+	var client = db.openSession(pg)
+	var myNewName=req.body.name.slice(1,-1);
+	var result=await db.addNewRole(client,myNewName);
+	console.log({"Result":result});
+	res.send({result:result});
+	db.closeSession(client);
+ });  
+ 
 app.listen(80, function(){
   console.log('Server is running on localhost:80');
 });

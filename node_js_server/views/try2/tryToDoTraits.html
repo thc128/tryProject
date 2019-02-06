@@ -54,8 +54,14 @@
 				<p class="input-description">Please select job Category</p>
 			</div>
 			<div class="input-objects">
-				<button>Add new position name</button>
-				<input />
+				<button type="button" onclick="openNewPositionNameDiv()">Add new position name</button>
+				<br/>
+				<br/>
+				<div id="newPositionNameDiv" style="display:none">
+					<input id="newPositionName" style="width:150px"/>
+					<button type="button" onclick="addNewPositionName()">Add</button>
+				</div>
+				<p id="addedSuccessfully" style="display:none;font-size:10px;color:green">New position name added successfully!!!</p>
 				<p><b>Position (Job) Name</b></p>
 				<select name="Job_Name" id="positionName" oninput="chosenName()" style="width:150px">
 					<option id="JobNameOption" hidden disabled selected>--Please select category--</option>
@@ -171,7 +177,7 @@
 		var traitName="";
 		var blockNumber="";
 		
-		
+		//navigation functions
 		function navigateToPage(pageNumber)
 		{
 			var pages = document.getElementsByClassName("pages");
@@ -181,7 +187,8 @@
 				pages[i].style.display = (i==pageNumber-1) ? "block" : "none";
 			}
 		}
-	
+		
+		//metadata page functions
 		function refineCategoryNames()
 		{
 			Object.keys(jobsByCategory).forEach((key)=>{
@@ -275,7 +282,38 @@
 
 		
 		}
-				
+		
+		function openNewPositionNameDiv()
+		{
+			console.log("working on it");
+			document.getElementById("newPositionNameDiv").style.display="block";
+		}
+		
+		function addNewPositionName()
+		{
+			var newNameInput=document.getElementById("newPositionName");
+			var newName= newNameInput.value;
+			newNameInput.value="";
+			document.getElementById("newPositionNameDiv").style.display="none";
+			var http = new XMLHttpRequest();
+			http.open("POST",'/addName', true);
+			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			var params="name=" + JSON.stringify(newName);
+			http.send(params);
+			console.log(params);
+			http.onload=function()
+			{
+				var response=JSON.parse(http.responseText);
+				console.log(response);
+				if(response.result=="INSERT")
+				{
+					document.getElementById("addedSuccessfully").style.display="block";
+					setTimeout(function(){document.getElementById("addedSuccessfully").style.display="none";}, 5000);
+				}
+			}
+		}
+		
+		//traits page functions
 		function chosenBlock(blockID)
 		{
 			if(currentBlock!="")
@@ -331,6 +369,7 @@
 			blockNumber=blockID.slice(-1);
 		}
 		
+		//submit function
 		function submitForm()
 		{
 			var form = document.getElementById('dataForm');
