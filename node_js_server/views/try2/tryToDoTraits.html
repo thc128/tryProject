@@ -318,13 +318,15 @@
 			var newNameInput=document.getElementById("newPositionName");
 			var newName= newNameInput.value;
 			categoryName=document.getElementById("positionCategory").value;
+			categoryID=jobsByCategory[categoryName]['ID'];
+			categoryLength=Object.keys(jobsByCategory[categoryName]['Jobs']).length;
+			var newJobID=jobsByCategory[categoryName]['ID']+'-0'+JSON.stringify(categoryLength+1);
 			newNameInput.value="";
 			document.getElementById("newPositionNameDiv").style.display="none";
 			var http = new XMLHttpRequest();
 			http.open("POST",'/addName', true);
 			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var params="roleName=" + JSON.stringify(newName);
-			var params="categoryName=" + JSON.stringify(categoryName);
+			var params="roleName=" + JSON.stringify(newName)+"&roleID=" + newJobID+"&categoryName=" + JSON.stringify(categoryName)+"&categoryID=" + categoryID;
 			http.send(params);
 			console.log(params);
 			http.onload=function()

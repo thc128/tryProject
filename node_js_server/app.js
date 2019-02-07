@@ -107,8 +107,11 @@ app.post('/addName',async function(req, res){
 	console.log(req.body);
 	console.log('POST request made');
 	var client = db.openSession(pg)
-	var myNewName=req.body.name.slice(1,-1);
-	var result=await db.addNewRole(client,myNewName);
+	var myNewName=req.body.roleName.slice(1,-1);
+	var myNewID=req.body.roleID.slice(1,-1);
+	var categoryName=req.body.categoryName.slice(1,-1);
+	var categoryID=req.body.categoryID.slice(1,-1);
+	var result=await db.addNewRole(client,myNewName,myNewID,categoryName,categoryID);
 	console.log({"Result":result});
 	res.send({result:result});
 	db.closeSession(client);
