@@ -58,10 +58,11 @@ module.exports =
 		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],jobID,traitName];
 		queryValues.forEach(assume);
 		var result=null;
+		var count=null;
 		await pgclient.query(updateQueryString,queryValues)
-		.then(async res => {result=res.command;})
+		.then(async res => {result=res.command;count=res.rowCount;})
 		.catch(async e => {result=e.stack;})
-		if(result=="UPDATE 0")
+		if(count==0)
 		{
 			await pgclient.query(insertQueryString,queryValues)
 			.then(async res => {result=res.command;})
