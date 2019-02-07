@@ -239,6 +239,15 @@
 					});
 				myData.reverse().pop();
 				myData.reverse();
+				traitNames.forEach( function(traitName){
+					console.log(traitName);
+					console.log("clear");
+					traits[traitName][0]=0;
+					traits[traitName][1]=0;
+					traits[traitName][2]=0;
+					traits[traitName][3]=0;
+					traits[traitName][4]=0;
+				});
 				myData.forEach( function(trait){
 					console.log(trait);
 					var traitName=trait['trait_name'];
@@ -247,6 +256,10 @@
 					traits[traitName][2]=trait['trait_average'];
 					traits[traitName][3]=trait['trait_above_average'];
 					traits[traitName][4]=trait['trait_high'];
+				});
+				traitNames.forEach( function(traitName){
+					console.log(traitName);
+					console.log("paint");
 					document.getElementById(traitName+"_1").style.backgroundColor=myColors[traits[traitName][0]];
 					document.getElementById(traitName+"_2").style.backgroundColor=myColors[traits[traitName][1]];
 					document.getElementById(traitName+"_3").style.backgroundColor=myColors[traits[traitName][2]];
