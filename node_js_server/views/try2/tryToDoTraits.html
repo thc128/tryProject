@@ -165,7 +165,7 @@
 	<script>
 		var jobsByCategory = <%- JSON.stringify(categories) %>;
 		var traitNames=['Openness','Agreeableness'];
-		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Note','Gender_Preference','Age_Preferences','Date_Entered'];
+		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Notes','Gender_Preference','Age_Preferences','Date_Entered'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
 		refineCategoryNames();
@@ -193,6 +193,8 @@
 		{
 			Object.keys(jobsByCategory).forEach((key)=>{
 				newKey=key.trim();
+				if (newKey==key)
+					return;
 				jobsByCategory[newKey]=jobsByCategory[key];
 				delete jobsByCategory[key];
 			});
@@ -219,7 +221,7 @@
 			var http = new XMLHttpRequest();
 			http.open("POST",'/roleData', true);
 			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var params="role=" + JSON.stringify(positionName);
+			var params="role=" + JSON.stringify(positionID);
 			http.send(params);
 			console.log(params);
 			http.onload=function()

@@ -1,0 +1,20 @@
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C1-01','Shift Manager - Security','C1','Security and Safety');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C1-02','Security checker','C1','Security and Safety');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C1-03','Researcher','C1','Security and Safety'1);
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C1-04','Fireman','C1','Security and Safety');
+
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C2-01','QA Hardware','C2','QA Quality Assurance');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C2-02','QA Software','C2','QA Quality Assurance');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C2-03','Automated testing','C2','QA Quality Assurance');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C2-04','Manual testing','C2','QA Quality Assurance');
+ 
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C3-01','Information Security Specialist','C3','Data Security');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C3-02','Information Security Manager',' C3	','Data Security');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C3-03','Project Manager in Information Security','C3','Data Security');
+                                                                        
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C4-01','Back Office','C4','Administration');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C4-02','Secretarial services','C4','Administration');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C4-03','Senior Secretariat','C4','Administration');
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ('C4-04','Evening secretaries','C4','Administration');
+
+INSERT INTO jobs_catalog_table (jobs_catalog_id,job_name,Job_Category_id,Job_Category_name) VALUES ($1,$2,$3,$4/*,False*/);

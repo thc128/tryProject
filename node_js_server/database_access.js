@@ -31,18 +31,18 @@ module.exports =
 		return result;		
 	},
 	
-	addNewRole: async function(pgclient,roleName)
+	addNewRole: async function(pgclient,roleName,roleID,categoryName,categoryID)
 	{
 		var result=null;
-		await pgclient.query("INSERT INTO traits (Job_Name,onet) VALUES ($1,False);",[roleName])
+		await pgclient.query("INSERT INTO jobs_catalog_table (job_name,jobs_catalog_id,Job_Category_name,Job_Category_id/*,onet*/) VALUES ($1,$2,$3,$4/*,False*/);",[roleName,roleID,categoryName,categoryID])
 		.then(async res => {result=res.command;})
 		.catch(async e => {result=e.stack;})		
 		return result;
 	},
-	pushOtherColumns: async function(pgclient,values,roleName)
+	pushOtherColumns: async function(pgclient,values,roleID)
 	{
-		var queryString="UPDATE traits SET Submission_Date = $1 , Job_Description = $2 , Job_Category = $3 , Reqruting_entity = $4 ,Job_Department = $5 , Note = $6 , Gender_Preference = $7 , Age_Preferences = $8 , Date_Entered = $9 WHERE Job_Name = $10;"
-		var queryValues=values.concat([roleName]);
+		var queryString="UPDATE jobs_catalog_table SET Job_Description = $1 /*, Job_Category = $2 , Reqruting_entity = $4 ,Job_Department = $5*/ , notes = $2 /*, Gender_Preference = $7 , Age_Preferences = $8*/ , date_entered = $3 WHERE jobs_catalog_id = $4;"
+		var queryValues=values.concat([roleID]);
 		queryValues.forEach(assume);
 		var result=null;
 		await pgclient.query(queryString,queryValues)
@@ -51,16 +51,22 @@ module.exports =
 		return result;
 	},
 	
-	pushData: async function(pgclient,traitName,traitsValues,currentRole)
+	pushData: async function(pgclient,traitName,traitsValues,jobID)
 	{
-		var queryString="UPDATE traits SET [trait]_Low = $1, [trait]_Below_Average = $2,[trait]_Average = $3,[trait]_Above_Average = $4, [trait]_High = $5 WHERE Job_Name = $6;"
-		queryString=queryString.replace(/\[trait\]/g,traitName);
-		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],currentRole];
+		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5 WHERE jobs_catalog_id = $6 AND trait_name= $7;"
+		var insertQueryString="INSERT INTO trait_range_per_job (trait_low, trait_below_average, trait_average, trait_above_average ,trait_high, jobs_catalog_id, trait_name) VALUES($1,$2,$3,$4,$5,$6,$7);";
+		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],jobID,traitName];
 		queryValues.forEach(assume);
 		var result=null;
-		await pgclient.query(queryString,queryValues)
+		await pgclient.query(updateQueryString,queryValues)
 		.then(async res => {result=res.command;})
 		.catch(async e => {result=e.stack;})
+		if(result=="UPDATE 0")
+		{
+			await pgclient.query(insertQueryString,queryValues)
+			.then(async res => {result=res.command;})
+			.catch(async e => {result=e.stack;})
+		}
 		return result;	
 	},
 	//query function
@@ -83,7 +89,7 @@ module.exports =
 	
 	jobsData: async function(client)
 	{
-		myQuery="SELECT * FROM jobs;";
+		myQuery="SELECT jobs_catalog_id,job_name,job_category_name FROM jobs_catalog_table;";
 		var data={}
 		console.log(myQuery);
 		await client.query(myQuery)
@@ -91,9 +97,9 @@ module.exports =
 		{
 		    for (i=0;i<res.rows.length;i++)
 			{
-				jobName=res.rows[i]['position_name'];
-				jobID=res.rows[i]['position_code'];
-				category=res.rows[i]['position_category']
+				jobName=res.rows[i]['job_name'];
+				jobID=res.rows[i]['jobs_catalog_id'];
+				category=res.rows[i]['job_category_name']
 				if (data[category]==null)
 					data[category]={};
 				data[category][jobID]=jobName;
@@ -105,11 +111,15 @@ module.exports =
 	
 	getRoleData:async function(client,currentRole)
 	{
-		var result=null;
-		await client.query("SELECT * FROM traits WHERE Job_Name=$1;",[currentRole])
-		.then(async res => {result=res.rows;})
-		.catch(async e => {result=e.stack;})		
-		return result;
+		var result1=null;
+		var result2=null;
+		await client.query("SELECT * FROM jobs_catalog_table WHERE jobs_catalog_id=$1;",[currentRole])
+		.then(async res => {result1=res.rows;})
+		.catch(async e => {result1=e.stack;})
+		await client.query("SELECT * FROM trait_range_per_job WHERE jobs_catalog_id=$1;",[currentRole])
+		.then(async res => {result2=res.rows;})
+		.catch(async e => {result2=e.stack;})	
+		return result1.concat(result2);
 	}
 	
 	
