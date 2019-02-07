@@ -90,7 +90,7 @@ module.exports =
 	
 	jobsData: async function(client)
 	{
-		myQuery="SELECT jobs_catalog_id,job_name,job_category_name FROM jobs_catalog_table;";
+		myQuery="SELECT jobs_catalog_id,job_name,job_category_name,job_category_id FROM jobs_catalog_table;";
 		var data={}
 		console.log(myQuery);
 		await client.query(myQuery)
@@ -100,7 +100,7 @@ module.exports =
 			{
 				jobName=res.rows[i]['job_name'];
 				jobID=res.rows[i]['jobs_catalog_id'];
-				category=res.rows[i]['job_category_name']
+				category=res.rows[i]['job_category_id'].trim()+'='+res.rows[i]['job_category_name'].trim();
 				if (data[category]==null)
 					data[category]={};
 				data[category][jobID]=jobName;

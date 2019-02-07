@@ -168,7 +168,7 @@
 		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Notes','Gender_Preference','Age_Preferences','Date_Entered'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
-		refineCategoryNames();
+		//refineCategoryNames();
 		var categoryNames=Object.keys(jobsByCategory);
 		addOptionsFromList(categoryNames,"positionCategory");
 		var traits={};
@@ -191,12 +191,19 @@
 		//metadata page functions
 		function refineCategoryNames()
 		{
+			
 			Object.keys(jobsByCategory).forEach((key)=>{
 				newKey=key.trim();
-				if (newKey==key)
-					return;
-				jobsByCategory[newKey]=jobsByCategory[key];
-				delete jobsByCategory[key];
+				console.log(key);
+				console.log(newKey);
+				console.log(jobsByCategory[key]);
+				
+				if (newKey!=key)
+				{
+					jobsByCategory[newKey]=jobsByCategory[key];
+					delete jobsByCategory[key];
+				}
+				console.log(jobsByCategory[newKey]);
 			});
 		}
 		
@@ -296,8 +303,6 @@
 				optionObject.text = optionsListObject[key];
 				selectObject.add(optionObject);
 			});
-
-		
 		}
 		
 		function openNewPositionNameDiv()
@@ -310,12 +315,14 @@
 		{
 			var newNameInput=document.getElementById("newPositionName");
 			var newName= newNameInput.value;
+			categoryName=document.getElementById("positionCategory").value;
 			newNameInput.value="";
 			document.getElementById("newPositionNameDiv").style.display="none";
 			var http = new XMLHttpRequest();
 			http.open("POST",'/addName', true);
 			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var params="name=" + JSON.stringify(newName);
+			var params="roleName=" + JSON.stringify(newName);
+			var params="categoryName=" + JSON.stringify(categoryName);
 			http.send(params);
 			console.log(params);
 			http.onload=function()
