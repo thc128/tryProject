@@ -111,8 +111,17 @@ app.post('/addName',async function(req, res){
 	var myNewID=req.body.roleID;
 	var categoryName=req.body.categoryName.slice(1,-1);
 	var categoryID=req.body.categoryID;
-	var result=await db.addNewRole(client,myNewName,myNewID,categoryName,categoryID);
-	console.log({"Result":result});
+	var answer=await db.addNewRole(client,myNewName,myNewID,categoryName,categoryID);
+	console.log({"Answer":answer});
+	var result=[];
+	if(answer=="INSERT")
+	{
+		result=await db.jobsData(client);
+	}
+	else
+	{
+		result=["ERROR"];
+	}
 	res.send({result:result});
 	db.closeSession(client);
  });  

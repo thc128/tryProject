@@ -335,13 +335,17 @@
 				var response=JSON.parse(http.responseText);
 				console.log(response);
 				var messageParagraph = null;
-				if(response.result=="INSERT")
+				if(response.result[0]=="ERROR")
 				{
-					messageParagraph=document.getElementById("addedSuccessfully")
+					messageParagraph=document.getElementById("didNotAddedSuccessfully");
 				}
 				else
 				{
-					messageParagraph=document.getElementById("didNotAddedSuccessfully")
+					messageParagraph=document.getElementById("addedSuccessfully");
+					jobsByCategory=response.result;
+					cleanSelectObject(document.getElementById("positionName"));
+					var jobNames=jobsByCategory[categoryName]['Jobs'];
+					addOptionsFromObject(jobNames,"positionName");
 				}
 				messageParagraph.style.display="block";
 				setTimeout(function(){messageParagraph.style.display="none";}, 10000);
