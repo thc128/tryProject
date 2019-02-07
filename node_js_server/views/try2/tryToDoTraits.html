@@ -62,6 +62,7 @@
 					<button type="button" onclick="addNewPositionName()">Add</button>
 				</div>
 				<p id="addedSuccessfully" style="display:none;font-size:10px;color:green">New position name added successfully!!!</p>
+				<p id="didNotAddedSuccessfully" style="display:none;font-size:10px;color:red">Something went wrong... Please try again.</p>
 				<p><b>Position (Job) Name</b></p>
 				<select name="Job_Name" id="positionName" oninput="chosenName()" style="width:150px">
 					<option id="JobNameOption" hidden disabled selected>--Please select category--</option>
@@ -333,11 +334,18 @@
 			{
 				var response=JSON.parse(http.responseText);
 				console.log(response);
+				var messageParagraph = null;
 				if(response.result=="INSERT")
 				{
-					document.getElementById("addedSuccessfully").style.display="block";
-					setTimeout(function(){document.getElementById("addedSuccessfully").style.display="none";}, 5000);
+					messageParagraph=document.getElementById("addedSuccessfully")
 				}
+				else
+				{
+					messageParagraph=document.getElementById("didNotAddedSuccessfully")
+				}
+				messageParagraph.style.display="block";
+				setTimeout(function(){messageParagraph.style.display="none";}, 10000);
+				
 			}
 		}
 		
