@@ -100,10 +100,12 @@ module.exports =
 			{
 				jobName=res.rows[i]['job_name'];
 				jobID=res.rows[i]['jobs_catalog_id'];
-				category=res.rows[i]['job_category_id'].trim()+'='+res.rows[i]['job_category_name'].trim();
-				if (data[category]==null)
-					data[category]={};
-				data[category][jobID]=jobName;
+				categoryID=res.rows[i]['job_category_id'].trim();
+				categoryName=res.rows[i]['job_category_name'].trim();
+				if (data[categoryName]==null)
+					data[categoryName]={'ID':'','Jobs':{}};
+				data[categoryName]['ID']=categoryID;
+				data[categoryName]['Jobs'][jobName]={'ID':jobID};
 			}
 		}	)
 		.catch(async e => {data=e.stack;})

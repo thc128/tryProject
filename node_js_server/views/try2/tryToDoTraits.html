@@ -169,8 +169,7 @@
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
 		//refineCategoryNames();
-		var categoryNames=Object.keys(jobsByCategory);
-		addOptionsFromList(categoryNames,"positionCategory");
+		addOptionsFromObject(jobsByCategory,"positionCategory");
 		var traits={};
 		traitNames.forEach(createTraitEntry);
 		var currentBlock=""
@@ -210,7 +209,7 @@
 		function chosenCategory()
 		{
 			categoryName=document.getElementById("positionCategory").value;
-			var jobNames=jobsByCategory[categoryName];
+			var jobNames=jobsByCategory[categoryName]['Jobs'];
 			var positionNames=document.getElementById("positionName");
 			if (positionNames.length>1)
 				cleanSelectObject(positionNames);
@@ -294,13 +293,16 @@
 			});
 		}
 		
+		
 		function addOptionsFromObject(optionsListObject,selectObjectID)
 		{
 			var selectObject=document.getElementById(selectObjectID);
+			console.log(optionsListObject);
 			Object.keys(optionsListObject).forEach((key)=>{
+				console.log(key);
 				optionObject = document.createElement("option");
-				optionObject.id=key;
-				optionObject.text = optionsListObject[key];
+				optionObject.id= optionsListObject[key]['ID'];
+				optionObject.text = key;
 				selectObject.add(optionObject);
 			});
 		}
