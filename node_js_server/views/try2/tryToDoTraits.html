@@ -226,31 +226,33 @@
 			console.log(params);
 			http.onload=function()
 			{
-				var myData=JSON.parse(http.responseText);
+				var myData=JSON.parse(http.responseText)['data'];
 				console.log(myData);
 				otherColumnNames.forEach(function (columnName){
 					console.log(columnName);
-					if (columnName=="Submission_Date"||columnName=="Note"||columnName=="Job_Category"||columnName=="Job_Name")
+					if (columnName=="Submission_Date"||columnName=="Notes"||columnName=="Job_Category"||columnName=="Job_Name")
 						return;
 					console.log("working...");
-					var value=myData['data'][0][columnName.toLowerCase()];
+					var value=myData[0][columnName.toLowerCase()];
 					console.log(value)
 					document.getElementsByName(columnName)[0].value=value;
 					});
-				traitNames.forEach( function(trait){
-					console.log(myData['data'][0]);
-					traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
-					traits[trait][1]=myData['data'][0][trait.toLowerCase()+"_below_average"];
-					traits[trait][2]=myData['data'][0][trait.toLowerCase()+"_average"];
-					traits[trait][3]=myData['data'][0][trait.toLowerCase()+"_above_average"];
-					traits[trait][4]=myData['data'][0][trait.toLowerCase()+"_high"];		
-					document.getElementById(trait+"_1").style.backgroundColor=myColors[traits[trait][0]];
-					document.getElementById(trait+"_2").style.backgroundColor=myColors[traits[trait][1]];
-					document.getElementById(trait+"_3").style.backgroundColor=myColors[traits[trait][2]];
-					document.getElementById(trait+"_4").style.backgroundColor=myColors[traits[trait][3]];
-					document.getElementById(trait+"_5").style.backgroundColor=myColors[traits[trait][4]];
-
-					});
+				myData.reverse().pop();
+				myData.reverse();
+				myData.forEach( function(trait){
+					console.log(trait);
+					var traitName=trait['trait_name'];
+					traits[traitName][0]=trait['trait_low'];
+					traits[traitName][1]=trait['trait_below_average'];
+					traits[traitName][2]=trait['trait_average'];
+					traits[traitName][3]=trait['trait_above_average'];
+					traits[traitName][4]=trait['trait_high'];
+					document.getElementById(traitName+"_1").style.backgroundColor=myColors[traits[traitName][0]];
+					document.getElementById(traitName+"_2").style.backgroundColor=myColors[traits[traitName][1]];
+					document.getElementById(traitName+"_3").style.backgroundColor=myColors[traits[traitName][2]];
+					document.getElementById(traitName+"_4").style.backgroundColor=myColors[traits[traitName][3]];
+					document.getElementById(traitName+"_5").style.backgroundColor=myColors[traits[traitName][4]];
+				});
 			
 			}
 		}
