@@ -43,8 +43,6 @@ module.exports =
 	{
 		var queryString="UPDATE jobs_catalog_table SET Job_Description = $1 /*, Job_Category = $2 , Reqruting_entity = $4 ,Job_Department = $5*/ , notes = $2 , Gender_Preference = $3 , Age_Preferences = $4 , date_entered = $5 WHERE jobs_catalog_id = $6;"
 		values.forEach(assume);
-		if(values[values.length-1]==0)
-			values[values.length-1]=null;
 		var queryValues=values.concat([roleID]);
 		var result=null;
 		await pgclient.query(queryString,queryValues)
@@ -58,7 +56,7 @@ module.exports =
 		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5 WHERE jobs_catalog_id = $6 AND trait_name= $7;"
 		var insertQueryString="INSERT INTO trait_range_per_job (trait_low, trait_below_average, trait_average, trait_above_average ,trait_high, jobs_catalog_id, trait_name) VALUES($1,$2,$3,$4,$5,$6,$7);";
 		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],jobID,traitName];
-		queryValues.forEach(assume);
+		queryValues.forEach(assumeNum);
 		var result=null;
 		var count=null;
 		await pgclient.query(updateQueryString,queryValues)
@@ -130,8 +128,14 @@ module.exports =
 	
 }
 
-function assume(value,index,arr)
+function assumeNum(value,index,arr)
 {	
 	if (value==undefined||value==null )
 		arr[index]=0;
+}
+
+function assume(value,index,arr)
+{	
+	if (value==undefined)
+		arr[index]=null;
 }
