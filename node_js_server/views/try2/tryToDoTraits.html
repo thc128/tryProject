@@ -54,7 +54,7 @@
 				<p class="input-description">Please select job Category</p>
 			</div>
 			<div class="input-objects">
-				<button type="button" onclick="openNewPositionNameDiv()">Add new position name</button>
+				<button type="button" onclick="openNewPositionNameDiv()" id="newPositionNameButton" disabled>Add new position name</button>
 				<br/>
 				<br/>
 				<div id="newPositionNameDiv" style="display:none">
@@ -228,6 +228,7 @@
 			else
 				document.getElementById("JobNameOption").text="--select an option--";
 			addOptionsFromObject(jobNames,"positionName");
+			document.getElementById("newPositionNameButton").disabled=false;
 		}
 		
 		function chosenName()
