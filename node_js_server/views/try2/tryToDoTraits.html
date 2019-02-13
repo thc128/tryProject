@@ -29,9 +29,9 @@
 	</head>
 	<body>
 	<div name="navigationButtons" style="display:inline-block">
-	<button onclick="navigateToPage(1)">1</button>
-	<button onclick="navigateToPage(2)">2</button>
-	<button onclick="navigateToPage(3)">3</button>
+	<button id="firstPageButton" class="navigationButtons" onclick="navigateToPage(1)" style="display:none">Return To General Job Description</button>
+	<!-- <button class="navigationButtons" onclick="navigateToPage(2)">2</button> -->
+	<!-- <button class="navigationButtons" onclick="navigateToPage(3)">3</button> -->
 	<button onclick="submitForm()">Submit</button>
 	</div>
 	<div name="MetadataPage" class="pages">
@@ -93,12 +93,18 @@
 			<div class="input-objects">
 				<p><b>Age Preference</b></p>
 				<input name="Age_Preferences"></input>
-				<p class="input-description">Please select job Name</p>
+				<p class="input-description">Please insert the age in numbers</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Date Entered</b></p>
 				<input name="Date_Entered" type="datetime-local"></input>
 			</div>
+			<div class="input-objects">
+				<p><b>Notes</b></p>
+				<input name="Notes"></input>
+				<p class="input-description">Here youn can add your notes</p>
+			</div>
+			<button type="button" onclick=navigateToPage(2)>Go to Define Optimal Traits specifications
 		</form>
 	</div>
 	<div name="TraitsPage" class="pages" style="display:none">
@@ -181,6 +187,7 @@
 		function navigateToPage(pageNumber)
 		{
 			var pages = document.getElementsByClassName("pages");
+			document.getElementsByClassName("navigationButtons")[0].style.display=(pageNumber==2)?"inline-block":"none";
 			var i;
 			for (i = 0; i < pages.length; i++) 
 			{
