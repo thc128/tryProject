@@ -5,14 +5,16 @@ var path = require('path')
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var db=require('./database_access');
+//initialize the app
 var app = express();
-var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Note','Gender_Preference','Age_Preferences','Date_Entered','Trait_Range_Table_ID']
+//global variables
+var otherColumnNames=['Job_Description','Notes','Gender_Preference','Age_Preferences','Date_Entered'];
 var traitNames=['Openness','Consciousness','Extaversion','Agreeableness','Neuroticism','Secure','Anxious_preoccupied','Fearfull_Avoidant','Dissmising_Avoidant','Soical_Desirability','Creativity','Locus_of_control','Self_efficacy','Risk_taking','istress_Tolerance','Distress_Appraisal','Distress_Absorbsion','Distress_Regulation','Distress_Tolerance','Tolerance_for_Ambiguity','Ambiguous_stimuli','Complex_stimuli','Uncertain_stimuli','New_stimuli','Insoluble_stimuli','Emotional_Intelligence','Self_emotion_appraisal','Others_emotion_appraisal','Use_of_emotion','Regulation_of_emotion','Improvisation__Total_score','Improvisation_creativity_and_bricolage','Improvisasion_function_under_pressure___stress','Improvisation_spontaneity_and_persistence','Self_dicipline','The_Short_Dark_Triad','SImprovisasion_function_under_pressure___stress','Narcissism_related_tendencies','Psychopathy_related_tendencies'];
 
 //Engine images and files
+app.engine('html', require('ejs').renderFile);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public", express.static(__dirname + "/public"));
-app.engine('html', require('ejs').renderFile);
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/views')));
 
@@ -25,10 +27,11 @@ app.get('/', function(req, res) {
 //import the page thus user request
 app.get('/addData', async function(req, res){
 	var client =db.openSession(pg);
-	var myData=[]
-	myData=myData.concat(await db.job_name(client));
-	//console.log("Jobs:",myData);
-	res.render('data1.html', {products: myData});
+	var myData=[];
+	myData=await db.jobsData(client);
+	console.log(myData);
+	console.log(typeof myData);
+	res.render('try2/tryToDoTraits.html', {categories: myData});
 	console.log('GET request with params made');
 	db.closeSession(client);
 });
@@ -38,8 +41,8 @@ app.get('/addData', async function(req, res){
 app.post('/addData', async function(req, res){
 	console.log('POST request made');
 	console.log(req.body);
-	console.log(req.body['myRole']);
-	var currentRole=req.body['myRole'];
+	console.log(req.body['Job_ID']);
+	var currentRole=req.body['Job_ID'];
 	var otherColumns=[]
 	otherColumnNames.forEach(function(columnName){
 		otherColumns.push(req.body[columnName])
@@ -96,11 +99,33 @@ app.post('/roleData',async function(req, res){
 	}
 	res.send({data:myData,OnetData:onetData});
 	db.closeSession(client);
-	
-  
  }); 
  
 
+app.post('/addName',async function(req, res){
+	console.log("New Name");
+	console.log(req.body);
+	console.log('POST request made');
+	var client = db.openSession(pg)
+	var myNewName=req.body.roleName.slice(1,-1);
+	var myNewID=req.body.roleID;
+	var categoryName=req.body.categoryName.slice(1,-1);
+	var categoryID=req.body.categoryID;
+	var answer=await db.addNewRole(client,myNewName,myNewID,categoryName,categoryID);
+	console.log({"Answer":answer});
+	var result=[];
+	if(answer=="INSERT")
+	{
+		result=await db.jobsData(client);
+	}
+	else
+	{
+		result=["ERROR"];
+	}
+	res.send({result:result});
+	db.closeSession(client);
+ });  
+ 
 app.listen(80, function(){
   console.log('Server is running on localhost:80');
 });

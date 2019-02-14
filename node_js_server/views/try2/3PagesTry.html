@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	
+	<body>
+	<div style="display:inline-block">
+	<button onclick="navigateToPage(1)">1</button>
+	<button onclick="navigateToPage(2)">2</button>
+	<button onclick="navigateToPage(3)">3</button>
+	</div>
+	<div class="pages">
+		<h1><b>First</b></h1>
+		<p>kda jsofiuands</p>
+		<br/>
+		<p>dfa jgnjadf</p>
+	</div>
+	<div class="pages">
+		<h1><b>Second</b></h1>
+		<p>fasdgsfdg jsofsdggsx ffsdgsfd</p>
+		<br/>
+		<p>fdsgsfdgf sfdgfds</p>
+	</div>
+	<div class="pages">
+		<h1><b>Third</b></h1>
+		<p>adsgfdgs fad</p>
+		<br/>
+		<p>jnadfg jonfdaogusn fdags</p>
+	</div>	
+	<script>
+	function navigateToPage(pageNumber)
+	{
+		var pages = document.getElementsByClassName("pages");
+		var i;
+		for (i = 0; i < pages.length; i++) 
+		{
+			pages[i].style.display = (i==pageNumber-1) ? "block" : "none";
+		}
+	}
+	</script>
+	</body>
+</html>
