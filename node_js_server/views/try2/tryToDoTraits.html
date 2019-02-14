@@ -29,9 +29,9 @@
 	</head>
 	<body>
 	<div name="navigationButtons" style="display:inline-block">
-	<button onclick="navigateToPage(1)">1</button>
-	<button onclick="navigateToPage(2)">2</button>
-	<button onclick="navigateToPage(3)">3</button>
+	<button id="firstPageButton" class="navigationButtons" onclick="navigateToPage(1)" style="display:none">Return To General Job Description</button>
+	<!-- <button class="navigationButtons" onclick="navigateToPage(2)">2</button> -->
+	<!-- <button class="navigationButtons" onclick="navigateToPage(3)">3</button> -->
 	<button onclick="submitForm()">Submit</button>
 	</div>
 	<div name="MetadataPage" class="pages">
@@ -54,7 +54,7 @@
 				<p class="input-description">Please select job Category</p>
 			</div>
 			<div class="input-objects">
-				<button type="button" onclick="openNewPositionNameDiv()">Add new position name</button>
+				<button type="button" onclick="openNewPositionNameDiv()" id="newPositionNameButton" disabled>Add new position name</button>
 				<br/>
 				<br/>
 				<div id="newPositionNameDiv" style="display:none">
@@ -62,6 +62,7 @@
 					<button type="button" onclick="addNewPositionName()">Add</button>
 				</div>
 				<p id="addedSuccessfully" style="display:none;font-size:10px;color:green">New position name added successfully!!!</p>
+				<p id="didNotAddedSuccessfully" style="display:none;font-size:10px;color:red">Something went wrong... Please try again.</p>
 				<p><b>Position (Job) Name</b></p>
 				<select name="Job_Name" id="positionName" oninput="chosenName()" style="width:150px">
 					<option id="JobNameOption" hidden disabled selected>--Please select category--</option>
@@ -92,11 +93,20 @@
 			<div class="input-objects">
 				<p><b>Age Preference</b></p>
 				<input name="Age_Preferences"></input>
-				<p class="input-description">Please select job Name</p>
 			</div>
 			<div class="input-objects">
 				<p><b>Date Entered</b></p>
 				<input name="Date_Entered" type="datetime-local"></input>
+			</div>
+			<div class="input-objects">
+				<p><b>Notes</b></p>
+				<input name="Notes"></input>
+				<p class="input-description">Here you can add your notes</p>
+			</div>
+			<div class="input-objects" style="margin-top:13px">
+				<br/>
+				<br/>
+				<button type="button" onclick=navigateToPage(2)>Go to Define Optimal Traits specifications</button>
 			</div>
 		</form>
 	</div>
@@ -165,12 +175,11 @@
 	<script>
 		var jobsByCategory = <%- JSON.stringify(categories) %>;
 		var traitNames=['Openness','Agreeableness'];
-		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Note','Gender_Preference','Age_Preferences','Date_Entered'];
+		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Notes','Gender_Preference','Age_Preferences','Date_Entered'];
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
-		refineCategoryNames();
-		var categoryNames=Object.keys(jobsByCategory);
-		addOptionsFromList(categoryNames,"positionCategory");
+		//refineCategoryNames();
+		addOptionsFromObject(jobsByCategory,"positionCategory");
 		var traits={};
 		traitNames.forEach(createTraitEntry);
 		var currentBlock=""
@@ -181,6 +190,7 @@
 		function navigateToPage(pageNumber)
 		{
 			var pages = document.getElementsByClassName("pages");
+			document.getElementsByClassName("navigationButtons")[0].style.display=(pageNumber==2)?"inline-block":"none";
 			var i;
 			for (i = 0; i < pages.length; i++) 
 			{
@@ -191,23 +201,33 @@
 		//metadata page functions
 		function refineCategoryNames()
 		{
+			
 			Object.keys(jobsByCategory).forEach((key)=>{
 				newKey=key.trim();
-				jobsByCategory[newKey]=jobsByCategory[key];
-				delete jobsByCategory[key];
+				console.log(key);
+				console.log(newKey);
+				console.log(jobsByCategory[key]);
+				
+				if (newKey!=key)
+				{
+					jobsByCategory[newKey]=jobsByCategory[key];
+					delete jobsByCategory[key];
+				}
+				console.log(jobsByCategory[newKey]);
 			});
 		}
 		
 		function chosenCategory()
 		{
 			categoryName=document.getElementById("positionCategory").value;
-			var jobNames=jobsByCategory[categoryName];
+			var jobNames=jobsByCategory[categoryName]['Jobs'];
 			var positionNames=document.getElementById("positionName");
 			if (positionNames.length>1)
 				cleanSelectObject(positionNames);
 			else
 				document.getElementById("JobNameOption").text="--select an option--";
 			addOptionsFromObject(jobNames,"positionName");
+			document.getElementById("newPositionNameButton").disabled=false;
 		}
 		
 		function chosenName()
@@ -219,36 +239,53 @@
 			var http = new XMLHttpRequest();
 			http.open("POST",'/roleData', true);
 			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var params="role=" + JSON.stringify(positionName);
+			var params="role=" + JSON.stringify(positionID);
 			http.send(params);
 			console.log(params);
 			http.onload=function()
 			{
-				var myData=JSON.parse(http.responseText);
+				var myData=JSON.parse(http.responseText)['data'];
 				console.log(myData);
 				otherColumnNames.forEach(function (columnName){
 					console.log(columnName);
-					if (columnName=="Submission_Date"||columnName=="Note"||columnName=="Job_Category"||columnName=="Job_Name")
+					if (columnName=="Submission_Date"||columnName=="Job_Category"||columnName=="Job_Name")
 						return;
 					console.log("working...");
-					var value=myData['data'][0][columnName.toLowerCase()];
+					var value=myData[0][columnName.toLowerCase()];
+					if (columnName=="Date_Entered")
+						value=value.slice(0,-1);
 					console.log(value)
 					document.getElementsByName(columnName)[0].value=value;
 					});
-				traitNames.forEach( function(trait){
-					console.log(myData['data'][0]);
-					traits[trait][0]=myData['data'][0][trait.toLowerCase()+"_low"];
-					traits[trait][1]=myData['data'][0][trait.toLowerCase()+"_below_average"];
-					traits[trait][2]=myData['data'][0][trait.toLowerCase()+"_average"];
-					traits[trait][3]=myData['data'][0][trait.toLowerCase()+"_above_average"];
-					traits[trait][4]=myData['data'][0][trait.toLowerCase()+"_high"];		
-					document.getElementById(trait+"_1").style.backgroundColor=myColors[traits[trait][0]];
-					document.getElementById(trait+"_2").style.backgroundColor=myColors[traits[trait][1]];
-					document.getElementById(trait+"_3").style.backgroundColor=myColors[traits[trait][2]];
-					document.getElementById(trait+"_4").style.backgroundColor=myColors[traits[trait][3]];
-					document.getElementById(trait+"_5").style.backgroundColor=myColors[traits[trait][4]];
-
-					});
+				myData.reverse().pop();
+				myData.reverse();
+				traitNames.forEach( function(traitName){
+					console.log(traitName);
+					console.log("clear");
+					traits[traitName][0]=0;
+					traits[traitName][1]=0;
+					traits[traitName][2]=0;
+					traits[traitName][3]=0;
+					traits[traitName][4]=0;
+				});
+				myData.forEach( function(trait){
+					console.log(trait);
+					var traitName=trait['trait_name'];
+					traits[traitName][0]=trait['trait_low'];
+					traits[traitName][1]=trait['trait_below_average'];
+					traits[traitName][2]=trait['trait_average'];
+					traits[traitName][3]=trait['trait_above_average'];
+					traits[traitName][4]=trait['trait_high'];
+				});
+				traitNames.forEach( function(traitName){
+					console.log(traitName);
+					console.log("paint");
+					document.getElementById(traitName+"_1").style.backgroundColor=myColors[traits[traitName][0]];
+					document.getElementById(traitName+"_2").style.backgroundColor=myColors[traits[traitName][1]];
+					document.getElementById(traitName+"_3").style.backgroundColor=myColors[traits[traitName][2]];
+					document.getElementById(traitName+"_4").style.backgroundColor=myColors[traits[traitName][3]];
+					document.getElementById(traitName+"_5").style.backgroundColor=myColors[traits[traitName][4]];
+				});
 			
 			}
 		}
@@ -270,17 +307,18 @@
 			});
 		}
 		
+		
 		function addOptionsFromObject(optionsListObject,selectObjectID)
 		{
 			var selectObject=document.getElementById(selectObjectID);
+			console.log(optionsListObject);
 			Object.keys(optionsListObject).forEach((key)=>{
+				console.log(key);
 				optionObject = document.createElement("option");
-				optionObject.id=key;
-				optionObject.text = optionsListObject[key];
+				optionObject.id= optionsListObject[key]['ID'];
+				optionObject.text = key;
 				selectObject.add(optionObject);
 			});
-
-		
 		}
 		
 		function openNewPositionNameDiv()
@@ -293,23 +331,38 @@
 		{
 			var newNameInput=document.getElementById("newPositionName");
 			var newName= newNameInput.value;
+			categoryName=document.getElementById("positionCategory").value;
+			categoryID=jobsByCategory[categoryName]['ID'];
+			categoryLength=Object.keys(jobsByCategory[categoryName]['Jobs']).length;
+			var newJobID=jobsByCategory[categoryName]['ID']+'-0'+JSON.stringify(categoryLength+1);
 			newNameInput.value="";
 			document.getElementById("newPositionNameDiv").style.display="none";
 			var http = new XMLHttpRequest();
 			http.open("POST",'/addName', true);
 			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-			var params="name=" + JSON.stringify(newName);
+			var params="roleName=" + JSON.stringify(newName)+"&roleID=" + newJobID+"&categoryName=" + JSON.stringify(categoryName)+"&categoryID=" + categoryID;
 			http.send(params);
 			console.log(params);
 			http.onload=function()
 			{
 				var response=JSON.parse(http.responseText);
 				console.log(response);
-				if(response.result=="INSERT")
+				var messageParagraph = null;
+				if(response.result[0]=="ERROR")
 				{
-					document.getElementById("addedSuccessfully").style.display="block";
-					setTimeout(function(){document.getElementById("addedSuccessfully").style.display="none";}, 5000);
+					messageParagraph=document.getElementById("didNotAddedSuccessfully");
 				}
+				else
+				{
+					messageParagraph=document.getElementById("addedSuccessfully");
+					jobsByCategory=response.result;
+					cleanSelectObject(document.getElementById("positionName"));
+					var jobNames=jobsByCategory[categoryName]['Jobs'];
+					addOptionsFromObject(jobNames,"positionName");
+				}
+				messageParagraph.style.display="block";
+				setTimeout(function(){messageParagraph.style.display="none";}, 10000);
+				
 			}
 		}
 		

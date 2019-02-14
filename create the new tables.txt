@@ -5,12 +5,14 @@ cpa_job_template_id int4,
 organizational_units_information_id int4,
 job_name varchar(256),
 Job_Category_name varchar(255),
-Job_Category_id int4,
+Job_Category_id char(4),
 Job_Description varchar(1000),
 notes varchar,
-date_entered timestamp,
-onet bool
+date_entered timestamp
 );
+
+I modified the "date_entered" field to int. 
+I modified the "Job_Category_id" field to char(4). 
 
 INSERT INTO jobs_catalog_table (job_name,jobs_catalog_id,Job_Category_name,Job_Category_id/*,onet*/) VALUES ($1,$2,$3,$4/*,False*/);
 SELECT jobs_catalog_id,job_name,Job_Category_name FROM jobs_catalog_table;
@@ -20,8 +22,8 @@ CREATE TABLE organizational_units_information_table(
 organizational_units_information_id int4 NOT NULL PRIMARY KEY,
 organization_id int4 NOT NULL,
 job_department varchar,
-recruiting_entity varchar
-organizationes_table_organization_id int4,
+recruiting_entity varchar,
+organizations_table_organization_id int4,
 Organization_name varchar(255),
 note varchar,
 date_entered timestamp
