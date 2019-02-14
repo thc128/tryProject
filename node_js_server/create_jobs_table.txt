@@ -1,0 +1,27 @@
+CREATE TABLE jobs(
+Position_Category_Code char(4),
+Position_Category char(30),
+Position_Code char(8),
+Position_name char(150)
+);
+INSERT INTO jobs VALUES('C1','Securit and Safety','C1-01','Shift Manager - Security');
+INSERT INTO jobs VALUES('C1','Securit and Safety','C1-02','Security checker');
+INSERT INTO jobs VALUES('C1','Securit and Safety','C1-03','Researcher');
+INSERT INTO jobs VALUES('C1','Securit and Safety','C1-04','Fireman');
+INSERT INTO jobs VALUES('C2','QA Quality Assurance','C2-01','QA Hardware');
+INSERT INTO jobs VALUES('C2','QA Quality Assurance','C2-02','QA Software');
+INSERT INTO jobs VALUES('C2','QA Quality Assurance','C2-03','Automated testing');
+INSERT INTO jobs VALUES('C2','QA Quality Assurance','C2-04','Manual testing');
+INSERT INTO jobs VALUES('C3','Data Security','C3-01','Information Security Specialist');
+INSERT INTO jobs VALUES('C3','Data Security','C3-02','Information Security Manager');
+INSERT INTO jobs VALUES('C3','Data Security','C3-03','Project Manager in Information Security');
+
+
+
+
+
+
+
+
+
+
