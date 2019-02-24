@@ -34,7 +34,7 @@ module.exports =
 	addNewRole: async function(pgclient,roleName,roleID,categoryName,categoryID)
 	{
 		var result=null;
-		await pgclient.query("INSERT INTO jobs_catalog_table (job_name,jobs_catalog_id,Job_Category_name,Job_Category_id/*,onet*/) VALUES ($1,$2,$3,$4/*,False*/);",[roleName,roleID,categoryName,categoryID])
+		await pgclient.query("INSERT INTO jobs_catalog_table (job_name,jobs_catalog_id,Job_Category_name,Job_Category_id, organizational_units_information_id/*,onet*/) VALUES ($1,$2,$3,$4,$5/*,False*/);",[roleName,roleID,categoryName,categoryID,roleID])
 		.then(async res => {result=res.command;})
 		.catch(async e => {result=e.stack;})		
 		return result;
@@ -50,7 +50,25 @@ module.exports =
 		.catch(async e => {result=e.stack;})
 		return result;
 	},
-	
+	pushToOrganizationTable: async function(pgclient,values,organizationID,organizationalInfoID)
+	{
+		var updateQueryString="UPDATE organizational_units_information_table SET recruiting_entity = $1 ,Job_Department = $2,organization_id=$3 WHERE organizational_units_information_id = $4";
+		var insertQueryString="INSERT INTO organizational_units_information_table (recruiting_entity, Job_Department,organization_id, organizational_units_information_id) VALUES($1,$2,$3,$4);";
+		values.forEach(assume);
+		var queryValues=values.concat([organizationID]).concat([organizationalInfoID]);
+		var result=null;
+		var count=null;
+		await pgclient.query(updateQueryString,queryValues)
+		.then(async res => {result=res.command;count=res.rowCount;})
+		.catch(async e => {result=e.stack;})
+		if(count==0)
+		{
+			await pgclient.query(insertQueryString,queryValues)
+			.then(async res => {result=res.command;})
+			.catch(async e => {result=e.stack;})
+		}
+		return result;
+	},
 	pushData: async function(pgclient,traitName,traitsValues,jobID)
 	{
 		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5 WHERE jobs_catalog_id = $6 AND trait_name= $7;"
@@ -116,13 +134,17 @@ module.exports =
 	{
 		var result1=null;
 		var result2=null;
+		var result3=null;
 		await client.query("SELECT * FROM jobs_catalog_table WHERE jobs_catalog_id=$1;",[currentRole])
 		.then(async res => {result1=res.rows;})
 		.catch(async e => {result1=e.stack;})
-		await client.query("SELECT * FROM trait_range_per_job WHERE jobs_catalog_id=$1;",[currentRole])
+		await client.query("SELECT * FROM organizational_units_information_table WHERE organizational_units_information_id=$1;",[currentRole])
 		.then(async res => {result2=res.rows;})
-		.catch(async e => {result2=e.stack;})	
-		return result1.concat(result2);
+		.catch(async e => {result2=e.stack;})
+		await client.query("SELECT * FROM trait_range_per_job WHERE jobs_catalog_id=$1;",[currentRole])
+		.then(async res => {result3=res.rows;})
+		.catch(async e => {result3=e.stack;})	
+		return result1.concat(result2).concat(result3);
 	}
 	
 	

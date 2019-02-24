@@ -76,7 +76,7 @@
 			</div>
 			<div class="input-objects">
 				<p><b>Recruiting Department</b></p>
-				<input name="Reqruting_Entity"></input>
+				<input name="Recruiting_Entity"></input>
 				<p class="input-description">Enter the Recruiting Department</p>
 			</div>
 			<div class="input-objects">
@@ -175,7 +175,8 @@
 	<script>
 		var jobsByCategory = <%- JSON.stringify(categories) %>;
 		var traitNames=['Openness','Agreeableness'];
-		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Reqruting_Entity','Job_Department','Notes','Gender_Preference','Age_Preferences','Date_Entered'];
+		var otherColumnNames=['Submission_Date','Job_Description','Job_Category','Notes','Gender_Preference','Age_Preferences','Date_Entered'];
+		var organizationTableColumnNames=['Recruiting_Entity','Job_Department']
 		var myColors=["#dcd9d9","#eb4841","#f48847","#ffc84a","#a6c34c","#4ec04e"];
 		var blockNames=[' Low',' Below Average',' Average',' Above Average',' High'];
 		//refineCategoryNames();
@@ -254,6 +255,15 @@
 					var value=myData[0][columnName.toLowerCase()];
 					if (columnName=="Date_Entered"&&value!=null)
 						value=value.slice(0,-1);
+					console.log(value)
+					document.getElementsByName(columnName)[0].value=value;
+					});
+				myData.reverse().pop();
+				myData.reverse();
+				organizationTableColumnNames.forEach(function (columnName){
+					console.log(columnName);
+					console.log("working...");
+					var value=myData[0][columnName.toLowerCase()];
 					console.log(value)
 					document.getElementsByName(columnName)[0].value=value;
 					});
