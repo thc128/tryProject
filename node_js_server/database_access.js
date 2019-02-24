@@ -41,8 +41,10 @@ module.exports =
 	},
 	pushOtherColumns: async function(pgclient,values,roleID)
 	{
-		var queryString="UPDATE jobs_catalog_table SET Job_Description = $1 /*, Job_Category = $2 , Reqruting_entity = $4 ,Job_Department = $5*/ , notes = $2 , Gender_Preference = $3 , Age_Preferences = $4 , date_entered = $5 WHERE jobs_catalog_id = $6;"
+		var queryString="UPDATE jobs_catalog_table SET Job_Description = $1  , notes = $2 , Gender_Preference = $3 , Age_Preferences = $4 , date_entered = $5 WHERE jobs_catalog_id = $6;"
 		values.forEach(assume);
+		if (values[4]=='')
+			values[4]=null;
 		var queryValues=values.concat([roleID]);
 		var result=null;
 		await pgclient.query(queryString,queryValues)
