@@ -100,7 +100,7 @@ module.exports =
 			{
 				jobName=res.rows[i]['job_name'];
 				jobID=res.rows[i]['jobs_catalog_id'];
-				categoryID=res.rows[i]['job_category_id'].trim();
+				categoryID=res.rows[i]['job_category_id'];
 				categoryName=res.rows[i]['job_category_name'].trim();
 				if (data[categoryName]==null)
 					data[categoryName]={'ID':'','Jobs':{}};

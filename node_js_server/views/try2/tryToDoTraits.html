@@ -252,7 +252,7 @@
 						return;
 					console.log("working...");
 					var value=myData[0][columnName.toLowerCase()];
-					if (columnName=="Date_Entered")
+					if (columnName=="Date_Entered"&&value!=null)
 						value=value.slice(0,-1);
 					console.log(value)
 					document.getElementsByName(columnName)[0].value=value;
@@ -333,15 +333,18 @@
 			var newName= newNameInput.value;
 			categoryName=document.getElementById("positionCategory").value;
 			categoryID=jobsByCategory[categoryName]['ID'];
-			categoryLength=Object.keys(jobsByCategory[categoryName]['Jobs']).length;
+			categoryLength=Object.keys(jobsByCategory[categoryName]['Jobs']).length+1;
 			var single=categoryLength%10;
-			single*=100;
 			var decades=((categoryLength-single)%100)/10;
+			single*=100;
 			decades*=10;
 			var centuries=(categoryLength-categoryLength%100)/100;
 			var jobOnlyID=single+decades+centuries;
 			var newJobID=(jobsByCategory[categoryName]['ID']*1000)+jobOnlyID;
 			console.log("New job Id:",newJobID);
+			console.log("C:",centuries);
+			console.log("D",decades);
+			console.log("S:",single);
 			newNameInput.value="";
 			document.getElementById("newPositionNameDiv").style.display="none";
 			var http = new XMLHttpRequest();
