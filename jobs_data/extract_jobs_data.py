@@ -55,3 +55,5 @@ all_jobs_data=create_categories_dict(workbook)
 print(all_jobs_data)
 all_jobs_data=parse_file(workbook,all_jobs_data)	
 print(all_jobs_data)
+with open('jobs_data.json','w+') as results:
+	results.write(str(all_jobs_data))
