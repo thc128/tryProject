@@ -7,26 +7,13 @@ IGNORE_ROWS=[0]
 def read_file(file_path):
 	return  xlrd.open_workbook(file_path)
 	
-	'''
-	print(file_content.sheet_names())
-	first_sheet = file_content.sheet_by_index(0)
-	categories_data={}
-	for row_id in range(first_sheet.nrows):
-		print(first_sheet.row_values(row_id))
-		if row_id==0:
-			continue
-		category_id=first_sheet.row_values(row_id)[0]
-		category_name=first_sheet.row_values(row_id)[1]
-		categories_data[category_id]=category_name
-	print(categories_data)
-	'''
 def create_categories_dict(my_workbook):
 	categories_data={}
 	first_sheet = my_workbook.sheet_by_index(0)
 	for row_id in range(first_sheet.nrows):
 		if row_id==0:
 			continue
-		category_id=first_sheet.row_values(row_id)[0]
+		category_id=translate_category_id(first_sheet.row_values(row_id)[0])
 		category_name=first_sheet.row_values(row_id)[1]
 		categories_data[category_id]={'name':category_name}
 	return categories_data
@@ -43,11 +30,24 @@ def parse_file(my_workbook,categories_data):
 			print('row number: '+str(row_id))
 			current_row=current_sheet.row_values(row_id)
 			print(current_row)
-			job_category_id=current_row[0]
-			job_id=current_row[1]
+			job_category_id=translate_category_id(current_row[0])
+			job_id=translate_job_id(current_row[1])
 			job_name=current_row[2]
+			print(job_category_id,job_id,job_name)
 			categories_data[job_category_id][job_id]=job_name
 	return categories_data
+	
+def translate_category_id(id):
+	return id[1:]
+	
+def translate_job_id(id):
+	splitted=id.split('-')
+	category_id=translate_category_id(splitted[0])
+	job_id=splitted[1]
+	final_id=str(int(category_id)*1000+int(job_id))
+	return final_id
+
+
 			
 
 workbook=read_file(FILE_PATH)
