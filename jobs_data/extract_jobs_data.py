@@ -33,7 +33,6 @@ def parse_file(my_workbook,categories_data):
 			job_category_id=translate_category_id(current_row[0])
 			job_id=translate_job_id(current_row[1])
 			job_name=current_row[2]
-			print(job_category_id,job_id,job_name)
 			categories_data[job_category_id][job_id]=job_name
 	return categories_data
 	
