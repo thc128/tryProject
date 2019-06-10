@@ -1,3 +1,4 @@
+var traitNames=['Openness','Consciousness','Extaversion','Agreeableness','Neuroticism','Secure','Anxious_preoccupied','Fearfull_Avoidant','Dissmising_Avoidant','Soical_Desirability','Creativity','Locus_of_control','Self_efficacy','Risk_taking','istress_Tolerance','Distress_Appraisal','Distress_Absorbsion','Distress_Regulation','Distress_Tolerance','Tolerance_for_Ambiguity','Ambiguous_stimuli','Complex_stimuli','Uncertain_stimuli','New_stimuli','Insoluble_stimuli','Emotional_Intelligence','Self_emotion_appraisal','Others_emotion_appraisal','Use_of_emotion','Regulation_of_emotion','Improvisation__Total_score','Improvisation_creativity_and_bricolage','Improvisasion_function_under_pressure___stress','Improvisation_spontaneity_and_persistence','Self_dicipline','The_Short_Dark_Triad','SImprovisasion_function_under_pressure___stress','Narcissism_related_tendencies','Psychopathy_related_tendencies'];
 //functions to open/close sessions front of server. OCP
 module.exports =
 {
@@ -73,9 +74,13 @@ module.exports =
 	},
 	pushData: async function(pgclient,traitName,traitsValues,jobID)
 	{
-		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5 WHERE jobs_catalog_id = $6 AND trait_name= $7;"
-		var insertQueryString="INSERT INTO trait_range_per_job (trait_low, trait_below_average, trait_average, trait_above_average ,trait_high, jobs_catalog_id, trait_name) VALUES($1,$2,$3,$4,$5,$6,$7);";
-		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],jobID,traitName];
+		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5, trait_range_per_job_id=$6 WHERE jobs_catalog_id = $7 AND trait_name= $8;"
+		var insertQueryString="INSERT INTO trait_range_per_job (trait_low, trait_below_average, trait_average, trait_above_average ,trait_high, trait_range_per_job_id, jobs_catalog_id, trait_name) VALUES($1,$2,$3,$4,$5,$6,$7,$8);";
+		var categoryNum=jobID.split('-')[0].split('C')[1];
+		var roleNum=jobID.split('-')[1];
+		var traitNum=traitNames.indexOf(traitName)
+		var traitID=categoryNum*10000000+roleNum*100000+traitNum;
+		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],traitID,jobID,traitName];
 		queryValues.forEach(assumeNum);
 		var result=null;
 		var count=null;

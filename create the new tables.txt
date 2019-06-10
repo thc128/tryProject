@@ -37,6 +37,7 @@ trait_below_average int4,
 trait_average int4,
 trait_above_average int4,
 trait_high int4,
+trait_range_per_job_id int4 NOT NULL,
 trait_name varchar NOT NULL,
 traits_metadata_catalog_id varchar(32)
 );
