@@ -27,6 +27,8 @@ app.get('/', function(req, res) {
 
 //import the page thus user request
 app.get('/addData', async function(req, res){
+	try
+	{
 	var client =db.openSession(pg);
 	var myData=[];
 	myData=await db.jobsData(client);
@@ -35,11 +37,17 @@ app.get('/addData', async function(req, res){
 	res.render('try2/tryToDoTraits.html', {categories: myData});
 	console.log('GET request with params made');
 	db.closeSession(client);
+	}
+	catch(error){
+		console.log(error.message);
+	}
 });
 	
 
 //
 app.post('/addData', async function(req, res){
+	try
+	{
 	console.log('POST request made');
 	console.log(req.body);
 	console.log(req.body['Job_ID']);
@@ -87,10 +95,16 @@ app.post('/addData', async function(req, res){
 	}
 	db.closeSession(client);
 	res.redirect('/addData');
+	}
+	catch(error){
+		console.log(error.message);
+	}
 });
 
 
 app.post('/roleData',async function(req, res){
+	try
+	{
 	console.log("Role DATA");
 	console.log(req.body);
 	console.log('POST request made');
@@ -109,10 +123,16 @@ app.post('/roleData',async function(req, res){
 	}
 	res.send({data:myData,OnetData:onetData});
 	db.closeSession(client);
+	}
+	catch(error){
+		console.log(error.message);
+	}
  }); 
  
 
 app.post('/addName',async function(req, res){
+	try
+	{
 	console.log("New Name");
 	console.log(req.body);
 	console.log('POST request made');
@@ -134,10 +154,20 @@ app.post('/addName',async function(req, res){
 	}
 	res.send({result:result});
 	db.closeSession(client);
+	}
+	catch(error){
+		console.log(error.message);
+	}
  });  
  
 app.listen(80, function(){
-  console.log('Server is running on localhost:80');
+	try
+	{
+		console.log('Server is running on localhost:80');
+	}
+	catch(error){
+		console.log(error.message);
+	}
 });
 
 
