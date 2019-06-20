@@ -1,5 +1,6 @@
 //imports
 var express = require('express');
+require('log-timestamp');
 var fs = require('fs');
 var path = require('path')
 var bodyParser = require('body-parser');
