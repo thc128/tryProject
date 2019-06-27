@@ -1,0 +1,1204 @@
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Openness</h2>
+		<p>The degree of intellectual curiosity, creativity and a preference for novelty and variety a person has.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Openness_1" onclick="chosenBlock('Openness_1')">Click here to select the desiered trait value</td>
+			<td id="Openness_2" onclick="chosenBlock('Openness_2')">Click here to select the desiered trait value</td>
+			<td id="Openness_3" onclick="chosenBlock('Openness_3')">Click here to select the desiered trait value</td>
+			<td id="Openness_4" onclick="chosenBlock('Openness_4')">Click here to select the desiered trait value</td>
+			<td id="Openness_5" onclick="chosenBlock('Openness_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="OpennessCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Consciousness</h2>
+		<p>The degree of being careful or vigilant. Implies a desire to do a task well. Conscientious people are efficient and organized as opposed to easy-going and disorderly.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Consciousness_1" onclick="chosenBlock('Consciousness_1')">Click here to select the desiered trait value</td>
+			<td id="Consciousness_2" onclick="chosenBlock('Consciousness_2')">Click here to select the desiered trait value</td>
+			<td id="Consciousness_3" onclick="chosenBlock('Consciousness_3')">Click here to select the desiered trait value</td>
+			<td id="Consciousness_4" onclick="chosenBlock('Consciousness_4')">Click here to select the desiered trait value</td>
+			<td id="Consciousness_5" onclick="chosenBlock('Consciousness_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="ConsciousnessCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Extraversion</h2>
+		<p>Characterized by breadth of activities, surgency from external activity/situations, and energy creation from external means.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Extraversion_1" onclick="chosenBlock('Extraversion_1')">Click here to select the desiered trait value</td>
+			<td id="Extraversion_2" onclick="chosenBlock('Extraversion_2')">Click here to select the desiered trait value</td>
+			<td id="Extraversion_3" onclick="chosenBlock('Extraversion_3')">Click here to select the desiered trait value</td>
+			<td id="Extraversion_4" onclick="chosenBlock('Extraversion_4')">Click here to select the desiered trait value</td>
+			<td id="Extraversion_5" onclick="chosenBlock('Extraversion_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="ExtraversionCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Agreeableness</h2>
+		<p>Individuals value getting along with others. They are generally considerate, kind, generous, helpful, and willing to compromise their interests with others</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Agreeableness_1" onclick="chosenBlock('Agreeableness_1')">Click here to select the desiered trait value</td>
+			<td id="Agreeableness_2" onclick="chosenBlock('Agreeableness_2')">Click here to select the desiered trait value</td>
+			<td id="Agreeableness_3" onclick="chosenBlock('Agreeableness_3')">Click here to select the desiered trait value</td>
+			<td id="Agreeableness_4" onclick="chosenBlock('Agreeableness_4')">Click here to select the desiered trait value</td>
+			<td id="Agreeableness_5" onclick="chosenBlock('Agreeableness_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="AgreeablenessCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Neuroticism</h2>
+		<p>Emotional stability delineates individuals' steadiness of mood, their ability to withstand minor setbacks, failures, difficulties, and other stresses without becoming upset emotionally.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Neuroticism_1" onclick="chosenBlock('Neuroticism_1')">Click here to select the desiered trait value</td>
+			<td id="Neuroticism_2" onclick="chosenBlock('Neuroticism_2')">Click here to select the desiered trait value</td>
+			<td id="Neuroticism_3" onclick="chosenBlock('Neuroticism_3')">Click here to select the desiered trait value</td>
+			<td id="Neuroticism_4" onclick="chosenBlock('Neuroticism_4')">Click here to select the desiered trait value</td>
+			<td id="Neuroticism_5" onclick="chosenBlock('Neuroticism_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="NeuroticismCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Secure</h2>
+		<p>This style of attachment usually results from a history of warm and responsive interactions with their attachments. Securely attached people tend to have positive views of themselves and their attachments.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Secure_1" onclick="chosenBlock('Secure_1')">Click here to select the desiered trait value</td>
+			<td id="Secure_2" onclick="chosenBlock('Secure_2')">Click here to select the desiered trait value</td>
+			<td id="Secure_3" onclick="chosenBlock('Secure_3')">Click here to select the desiered trait value</td>
+			<td id="Secure_4" onclick="chosenBlock('Secure_4')">Click here to select the desiered trait value</td>
+			<td id="Secure_5" onclick="chosenBlock('Secure_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="SecureCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Anxious-preoccupied</h2>
+		<p>People with this style of attachment seek high levels of intimacy, approval, and responsiveness from their attachment figure. They sometimes value intimacy to such an extent that they become overly dependent on the attachment figure.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Anxious-preoccupied_1" onclick="chosenBlock('Anxious-preoccupied_1')">Click here to select the desiered trait value</td>
+			<td id="Anxious-preoccupied_2" onclick="chosenBlock('Anxious-preoccupied_2')">Click here to select the desiered trait value</td>
+			<td id="Anxious-preoccupied_3" onclick="chosenBlock('Anxious-preoccupied_3')">Click here to select the desiered trait value</td>
+			<td id="Anxious-preoccupied_4" onclick="chosenBlock('Anxious-preoccupied_4')">Click here to select the desiered trait value</td>
+			<td id="Anxious-preoccupied_5" onclick="chosenBlock('Anxious-preoccupied_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Anxious-preoccupiedCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Fearfull Avoidant</h2>
+		<p>People with losses or other trauma, such as sexual abuse in childhood and adolescence may often develop this type of attachment.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Fearfull Avoidant_1" onclick="chosenBlock('Fearfull Avoidant_1')">Click here to select the desiered trait value</td>
+			<td id="Fearfull Avoidant_2" onclick="chosenBlock('Fearfull Avoidant_2')">Click here to select the desiered trait value</td>
+			<td id="Fearfull Avoidant_3" onclick="chosenBlock('Fearfull Avoidant_3')">Click here to select the desiered trait value</td>
+			<td id="Fearfull Avoidant_4" onclick="chosenBlock('Fearfull Avoidant_4')">Click here to select the desiered trait value</td>
+			<td id="Fearfull Avoidant_5" onclick="chosenBlock('Fearfull Avoidant_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Fearfull AvoidantCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Dismissing Avoidant</h2>
+		<p>People with this attachment style desire a high level of independence. The desire for independence often appears as an attempt to avoid attachment altogether. They view themselves as self-sufficient and invulnerable to feelings associated with being closely attached to others.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Dismissing Avoidant_1" onclick="chosenBlock('Dismissing Avoidant_1')">Click here to select the desiered trait value</td>
+			<td id="Dismissing Avoidant_2" onclick="chosenBlock('Dismissing Avoidant_2')">Click here to select the desiered trait value</td>
+			<td id="Dismissing Avoidant_3" onclick="chosenBlock('Dismissing Avoidant_3')">Click here to select the desiered trait value</td>
+			<td id="Dismissing Avoidant_4" onclick="chosenBlock('Dismissing Avoidant_4')">Click here to select the desiered trait value</td>
+			<td id="Dismissing Avoidant_5" onclick="chosenBlock('Dismissing Avoidant_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Dismissing AvoidantCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Social Desirability</h2>
+		<p>Social desirability bias is a social science research term that describes a type of response bias that is the tendency of survey respondents to answer questions in a manner that will be viewed favorably by others. It is used here to assess the reliability of the the answers provided by the survey respondents.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Social Desirability_1" onclick="chosenBlock('Social Desirability_1')">Click here to select the desiered trait value</td>
+			<td id="Social Desirability_2" onclick="chosenBlock('Social Desirability_2')">Click here to select the desiered trait value</td>
+			<td id="Social Desirability_3" onclick="chosenBlock('Social Desirability_3')">Click here to select the desiered trait value</td>
+			<td id="Social Desirability_4" onclick="chosenBlock('Social Desirability_4')">Click here to select the desiered trait value</td>
+			<td id="Social Desirability_5" onclick="chosenBlock('Social Desirability_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Social DesirabilityCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Creativity</h2>
+		<p>Creativity is a critical ingredient for every social and technical related effort. It is a phenomenon whereby something new and somehow valuable is formed.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Creativity_1" onclick="chosenBlock('Creativity_1')">Click here to select the desiered trait value</td>
+			<td id="Creativity_2" onclick="chosenBlock('Creativity_2')">Click here to select the desiered trait value</td>
+			<td id="Creativity_3" onclick="chosenBlock('Creativity_3')">Click here to select the desiered trait value</td>
+			<td id="Creativity_4" onclick="chosenBlock('Creativity_4')">Click here to select the desiered trait value</td>
+			<td id="Creativity_5" onclick="chosenBlock('Creativity_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="CreativityCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Locus of control</h2>
+		<p>The degree to which people believe that they have control\power over events in their lives. Studies show that individuals with higher values in Internal Locus of Control seem to perform better as leaders, managers and officers.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Locus of control_1" onclick="chosenBlock('Locus of control_1')">Click here to select the desiered trait value</td>
+			<td id="Locus of control_2" onclick="chosenBlock('Locus of control_2')">Click here to select the desiered trait value</td>
+			<td id="Locus of control_3" onclick="chosenBlock('Locus of control_3')">Click here to select the desiered trait value</td>
+			<td id="Locus of control_4" onclick="chosenBlock('Locus of control_4')">Click here to select the desiered trait value</td>
+			<td id="Locus of control_5" onclick="chosenBlock('Locus of control_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Locus of controlCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Self efficacy</h2>
+		<p>Self-efficacy is confidence in one's own ability to achieve intended results. Also referred to as personal efficacy.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Self efficacy_1" onclick="chosenBlock('Self efficacy_1')">Click here to select the desiered trait value</td>
+			<td id="Self efficacy_2" onclick="chosenBlock('Self efficacy_2')">Click here to select the desiered trait value</td>
+			<td id="Self efficacy_3" onclick="chosenBlock('Self efficacy_3')">Click here to select the desiered trait value</td>
+			<td id="Self efficacy_4" onclick="chosenBlock('Self efficacy_4')">Click here to select the desiered trait value</td>
+			<td id="Self efficacy_5" onclick="chosenBlock('Self efficacy_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Self efficacyCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Risk Taking Behavior</h2>
+		<p>Risk taking behavior refers to the tendency to engage in activities that have the potential to be harmful or dangerous. Moderate levels of risk taking behavior potentially predict successful leadership and management outcomes.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Risk Taking Behavior_1" onclick="chosenBlock('Risk Taking Behavior_1')">Click here to select the desiered trait value</td>
+			<td id="Risk Taking Behavior_2" onclick="chosenBlock('Risk Taking Behavior_2')">Click here to select the desiered trait value</td>
+			<td id="Risk Taking Behavior_3" onclick="chosenBlock('Risk Taking Behavior_3')">Click here to select the desiered trait value</td>
+			<td id="Risk Taking Behavior_4" onclick="chosenBlock('Risk Taking Behavior_4')">Click here to select the desiered trait value</td>
+			<td id="Risk Taking Behavior_5" onclick="chosenBlock('Risk Taking Behavior_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Risk Taking BehaviorCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Distress Tolerance</h2>
+		<p>Perceived ability to tolerate emotional distress.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Distress Tolerance_1" onclick="chosenBlock('Distress Tolerance_1')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance_2" onclick="chosenBlock('Distress Tolerance_2')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance_3" onclick="chosenBlock('Distress Tolerance_3')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance_4" onclick="chosenBlock('Distress Tolerance_4')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance_5" onclick="chosenBlock('Distress Tolerance_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Distress ToleranceCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Distress Appraisal</h2>
+		<p>Subjective appraisal of distress.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Distress Appraisal_1" onclick="chosenBlock('Distress Appraisal_1')">Click here to select the desiered trait value</td>
+			<td id="Distress Appraisal_2" onclick="chosenBlock('Distress Appraisal_2')">Click here to select the desiered trait value</td>
+			<td id="Distress Appraisal_3" onclick="chosenBlock('Distress Appraisal_3')">Click here to select the desiered trait value</td>
+			<td id="Distress Appraisal_4" onclick="chosenBlock('Distress Appraisal_4')">Click here to select the desiered trait value</td>
+			<td id="Distress Appraisal_5" onclick="chosenBlock('Distress Appraisal_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Distress AppraisalCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Distress Absorption</h2>
+		<p>Attention being absorbed by negative emotions.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Distress Absorption_1" onclick="chosenBlock('Distress Absorption_1')">Click here to select the desiered trait value</td>
+			<td id="Distress Absorption_2" onclick="chosenBlock('Distress Absorption_2')">Click here to select the desiered trait value</td>
+			<td id="Distress Absorption_3" onclick="chosenBlock('Distress Absorption_3')">Click here to select the desiered trait value</td>
+			<td id="Distress Absorption_4" onclick="chosenBlock('Distress Absorption_4')">Click here to select the desiered trait value</td>
+			<td id="Distress Absorption_5" onclick="chosenBlock('Distress Absorption_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Distress AbsorptionCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Distress Regulation</h2>
+		<p>Regulation efforts to alleviate distress.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Distress Regulation_1" onclick="chosenBlock('Distress Regulation_1')">Click here to select the desiered trait value</td>
+			<td id="Distress Regulation_2" onclick="chosenBlock('Distress Regulation_2')">Click here to select the desiered trait value</td>
+			<td id="Distress Regulation_3" onclick="chosenBlock('Distress Regulation_3')">Click here to select the desiered trait value</td>
+			<td id="Distress Regulation_4" onclick="chosenBlock('Distress Regulation_4')">Click here to select the desiered trait value</td>
+			<td id="Distress Regulation_5" onclick="chosenBlock('Distress Regulation_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Distress RegulationCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Distress Tolerance Compound</h2>
+		<p>Perceived ability to tolerate emotional distress [aggregated sub distress tolerance scales]</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Distress Tolerance Compound_1" onclick="chosenBlock('Distress Tolerance Compound_1')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance Compound_2" onclick="chosenBlock('Distress Tolerance Compound_2')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance Compound_3" onclick="chosenBlock('Distress Tolerance Compound_3')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance Compound_4" onclick="chosenBlock('Distress Tolerance Compound_4')">Click here to select the desiered trait value</td>
+			<td id="Distress Tolerance Compound_5" onclick="chosenBlock('Distress Tolerance Compound_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Distress Tolerance CompoundCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Tolerance for Ambiguity score</h2>
+		<p>The degree to which an individual is comfortable with uncertainty, unpredictability, conflicting directions, and multiple demands.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Tolerance for Ambiguity score_1" onclick="chosenBlock('Tolerance for Ambiguity score_1')">Click here to select the desiered trait value</td>
+			<td id="Tolerance for Ambiguity score_2" onclick="chosenBlock('Tolerance for Ambiguity score_2')">Click here to select the desiered trait value</td>
+			<td id="Tolerance for Ambiguity score_3" onclick="chosenBlock('Tolerance for Ambiguity score_3')">Click here to select the desiered trait value</td>
+			<td id="Tolerance for Ambiguity score_4" onclick="chosenBlock('Tolerance for Ambiguity score_4')">Click here to select the desiered trait value</td>
+			<td id="Tolerance for Ambiguity score_5" onclick="chosenBlock('Tolerance for Ambiguity score_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Tolerance for Ambiguity scoreCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Ambiguous stimuli</h2>
+		<p>Ambiguous stimuli in general.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Ambiguous stimuli_1" onclick="chosenBlock('Ambiguous stimuli_1')">Click here to select the desiered trait value</td>
+			<td id="Ambiguous stimuli_2" onclick="chosenBlock('Ambiguous stimuli_2')">Click here to select the desiered trait value</td>
+			<td id="Ambiguous stimuli_3" onclick="chosenBlock('Ambiguous stimuli_3')">Click here to select the desiered trait value</td>
+			<td id="Ambiguous stimuli_4" onclick="chosenBlock('Ambiguous stimuli_4')">Click here to select the desiered trait value</td>
+			<td id="Ambiguous stimuli_5" onclick="chosenBlock('Ambiguous stimuli_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Ambiguous stimuliCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Complex stimuli</h2>
+		<p>A complex stimulus overwhelms the perceiver who must sift through a lot of information in order to understand the situation.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Complex stimuli_1" onclick="chosenBlock('Complex stimuli_1')">Click here to select the desiered trait value</td>
+			<td id="Complex stimuli_2" onclick="chosenBlock('Complex stimuli_2')">Click here to select the desiered trait value</td>
+			<td id="Complex stimuli_3" onclick="chosenBlock('Complex stimuli_3')">Click here to select the desiered trait value</td>
+			<td id="Complex stimuli_4" onclick="chosenBlock('Complex stimuli_4')">Click here to select the desiered trait value</td>
+			<td id="Complex stimuli_5" onclick="chosenBlock('Complex stimuli_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Complex stimuliCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Uncertain stimuli</h2>
+		<p>Ex: "I find it hard to make a choice when the outcome is uncertain."</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Uncertain stimuli_1" onclick="chosenBlock('Uncertain stimuli_1')">Click here to select the desiered trait value</td>
+			<td id="Uncertain stimuli_2" onclick="chosenBlock('Uncertain stimuli_2')">Click here to select the desiered trait value</td>
+			<td id="Uncertain stimuli_3" onclick="chosenBlock('Uncertain stimuli_3')">Click here to select the desiered trait value</td>
+			<td id="Uncertain stimuli_4" onclick="chosenBlock('Uncertain stimuli_4')">Click here to select the desiered trait value</td>
+			<td id="Uncertain stimuli_5" onclick="chosenBlock('Uncertain stimuli_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Uncertain stimuliCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>New/ Unfamiliar/ Novel stimuli</h2>
+		<p>Novelty presents a situation that has been experienced rarely, if at all.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="New/ Unfamiliar/ Novel stimuli_1" onclick="chosenBlock('New/ Unfamiliar/ Novel stimuli_1')">Click here to select the desiered trait value</td>
+			<td id="New/ Unfamiliar/ Novel stimuli_2" onclick="chosenBlock('New/ Unfamiliar/ Novel stimuli_2')">Click here to select the desiered trait value</td>
+			<td id="New/ Unfamiliar/ Novel stimuli_3" onclick="chosenBlock('New/ Unfamiliar/ Novel stimuli_3')">Click here to select the desiered trait value</td>
+			<td id="New/ Unfamiliar/ Novel stimuli_4" onclick="chosenBlock('New/ Unfamiliar/ Novel stimuli_4')">Click here to select the desiered trait value</td>
+			<td id="New/ Unfamiliar/ Novel stimuli_5" onclick="chosenBlock('New/ Unfamiliar/ Novel stimuli_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="New/ Unfamiliar/ Novel stimuliCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Insoluble/ Illogical/ Internally inconsistent stimuli</h2>
+		<p>Ex: "I would rather avoid solving a problem that must be viewed from several different perspectives."</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Insoluble/ Illogical/ Internally inconsistent stimuli_1" onclick="chosenBlock('Insoluble/ Illogical/ Internally inconsistent stimuli_1')">Click here to select the desiered trait value</td>
+			<td id="Insoluble/ Illogical/ Internally inconsistent stimuli_2" onclick="chosenBlock('Insoluble/ Illogical/ Internally inconsistent stimuli_2')">Click here to select the desiered trait value</td>
+			<td id="Insoluble/ Illogical/ Internally inconsistent stimuli_3" onclick="chosenBlock('Insoluble/ Illogical/ Internally inconsistent stimuli_3')">Click here to select the desiered trait value</td>
+			<td id="Insoluble/ Illogical/ Internally inconsistent stimuli_4" onclick="chosenBlock('Insoluble/ Illogical/ Internally inconsistent stimuli_4')">Click here to select the desiered trait value</td>
+			<td id="Insoluble/ Illogical/ Internally inconsistent stimuli_5" onclick="chosenBlock('Insoluble/ Illogical/ Internally inconsistent stimuli_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Insoluble/ Illogical/ Internally inconsistent stimuliCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Total Social and Emotional Intelligence Score</h2>
+		<p>Linked to self-awareness, self-management and relationship management, which enable people to understand and manage their own and others’ emotions in social interactions</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Total Social and Emotional Intelligence Score_1" onclick="chosenBlock('Total Social and Emotional Intelligence Score_1')">Click here to select the desiered trait value</td>
+			<td id="Total Social and Emotional Intelligence Score_2" onclick="chosenBlock('Total Social and Emotional Intelligence Score_2')">Click here to select the desiered trait value</td>
+			<td id="Total Social and Emotional Intelligence Score_3" onclick="chosenBlock('Total Social and Emotional Intelligence Score_3')">Click here to select the desiered trait value</td>
+			<td id="Total Social and Emotional Intelligence Score_4" onclick="chosenBlock('Total Social and Emotional Intelligence Score_4')">Click here to select the desiered trait value</td>
+			<td id="Total Social and Emotional Intelligence Score_5" onclick="chosenBlock('Total Social and Emotional Intelligence Score_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Total Social and Emotional Intelligence ScoreCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Self emotion appraisal</h2>
+		<p>The individual's ability to understand their deep emotions and be able to express these emotions naturally.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Self emotion appraisal_1" onclick="chosenBlock('Self emotion appraisal_1')">Click here to select the desiered trait value</td>
+			<td id="Self emotion appraisal_2" onclick="chosenBlock('Self emotion appraisal_2')">Click here to select the desiered trait value</td>
+			<td id="Self emotion appraisal_3" onclick="chosenBlock('Self emotion appraisal_3')">Click here to select the desiered trait value</td>
+			<td id="Self emotion appraisal_4" onclick="chosenBlock('Self emotion appraisal_4')">Click here to select the desiered trait value</td>
+			<td id="Self emotion appraisal_5" onclick="chosenBlock('Self emotion appraisal_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Self emotion appraisalCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Others emotion appraisal</h2>
+		<p>The ability to perceive and understand the emotions of those people around them.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Others emotion appraisal_1" onclick="chosenBlock('Others emotion appraisal_1')">Click here to select the desiered trait value</td>
+			<td id="Others emotion appraisal_2" onclick="chosenBlock('Others emotion appraisal_2')">Click here to select the desiered trait value</td>
+			<td id="Others emotion appraisal_3" onclick="chosenBlock('Others emotion appraisal_3')">Click here to select the desiered trait value</td>
+			<td id="Others emotion appraisal_4" onclick="chosenBlock('Others emotion appraisal_4')">Click here to select the desiered trait value</td>
+			<td id="Others emotion appraisal_5" onclick="chosenBlock('Others emotion appraisal_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Others emotion appraisalCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Use of emotion</h2>
+		<p>A conscious mental reaction subjectively experienced as strong feeling usually directed toward a specific object and typically accompanied by physiological and behavioral changes in the body</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Use of emotion_1" onclick="chosenBlock('Use of emotion_1')">Click here to select the desiered trait value</td>
+			<td id="Use of emotion_2" onclick="chosenBlock('Use of emotion_2')">Click here to select the desiered trait value</td>
+			<td id="Use of emotion_3" onclick="chosenBlock('Use of emotion_3')">Click here to select the desiered trait value</td>
+			<td id="Use of emotion_4" onclick="chosenBlock('Use of emotion_4')">Click here to select the desiered trait value</td>
+			<td id="Use of emotion_5" onclick="chosenBlock('Use of emotion_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Use of emotionCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Regulation of emotion</h2>
+		<p>The ability to respond to the ongoing demands of experience with the range of emotions in a manner that is socially tolerable and sufficiently flexible to permit spontaneous reactions as well as the ability to delay spontaneous reactions as needed</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Regulation of emotion_1" onclick="chosenBlock('Regulation of emotion_1')">Click here to select the desiered trait value</td>
+			<td id="Regulation of emotion_2" onclick="chosenBlock('Regulation of emotion_2')">Click here to select the desiered trait value</td>
+			<td id="Regulation of emotion_3" onclick="chosenBlock('Regulation of emotion_3')">Click here to select the desiered trait value</td>
+			<td id="Regulation of emotion_4" onclick="chosenBlock('Regulation of emotion_4')">Click here to select the desiered trait value</td>
+			<td id="Regulation of emotion_5" onclick="chosenBlock('Regulation of emotion_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Regulation of emotionCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Improvisation Total Score</h2>
+		<p>The activity of making or doing something not planned beforehand, using whatever can be found</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Improvisation Total Score_1" onclick="chosenBlock('Improvisation Total Score_1')">Click here to select the desiered trait value</td>
+			<td id="Improvisation Total Score_2" onclick="chosenBlock('Improvisation Total Score_2')">Click here to select the desiered trait value</td>
+			<td id="Improvisation Total Score_3" onclick="chosenBlock('Improvisation Total Score_3')">Click here to select the desiered trait value</td>
+			<td id="Improvisation Total Score_4" onclick="chosenBlock('Improvisation Total Score_4')">Click here to select the desiered trait value</td>
+			<td id="Improvisation Total Score_5" onclick="chosenBlock('Improvisation Total Score_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Improvisation Total ScoreCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Improvisation, creativity, and bricolage</h2>
+		<p>This dimension represents the extent to which individuals are able to produce novel solutions under constrained conditions by recombining available resources. Individuals high in this dimension are likely to seek out opportunities to display their ingenuity.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Improvisation, creativity, and bricolage_1" onclick="chosenBlock('Improvisation, creativity, and bricolage_1')">Click here to select the desiered trait value</td>
+			<td id="Improvisation, creativity, and bricolage_2" onclick="chosenBlock('Improvisation, creativity, and bricolage_2')">Click here to select the desiered trait value</td>
+			<td id="Improvisation, creativity, and bricolage_3" onclick="chosenBlock('Improvisation, creativity, and bricolage_3')">Click here to select the desiered trait value</td>
+			<td id="Improvisation, creativity, and bricolage_4" onclick="chosenBlock('Improvisation, creativity, and bricolage_4')">Click here to select the desiered trait value</td>
+			<td id="Improvisation, creativity, and bricolage_5" onclick="chosenBlock('Improvisation, creativity, and bricolage_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Improvisation, creativity, and bricolageCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Improvisation function under pressure & stress</h2>
+		<p>Relates to the ability to function and excel under pressure-filled and stressful environments. This dimension represents the ability of individuals to excel in uncertain and rapidly changing environments. Individuals who are high in this dimension tend to rise to the occasion and perform best under pressure.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Improvisation function under pressure & stress_1" onclick="chosenBlock('Improvisation function under pressure & stress_1')">Click here to select the desiered trait value</td>
+			<td id="Improvisation function under pressure & stress_2" onclick="chosenBlock('Improvisation function under pressure & stress_2')">Click here to select the desiered trait value</td>
+			<td id="Improvisation function under pressure & stress_3" onclick="chosenBlock('Improvisation function under pressure & stress_3')">Click here to select the desiered trait value</td>
+			<td id="Improvisation function under pressure & stress_4" onclick="chosenBlock('Improvisation function under pressure & stress_4')">Click here to select the desiered trait value</td>
+			<td id="Improvisation function under pressure & stress_5" onclick="chosenBlock('Improvisation function under pressure & stress_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Improvisation function under pressure & stressCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Improvisation spontaneity and persistence</h2>
+		<p>This dimension represents the action orientation and determination of individuals toward achieving goals and solving problems in the moment. Individuals who are high in this dimension tend to prefer action rather than analysis and are highly focused on the problem at hand. These individuals are opportunistic and act with a killer instinct.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Improvisation spontaneity and persistence_1" onclick="chosenBlock('Improvisation spontaneity and persistence_1')">Click here to select the desiered trait value</td>
+			<td id="Improvisation spontaneity and persistence_2" onclick="chosenBlock('Improvisation spontaneity and persistence_2')">Click here to select the desiered trait value</td>
+			<td id="Improvisation spontaneity and persistence_3" onclick="chosenBlock('Improvisation spontaneity and persistence_3')">Click here to select the desiered trait value</td>
+			<td id="Improvisation spontaneity and persistence_4" onclick="chosenBlock('Improvisation spontaneity and persistence_4')">Click here to select the desiered trait value</td>
+			<td id="Improvisation spontaneity and persistence_5" onclick="chosenBlock('Improvisation spontaneity and persistence_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Improvisation spontaneity and persistenceCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Self discipline</h2>
+		<p>Self discipline is the ability one has to control and motivate him/her serlf to stay on track and do what is right.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Self discipline_1" onclick="chosenBlock('Self discipline_1')">Click here to select the desiered trait value</td>
+			<td id="Self discipline_2" onclick="chosenBlock('Self discipline_2')">Click here to select the desiered trait value</td>
+			<td id="Self discipline_3" onclick="chosenBlock('Self discipline_3')">Click here to select the desiered trait value</td>
+			<td id="Self discipline_4" onclick="chosenBlock('Self discipline_4')">Click here to select the desiered trait value</td>
+			<td id="Self discipline_5" onclick="chosenBlock('Self discipline_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Self disciplineCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Total Dark Triad Score</h2>
+		<p>The dark triad is a subject in psychology that focuses on three personality traits: narcissism, Machiavellianism, and psychopathy.Use of the term "dark" implies that people possessing these traits have malevolent qualities.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Total Dark Triad Score_1" onclick="chosenBlock('Total Dark Triad Score_1')">Click here to select the desiered trait value</td>
+			<td id="Total Dark Triad Score_2" onclick="chosenBlock('Total Dark Triad Score_2')">Click here to select the desiered trait value</td>
+			<td id="Total Dark Triad Score_3" onclick="chosenBlock('Total Dark Triad Score_3')">Click here to select the desiered trait value</td>
+			<td id="Total Dark Triad Score_4" onclick="chosenBlock('Total Dark Triad Score_4')">Click here to select the desiered trait value</td>
+			<td id="Total Dark Triad Score_5" onclick="chosenBlock('Total Dark Triad Score_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Total Dark Triad ScoreCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Machiavellianism related tendencies</h2>
+		<p>Machiavellianism is characterized by manipulation and exploitation of others, a cynical disregard for morality, and a focus on self-interest and deception</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Machiavellianism related tendencies_1" onclick="chosenBlock('Machiavellianism related tendencies_1')">Click here to select the desiered trait value</td>
+			<td id="Machiavellianism related tendencies_2" onclick="chosenBlock('Machiavellianism related tendencies_2')">Click here to select the desiered trait value</td>
+			<td id="Machiavellianism related tendencies_3" onclick="chosenBlock('Machiavellianism related tendencies_3')">Click here to select the desiered trait value</td>
+			<td id="Machiavellianism related tendencies_4" onclick="chosenBlock('Machiavellianism related tendencies_4')">Click here to select the desiered trait value</td>
+			<td id="Machiavellianism related tendencies_5" onclick="chosenBlock('Machiavellianism related tendencies_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Machiavellianism related tendenciesCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Narcissism related tendencies</h2>
+		<p>Narcissism is characterized by grandiosity, pride, egotism, and a lack of empathy.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Narcissism related tendencies_1" onclick="chosenBlock('Narcissism related tendencies_1')">Click here to select the desiered trait value</td>
+			<td id="Narcissism related tendencies_2" onclick="chosenBlock('Narcissism related tendencies_2')">Click here to select the desiered trait value</td>
+			<td id="Narcissism related tendencies_3" onclick="chosenBlock('Narcissism related tendencies_3')">Click here to select the desiered trait value</td>
+			<td id="Narcissism related tendencies_4" onclick="chosenBlock('Narcissism related tendencies_4')">Click here to select the desiered trait value</td>
+			<td id="Narcissism related tendencies_5" onclick="chosenBlock('Narcissism related tendencies_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Narcissism related tendenciesCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Psychopathy related tendencies</h2>
+		<p>Psychopathy is characterized by continuing antisocial behavior, impulsivity, selfishness, callousness, and remorselessness.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Psychopathy related tendencies_1" onclick="chosenBlock('Psychopathy related tendencies_1')">Click here to select the desiered trait value</td>
+			<td id="Psychopathy related tendencies_2" onclick="chosenBlock('Psychopathy related tendencies_2')">Click here to select the desiered trait value</td>
+			<td id="Psychopathy related tendencies_3" onclick="chosenBlock('Psychopathy related tendencies_3')">Click here to select the desiered trait value</td>
+			<td id="Psychopathy related tendencies_4" onclick="chosenBlock('Psychopathy related tendencies_4')">Click here to select the desiered trait value</td>
+			<td id="Psychopathy related tendencies_5" onclick="chosenBlock('Psychopathy related tendencies_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Psychopathy related tendenciesCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Curious/Energetic</h2>
+		<p>Variations in the dopamine system have been linked with novelty, experience and adventure seeking, susceptibility to boredom, impulsivity, energy and enthusiasm.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Curious/Energetic_1" onclick="chosenBlock('Curious/Energetic_1')">Click here to select the desiered trait value</td>
+			<td id="Curious/Energetic_2" onclick="chosenBlock('Curious/Energetic_2')">Click here to select the desiered trait value</td>
+			<td id="Curious/Energetic_3" onclick="chosenBlock('Curious/Energetic_3')">Click here to select the desiered trait value</td>
+			<td id="Curious/Energetic_4" onclick="chosenBlock('Curious/Energetic_4')">Click here to select the desiered trait value</td>
+			<td id="Curious/Energetic_5" onclick="chosenBlock('Curious/Energetic_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Curious/EnergeticCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Cautious/Social Norm Compliant</h2>
+		<p>The suite of traits associated with specific activities and genes in the serotonin system include sociability, caution (harm avoidance), less anxiety and more close friends.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Cautious/Social Norm Compliant_1" onclick="chosenBlock('Cautious/Social Norm Compliant_1')">Click here to select the desiered trait value</td>
+			<td id="Cautious/Social Norm Compliant_2" onclick="chosenBlock('Cautious/Social Norm Compliant_2')">Click here to select the desiered trait value</td>
+			<td id="Cautious/Social Norm Compliant_3" onclick="chosenBlock('Cautious/Social Norm Compliant_3')">Click here to select the desiered trait value</td>
+			<td id="Cautious/Social Norm Compliant_4" onclick="chosenBlock('Cautious/Social Norm Compliant_4')">Click here to select the desiered trait value</td>
+			<td id="Cautious/Social Norm Compliant_5" onclick="chosenBlock('Cautious/Social Norm Compliant_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Cautious/Social Norm CompliantCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Analytical/Tough-minded</h2>
+		<p>Prenatal endogenous testosterone priming is linked with enhanced visual-spatial perception and a keen understanding of ‘rule-based systems’, from mechanics to computers, maths, engineering or music.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Analytical/Tough-minded_1" onclick="chosenBlock('Analytical/Tough-minded_1')">Click here to select the desiered trait value</td>
+			<td id="Analytical/Tough-minded_2" onclick="chosenBlock('Analytical/Tough-minded_2')">Click here to select the desiered trait value</td>
+			<td id="Analytical/Tough-minded_3" onclick="chosenBlock('Analytical/Tough-minded_3')">Click here to select the desiered trait value</td>
+			<td id="Analytical/Tough-minded_4" onclick="chosenBlock('Analytical/Tough-minded_4')">Click here to select the desiered trait value</td>
+			<td id="Analytical/Tough-minded_5" onclick="chosenBlock('Analytical/Tough-minded_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Analytical/Tough-mindedCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>Prosocial/Empathetic</h2>
+		<p>Prenatal endogenous oestrogen priming is associated with contextual, holistic and long-term thinking, as well as linguistic skills, agreeableness, co-operation, theory of mind (intuition), empathy and nurturing.</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="Prosocial/Empathetic_1" onclick="chosenBlock('Prosocial/Empathetic_1')">Click here to select the desiered trait value</td>
+			<td id="Prosocial/Empathetic_2" onclick="chosenBlock('Prosocial/Empathetic_2')">Click here to select the desiered trait value</td>
+			<td id="Prosocial/Empathetic_3" onclick="chosenBlock('Prosocial/Empathetic_3')">Click here to select the desiered trait value</td>
+			<td id="Prosocial/Empathetic_4" onclick="chosenBlock('Prosocial/Empathetic_4')">Click here to select the desiered trait value</td>
+			<td id="Prosocial/Empathetic_5" onclick="chosenBlock('Prosocial/Empathetic_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="Prosocial/EmpatheticCurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>

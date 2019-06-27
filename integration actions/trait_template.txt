@@ -1,0 +1,28 @@
+<div>
+	<div style="display:inline-block">
+		<img height="100" width="100" src="important.jpg" alt="scale"/>
+	</div>
+	<div style="display:inline-block">
+		<h2>[trait_name]</h2>
+		<p>[trait_description]</p>
+	</div>
+	<p style="font-size:20px"><b>For EACH of the 5 squares below, please select desired score (represented with the 5 colores). Note that ANY combination is possible.</b></p>
+	<table width="610">
+		<tr>
+			<td id="[trait_name]_1" onclick="chosenBlock('[trait_name]_1')">Click here to select the desiered trait value</td>
+			<td id="[trait_name]_2" onclick="chosenBlock('[trait_name]_2')">Click here to select the desiered trait value</td>
+			<td id="[trait_name]_3" onclick="chosenBlock('[trait_name]_3')">Click here to select the desiered trait value</td>
+			<td id="[trait_name]_4" onclick="chosenBlock('[trait_name]_4')">Click here to select the desiered trait value</td>
+			<td id="[trait_name]_5" onclick="chosenBlock('[trait_name]_5')">Click here to select the desiered trait value</td>
+		</tr>
+	</table>
+	<p id="[trait_name]CurrentBlockMessage">You need to specify a square</p>
+	<div style="display:inline-block">
+		<img src="1.jpg" alt="1" onclick="chosenIcon(1)"/>
+		<img src="2.jpg" alt="2" onclick="chosenIcon(2)"/>
+		<img src="3.jpg" alt="3" onclick="chosenIcon(3)"/>
+		<img src="4.jpg" alt="4" onclick="chosenIcon(4)"/>
+		<img src="5.jpg" alt="5" onclick="chosenIcon(5)"/>
+	</div>
+</div>
+<hr style="border-width:3px"/>
