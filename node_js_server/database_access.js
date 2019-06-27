@@ -74,12 +74,9 @@ module.exports =
 	},
 	pushData: async function(pgclient,traitName,traitsValues,jobID)
 	{
-		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5, trait_range_per_job_id=$6 WHERE jobs_catalog_id = $7 AND trait_name= $8;"
+		var updateQueryString="UPDATE trait_range_per_job SET trait_low = $1, trait_below_average = $2,trait_average = $3,trait_above_average = $4, trait_high = $5 WHERE trait_range_per_job_id=$6 AND jobs_catalog_id = $7 AND trait_name= $8;"
 		var insertQueryString="INSERT INTO trait_range_per_job (trait_low, trait_below_average, trait_average, trait_above_average ,trait_high, trait_range_per_job_id, jobs_catalog_id, trait_name) VALUES($1,$2,$3,$4,$5,$6,$7,$8);";
-		var categoryNum=jobID.split('-')[0].split('C')[1];
-		var roleNum=jobID.split('-')[1];
-		var traitNum=traitNames.indexOf(traitName)
-		var traitID=categoryNum*10000000+roleNum*100000+traitNum;
+		var traitID=getTraitID(jobID,traitName);
 		var queryValues=[traitsValues[0],traitsValues[1],traitsValues[2],traitsValues[3],traitsValues[4],traitID,jobID,traitName];
 		queryValues.forEach(assumeNum);
 		var result=null;
@@ -157,9 +154,16 @@ module.exports =
 	
 }
 
+function getTraitID(jobID,traitName)
+{
+	var traitNum=traitNames.indexOf(traitName)
+	var traitID=jobID*1000+traitNum;
+	return traitID;
+}
+
 function assumeNum(value,index,arr)
 {	
-	if (value==undefined||value==null )
+	if (value==undefined||value==null||value==NaN)
 		arr[index]=0;
 }
 
