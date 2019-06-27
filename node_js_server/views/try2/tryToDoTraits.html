@@ -106,7 +106,7 @@
 			<div class="input-objects" style="margin-top:13px">
 				<br/>
 				<br/>
-				<button type="button" onclick=navigateToPage(2)>Go to Define Optimal Traits specifications</button>
+				<button id="navigateToNextPage" type="button" onclick=navigateToPage(2) disabled>Go to Define Optimal Traits specifications</button>
 			</div>
 		</form>
 	</div>
@@ -1379,6 +1379,7 @@
 				document.getElementById("JobNameOption").text="--select an option--";
 			addOptionsFromObject(jobNames,"positionName");
 			document.getElementById("newPositionNameButton").disabled=false;
+			//document.getElementById("navigateToNextPage").disabled=true;
 		}
 		
 		function chosenName()
@@ -1387,6 +1388,7 @@
 			console.log(positionName);
 			positionID=document.getElementById("positionName").selectedOptions[0].id;
 			document.getElementById("positionID").value=positionID;
+			document.getElementById("navigateToNextPage").disabled=false;
 			var http = new XMLHttpRequest();
 			http.open("POST",'/roleData', true);
 			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
