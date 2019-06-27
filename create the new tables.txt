@@ -1,14 +1,16 @@
 CREATE TABLE jobs_catalog_table(
-jobs_catalog_id char(10) NOT NULL PRIMARY KEY,
+jobs_catalog_id int4 NOT NULL PRIMARY KEY,
 trait_range_and_specific_job_information_id int4,
 cpa_job_template_id int4,
 organizational_units_information_id int4,
 job_name varchar(256),
 Job_Category_name varchar(255),
-Job_Category_id char(4),
+Job_Category_id int4,
 Job_Description varchar(1000),
-notes varchar,
-date_entered timestamp
+Gender_Preference varchar(255),
+Age_Preferences varchar(255),
+date_entered timestamp,
+notes varchar
 );
 
 I modified the "date_entered" field to int. 
@@ -31,7 +33,7 @@ date_entered timestamp
 
 CREATE TABLE trait_range_per_job(
 jobform_unique_job_information_submission_id int4,
-jobs_catalog_id char(10),
+jobs_catalog_id int4,
 trait_low int4,
 trait_below_average int4,
 trait_average int4,
