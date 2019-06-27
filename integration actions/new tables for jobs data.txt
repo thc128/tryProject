@@ -1,0 +1,9 @@
+create table asaf_categories(
+categoryID char(10) primary key,
+categoryName char(40)
+);
+create table asaf_job_names(
+categoryID char(10),
+jobID char(10) primary key,
+jobName char(60)
+);
